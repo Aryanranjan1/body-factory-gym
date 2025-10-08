@@ -100,7 +100,7 @@ export function AboutSection() {
       className="bg-black text-white py-20 md:py-28 overflow-hidden"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: false, amount: 0.3 }}
       variants={containerVariants}
     >
       <div className="container mx-auto px-4">
