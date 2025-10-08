@@ -13,17 +13,6 @@ export type Testimonial = {
   quote: string;
 };
 
-export type Facility = {
-  id: string;
-  title: string;
-  tagline: string;
-  description: string;
-  features: string[];
-  image: ImagePlaceholder;
-  layout: '1x1' | '2x1' | '1x2' | '2x2';
-};
-
-
 export type MembershipPlan = {
   title: string;
   price: string;
