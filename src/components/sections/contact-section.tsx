@@ -40,7 +40,7 @@ export function ContactSection() {
                     ))}
                 </ul>
             </div>
-            <div className="rounded-lg bg-card/5 backdrop-blur-sm border border-border p-8 shadow-2xl">
+            <div className="rounded-lg bg-card border border-border p-8 shadow-2xl">
                 <ContactForm />
             </div>
         </div>
