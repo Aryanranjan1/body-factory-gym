@@ -9,7 +9,7 @@ import {
     CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { ArrowRight, Facebook, Instagram, MessageCircle, Youtube } from "lucide-react";
+import { ArrowRight, Facebook, Instagram, Youtube } from "lucide-react";
 import Link from "next/link";
 import { Avatar, AvatarFallback } from "../ui/avatar";
 
@@ -39,8 +39,8 @@ export function CommunitySection() {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                    <div className="space-y-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start mb-8">
+                    <div className="space-y-4">
                         <Carousel
                             opts={{
                                 align: "start",
@@ -76,67 +76,63 @@ export function CommunitySection() {
                             <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2" />
                             <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2" />
                         </Carousel>
+                    </div>
+
+                    <div className="flex items-center h-full">
                         <p className="text-2xl font-semibold">
                             We organize regular member-only competitions and special events to engage with our fitness community in person.
                         </p>
                     </div>
-
-                    <div className="space-y-8">
-                        <Card className="bg-card">
-                            <CardHeader>
-                                <CardTitle>Join our WhatsApp Group</CardTitle>
-                            </CardHeader>
-                            <CardContent className="space-y-4">
-                                <p className="text-muted-foreground">"Keep up with the latest class schedules and discuss your fitness challenges in our active community."</p>
-                                <div className="flex items-center gap-3">
-                                    <Avatar>
-                                       {communityMemberImage && <Image src={communityMemberImage.imageUrl} alt="Zul" width={40} height={40} />}
-                                       <AvatarFallback>Z</AvatarFallback>
-                                    </Avatar>
-                                    <div>
-                                        <p className="font-semibold">Zul</p>
-                                        <p className="text-sm text-muted-foreground">BFG Member</p>
-                                    </div>
-                                </div>
-                                 <Button variant="outline" className="w-full" asChild>
-                                    <Link href="#">Join Now <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                                </Button>
-                            </CardContent>
-                        </Card>
-                        
-                        <Card className="bg-card">
-                             <CardHeader>
-                                <CardTitle>Connect with us on social media</CardTitle>
-                            </CardHeader>
-                            <CardContent className="space-y-4">
-                                <p className="text-muted-foreground">Network online and stay on top of updates, community events, and fitness trends.</p>
-                                 <div className="flex items-center justify-center space-x-3">
-                                  <Link href="#" className="p-3 rounded-full bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground">
-                                    <Instagram className="h-5 w-5" />
-                                  </Link>
-                                  <Link href="#" className="p-3 rounded-full bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground">
-                                    <Facebook className="h-5 w-5" />
-                                  </Link>
-                                  <Link href="#" className="p-3 rounded-full bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground">
-                                    <Youtube className="h-5 w-5" />
-                                  </Link>
-                                </div>
-                            </CardContent>
-                        </Card>
-                    </div>
                 </div>
 
-                 <div className="mt-8">
-                     <Card className="bg-card overflow-hidden">
-                        <div className="grid md:grid-cols-2 items-center">
-                            <div className="p-8">
-                                <p className="text-sm font-semibold uppercase tracking-wider text-primary">Workouts & Live Streams</p>
-                                <h3 className="text-2xl font-bold mt-2">JOIN OUR ONLINE WORKOUTS WITH BFG COACHES</h3>
-                                <Button variant="outline" className="mt-4" asChild>
-                                    <Link href="#">Watch Live Streams <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                                </Button>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                     <Card className="bg-card flex flex-col">
+                        <CardHeader>
+                            <CardTitle>Join our WhatsApp Group</CardTitle>
+                        </CardHeader>
+                        <CardContent className="flex-grow space-y-4">
+                            <p className="text-muted-foreground">"Keep up with the latest class schedules and discuss your fitness challenges in our active community."</p>
+                            <div className="flex items-center gap-3">
+                                <Avatar>
+                                   {communityMemberImage && <Image src={communityMemberImage.imageUrl} alt="Zul" width={40} height={40} />}
+                                   <AvatarFallback>Z</AvatarFallback>
+                                </Avatar>
+                                <div>
+                                    <p className="font-semibold">Zul</p>
+                                    <p className="text-sm text-muted-foreground">BFG Member</p>
+                                </div>
                             </div>
-                             <div className="relative h-64 md:h-full min-h-[200px]">
+                        </CardContent>
+                        <div className="p-6 pt-0">
+                            <Button variant="outline" className="w-full" asChild>
+                                <Link href="#">Join Now <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                            </Button>
+                        </div>
+                    </Card>
+                    
+                    <Card className="bg-card">
+                         <CardHeader>
+                            <CardTitle>Connect with us on social media</CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-4">
+                            <p className="text-muted-foreground"><span className="text-foreground font-semibold">Network online</span> and stay on top of updates, community events, and fitness trends.</p>
+                             <div className="flex items-center space-x-3">
+                              <Link href="#" className="p-3 rounded-full bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground">
+                                <Instagram className="h-5 w-5" />
+                              </Link>
+                              <Link href="#" className="p-3 rounded-full bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground">
+                                <Facebook className="h-5 w-5" />
+                              </Link>
+                              <Link href="#" className="p-3 rounded-full bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground">
+                                <Youtube className="h-5 w-5" />
+                              </Link>
+                            </div>
+                        </CardContent>
+                    </Card>
+
+                    <div className="md:col-span-2 lg:col-span-1">
+                        <Card className="bg-card overflow-hidden h-full relative flex flex-col justify-between">
+                            <div className="relative h-full min-h-[200px] aspect-video">
                                 {onlineActivityImage && (
                                      <Image
                                         src={onlineActivityImage.imageUrl}
@@ -146,10 +142,20 @@ export function CommunitySection() {
                                         data-ai-hint="online fitness class"
                                      />
                                 )}
+                                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                             </div>
-                        </div>
-                     </Card>
-                 </div>
+                            <div className="absolute top-0 left-0 p-6 text-white">
+                                <p className="text-sm font-semibold uppercase tracking-wider">Webinars & Live Streams</p>
+                                <h3 className="text-xl font-bold mt-2">JOIN OUR ONLINE WORKOUTS WITH BFG COACHES</h3>
+                            </div>
+                             <div className="p-6">
+                                <Button variant="outline" className="w-full bg-white/20 text-white backdrop-blur-sm border-white/50 hover:bg-white/30" asChild>
+                                    <Link href="#">Watch Live Streams <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                                </Button>
+                            </div>
+                        </Card>
+                    </div>
+                </div>
             </div>
         </section>
     );
