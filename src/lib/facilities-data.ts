@@ -46,6 +46,15 @@ export const facilitiesData: Facility[] = [
     image: findImage('facility-personal-training'),
     layout: '1x2',
   },
+   {
+    id: "lockers",
+    title: "Locker & Recovery",
+    tagline: "Refresh and recharge.",
+    description: "Our clean and secure facilities ensure you can prepare for and wind down from your workout in comfort. Store your belongings with peace of mind and take advantage of our recovery amenities.",
+    features: ["Secure Digital Lockers", "Spacious & Clean Showers", "Vanity Stations with Hair Dryers", "Post-workout Stretching Area", "Towel Service Available"],
+    image: findImage('facility-lockers'),
+    layout: '2x1',
+  },
   {
     id: "sauna",
     title: "Infrared Sauna",
@@ -54,14 +63,5 @@ export const facilitiesData: Facility[] = [
     features: ["Medical-Grade Chromotherapy", "Reduces Inflammation & Joint Pain", "Improves Circulation", "Promotes Deep Relaxation", "Available for Premium Members"],
     image: findImage('facility-sauna'),
     layout: '1x1',
-  },
-  {
-    id: "lockers",
-    title: "Locker & Recovery",
-    tagline: "Refresh and recharge.",
-    description: "Our clean and secure facilities ensure you can prepare for and wind down from your workout in comfort. Store your belongings with peace of mind and take advantage of our recovery amenities.",
-    features: ["Secure Digital Lockers", "Spacious & Clean Showers", "Vanity Stations with Hair Dryers", "Post-workout Stretching Area", "Towel Service Available"],
-    image: findImage('facility-lockers'),
-    layout: '2x1',
   },
 ];
