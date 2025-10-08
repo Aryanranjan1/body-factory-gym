@@ -1,30 +1,25 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, BadgeCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Badge } from "../ui/badge";
 
 const plans = [
   {
     title: "Walk-In",
-    price: "12",
-    period: "Per Day",
+    description: "The perfect balance of structure and flexibility to kickstart your fitness journey.",
     features: ["Full Gym Access", "One-Time Entry", "No Commitment"],
-    isFeatured: false,
+    cta: "Get Started Now",
   },
   {
     title: "Monthly",
-    price: "110–120",
-    period: "Per Month",
+    description: "Designed for those ready to build consistency and make steady, sustainable progress.",
     features: ["24/7 Gym Access", "Unlimited Entries", "Community Access", "Infrared Sauna (Premium)"],
-    isFeatured: true,
+    cta: "Get Started Now",
   },
   {
     title: "Personal Training",
-    price: "Custom",
-    period: "Quote",
+    description: "Ideal for maintaining and building on your fitness foundation with a consistent, balanced routine.",
     features: ["1-on-1 Coaching", "Personalized Programming", "Nutritional Guidance", "Direct Champion Mentorship"],
-    isFeatured: false,
+    cta: "Get Started Now",
   },
 ];
 
@@ -34,46 +29,38 @@ export function MembershipSection() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
             <p className="font-semibold text-primary tracking-widest uppercase">
-                Transparent Pricing
+                Our Memberships
             </p>
             <h2 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tight">
-                PLANS FOR <span className="text-primary">EVERY GOAL</span>
+                MORE OPTIONS, <span className="text-primary">MORE VALUE.</span>
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-                Simple, transparent pricing to fuel your fitness journey. No contracts. No hidden fees.
-            </p>
         </div>
         <div className="grid max-w-5xl mx-auto gap-8 md:grid-cols-3">
           {plans.map((plan, index) => (
             <div key={index}>
-              <Card className={cn("flex flex-col h-full", plan.isFeatured && "border-primary ring-2 ring-primary")}>
-                <CardHeader className="text-center">
-                  <CardTitle className="font-headline text-2xl">
-                    {plan.title}
+              <Card className="flex flex-col h-full bg-transparent border-border/50 rounded-lg p-6">
+                <CardHeader className="p-0 text-left">
+                  <p className="text-lg font-bold tracking-widest uppercase text-primary">{plan.title}</p>
+                  <CardTitle className="font-semibold tracking-wider uppercase text-foreground/50 text-sm">
+                    Membership
                   </CardTitle>
-                  <CardDescription>
-                    <span className="text-4xl font-bold text-foreground">{plan.price.startsWith('Custom') ? '' : 'RM'}{plan.price}</span>
-                    <span className="text-muted-foreground">/{plan.period}</span>
-                  </CardDescription>
                 </CardHeader>
-                <CardContent className="flex-grow">
+                <CardContent className="flex-grow p-0 mt-4">
+                    <p className="text-muted-foreground mb-6">{plan.description}</p>
                   <ul className="space-y-3">
                     {plan.features.map((feature, fIndex) => (
-                      <li key={fIndex} className="flex items-start gap-3">
-                        <Check className="h-5 w-5 flex-shrink-0 text-green-500 mt-1" />
-                        <span className="text-muted-foreground">{feature}</span>
+                      <li key={fIndex} className="text-foreground font-medium">
+                        {feature}
                       </li>
                     ))}
                   </ul>
                 </CardContent>
-                <CardFooter>
-                  <Button className={cn("w-full", plan.isFeatured ? "bg-primary hover:bg-primary/90 text-primary-foreground" : "bg-secondary hover:bg-secondary/80")}>
-                    Get Started Now
-                  </Button>
-                </CardFooter>
               </Card>
             </div>
           ))}
+        </div>
+        <div className="mt-12 text-center">
+            <Button variant="outline" size="lg">View All Plans</Button>
         </div>
       </div>
     </section>
