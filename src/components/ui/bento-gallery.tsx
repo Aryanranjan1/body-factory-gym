@@ -7,20 +7,23 @@ import {
   useTransform,
   AnimatePresence,
 } from "framer-motion"
-import { cn } from "@/lib/utils" 
-import { X } from "lucide-react"
+import { cn } from "@/lib/utils"
+import { X, Check } from "lucide-react"
+import { Button } from "./button"
 
-type ImageItem = {
+type BentoItem = {
   id: number | string
   title: string
   desc: string
   url: string
-  span: string 
+  span: string
   imageHint: string
+  features?: string[]
+  cta?: string
 }
 
 interface InteractiveImageBentoGalleryProps {
-  imageItems: ImageItem[]
+  items: BentoItem[]
   title: string
   description: string
 }
@@ -44,11 +47,11 @@ const itemVariants = {
   },
 }
 
-const ImageModal = ({
+const DetailModal = ({
   item,
   onClose,
 }: {
-  item: ImageItem
+  item: BentoItem
   onClose: () => void
 }) => {
   return (
@@ -60,23 +63,52 @@ const ImageModal = ({
       onClick={onClose}
     >
       <motion.div
-        initial={{ scale: 0.9, y: 20 }}
+        initial={{ scale: 0.9, y: 50 }}
         animate={{ scale: 1, y: 0 }}
-        exit={{ scale: 0.9, y: 20 }}
-        className="relative w-full max-w-4xl p-4"
+        exit={{ scale: 0.9, y: 50, opacity: 0 }}
+        transition={{ type: "spring", stiffness: 120, damping: 20 }}
+        className="relative flex flex-col md:flex-row bg-card w-full max-w-4xl max-h-[90vh] rounded-lg overflow-hidden shadow-2xl border border-border"
         onClick={(e) => e.stopPropagation()}
       >
-        <img
-          src={item.url}
-          alt={item.title}
-          data-ai-hint={item.imageHint}
-          className="h-auto max-h-[90vh] w-full rounded-lg object-contain"
-        />
+        <div className="w-full md:w-1/2 h-64 md:h-auto relative">
+            <img
+                src={item.url}
+                alt={item.title}
+                data-ai-hint={item.imageHint}
+                className="absolute inset-0 h-full w-full object-cover"
+            />
+             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        </div>
+
+        <div className="w-full md:w-1/2 p-8 overflow-y-auto">
+            <h2 className="text-3xl font-bold font-headline text-primary mb-2">{item.title}</h2>
+            <p className="text-lg text-muted-foreground mb-6">{item.desc}</p>
+            
+            {item.features && (
+                <div className="mb-8">
+                    <h3 className="font-semibold text-foreground mb-3">Key Features</h3>
+                    <ul className="space-y-3">
+                        {item.features.map((feature, index) => (
+                             <li key={index} className="flex items-start gap-3">
+                                <Check className="h-5 w-5 flex-shrink-0 text-green-500 mt-1" />
+                                <span className="text-muted-foreground">{feature}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+            
+            {item.cta && (
+                 <Button size="lg" className="w-full">
+                    {item.cta}
+                </Button>
+            )}
+        </div>
       </motion.div>
       <button
         onClick={onClose}
         className="absolute right-4 top-4 text-white/80 transition-colors hover:text-white"
-        aria-label="Close image view"
+        aria-label="Close detail view"
       >
         <X size={24} />
       </button>
@@ -86,8 +118,8 @@ const ImageModal = ({
 
 const InteractiveImageBentoGallery: React.FC<
   InteractiveImageBentoGalleryProps
-> = ({ imageItems, title, description }) => {
-  const [selectedItem, setSelectedItem] = useState<ImageItem | null>(null)
+> = ({ items, title, description }) => {
+  const [selectedItem, setSelectedItem] = useState<BentoItem | null>(null)
   const [dragConstraint, setDragConstraint] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
   const gridRef = useRef<HTMLDivElement>(null)
@@ -98,7 +130,7 @@ const InteractiveImageBentoGallery: React.FC<
       if (gridRef.current && containerRef.current) {
         const containerWidth = containerRef.current.offsetWidth
         const gridWidth = gridRef.current.scrollWidth
-        const newConstraint = Math.min(0, containerWidth - gridWidth - 32)
+        const newConstraint = Math.min(0, containerWidth - gridWidth - 32) 
         setDragConstraint(newConstraint)
       }
     }
@@ -106,7 +138,7 @@ const InteractiveImageBentoGallery: React.FC<
     calculateConstraints()
     window.addEventListener("resize", calculateConstraints)
     return () => window.removeEventListener("resize", calculateConstraints)
-  }, [imageItems])
+  }, [items])
 
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -140,7 +172,7 @@ const InteractiveImageBentoGallery: React.FC<
           className="w-max"
           drag="x"
           dragConstraints={{ left: dragConstraint, right: 0 }}
-          dragElastic={0.05}
+          dragElastic={0.1}
         >
           <motion.div
             ref={gridRef}
@@ -150,7 +182,7 @@ const InteractiveImageBentoGallery: React.FC<
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
           >
-            {imageItems.map((item) => (
+            {items.map((item) => (
               <motion.div
                 key={item.id}
                 variants={itemVariants}
@@ -184,7 +216,7 @@ const InteractiveImageBentoGallery: React.FC<
 
       <AnimatePresence>
         {selectedItem && (
-          <ImageModal item={selectedItem} onClose={() => setSelectedItem(null)} />
+          <DetailModal item={selectedItem} onClose={() => setSelectedItem(null)} />
         )}
       </AnimatePresence>
     </section>
