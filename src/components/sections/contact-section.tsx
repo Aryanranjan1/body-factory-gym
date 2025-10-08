@@ -22,7 +22,7 @@ export function ContactSection() {
                 data-ai-hint={contactBg.imageHint}
             />
         )}
-       <div className="absolute inset-0 bg-gradient-to-b from-background via-black/80 to-black z-10" />
+       <div className="absolute inset-0 bg-gradient-to-b from-background via-black/80 to-transparent z-10" />
       <div className="relative z-20 container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="space-y-6">
