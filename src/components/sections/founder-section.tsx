@@ -13,10 +13,10 @@ const pressLogos = [
 
 export function FounderSection() {
   return (
-    <section className="bg-card py-20 md:py-28">
+    <section className="bg-black text-white py-20 md:py-28">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="lg:order-last">
+            <div className="lg:order-first">
                 {founderImage && (
                     <div className="relative aspect-square max-w-md mx-auto">
                         <Image
