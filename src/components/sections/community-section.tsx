@@ -14,7 +14,6 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Instagram, Facebook, Youtube } from "lucide-react";
-import { motion } from 'framer-motion';
 import { placeholderImages } from "@/lib/placeholder-images";
 import Link from 'next/link';
 
@@ -68,12 +67,6 @@ const blogPosts = [
     },
 ]
 
-const fadeIn = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
-};
-
 export function CommunitySection() {
   const [api, setApi] = useState<CarouselApi>();
 
@@ -91,7 +84,7 @@ export function CommunitySection() {
     <section id="community" className="bg-background text-foreground py-20 md:py-28">
       <div className="container mx-auto px-4">
         
-        <motion.div variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true, amount: 0.1 }}>
+        <div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
             <div>
               <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
@@ -104,13 +97,13 @@ export function CommunitySection() {
               </p>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Main Content Area */}
             <div className="lg:col-span-2 space-y-8">
                 {/* Top part: Carousel + Text */}
-                <motion.div variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true, amount: 0.2 }}>
+                <div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                         <div className="relative">
                             <Carousel setApi={setApi} opts={{ align: "start", loop: true }} className="w-full">
@@ -140,11 +133,11 @@ export function CommunitySection() {
                             <p className="text-2xl font-semibold">We host exclusive fitness challenges & events to connect our community.</p>
                         </div>
                     </div>
-                </motion.div>
+                </div>
 
                 {/* Bottom part: Two cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <motion.div variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true, amount: 0.3 }}>
+                    <div>
                        <Card className="bg-card h-full flex flex-col rounded-xl shadow-md overflow-hidden">
                             <CardContent className="p-6 flex-grow flex flex-col">
                                 <h3 className="text-xl font-bold">Join Our WhatsApp</h3>
@@ -159,8 +152,8 @@ export function CommunitySection() {
                                 <Button variant="outline" className="w-full mt-4">Join Now</Button>
                             </CardContent>
                         </Card>
-                    </motion.div>
-                    <motion.div variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true, amount: 0.3 }}>
+                    </div>
+                    <div>
                        <Card className="bg-card h-full flex flex-col rounded-xl shadow-md overflow-hidden">
                             <CardContent className="p-6 flex-grow flex flex-col">
                                 <h3 className="text-xl font-bold">Connect With Gym Members</h3>
@@ -175,12 +168,12 @@ export function CommunitySection() {
                                 </div>
                             </CardContent>
                         </Card>
-                    </motion.div>
+                    </div>
                 </div>
             </div>
 
             {/* Sidebar / Blog section */}
-            <motion.div variants={fadeIn} initial="initial" whileInView="animate" viewport={{ once: true, amount: 0.1 }}>
+            <div>
                 <Card className="bg-card h-full rounded-xl shadow-md overflow-hidden">
                     <CardContent className="p-6">
                         <h3 className="text-xl font-bold mb-4">See Our Latest Posts</h3>
@@ -203,11 +196,9 @@ export function CommunitySection() {
                         </div>
                     </CardContent>
                 </Card>
-            </motion.div>
+            </div>
         </div>
       </div>
     </section>
   );
 }
-
-    

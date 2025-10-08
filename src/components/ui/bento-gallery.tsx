@@ -3,8 +3,6 @@
 import React, { useRef, useState, useEffect } from "react"
 import {
   motion,
-  useScroll,
-  useTransform,
   AnimatePresence,
 } from "framer-motion"
 import { cn } from "@/lib/utils"
@@ -157,20 +155,12 @@ const InteractiveImageBentoGallery: React.FC<
     return () => window.removeEventListener("resize", calculateConstraints)
   }, [items])
 
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ["start end", "end start"],
-  })
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
-  const y = useTransform(scrollYProgress, [0, 0.2], [30, 0])
-
   return (
     <section
       ref={targetRef}
       className="relative w-full overflow-hidden bg-background py-16 sm:py-24"
     >
-      <motion.div
-        style={{ opacity, y }}
+      <div
         className="container mx-auto px-4 text-center"
       >
         <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
@@ -179,7 +169,7 @@ const InteractiveImageBentoGallery: React.FC<
         <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
           {description}
         </p>
-      </motion.div>
+      </div>
 
       <div
         ref={containerRef}
