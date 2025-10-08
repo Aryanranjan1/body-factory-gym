@@ -62,7 +62,7 @@ export function GallerySection() {
   const y3 = useTransform(scrollYProgress, [0, 1], [0, -150]);
 
   return (
-    <section ref={ref} className='w-full bg-background overflow-hidden'>
+    <section ref={ref} className='w-full bg-card overflow-hidden'>
       <div className='grid grid-cols-12 gap-2 p-2'>
         <GalleryColumn ids={leftColIds} y={y1} />
         <div className='sticky top-0 h-screen w-full col-span-4 gap-2 grid grid-rows-3'>

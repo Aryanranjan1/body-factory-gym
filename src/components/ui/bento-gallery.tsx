@@ -159,7 +159,7 @@ const InteractiveImageBentoGallery: React.FC<
   return (
     <section
       ref={targetRef}
-      className="relative w-full overflow-hidden bg-background py-16 sm:py-24"
+      className="relative w-full overflow-hidden bg-card py-16 sm:py-24"
     >
       <div className="container mx-auto px-4">
         <div 
