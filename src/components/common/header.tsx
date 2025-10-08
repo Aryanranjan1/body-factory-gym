@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -120,7 +121,7 @@ export function Header() {
 
         <div className="flex flex-1 items-center justify-end space-x-2">
           <div className="hidden md:flex">
-             <div className="flex items-center space-x-2">
+             <div className="flex items-center space-x-1">
                 <LockedFeatureModal>
                   <Button variant="ghost" size="icon">
                     <Search className="h-5 w-5" />
