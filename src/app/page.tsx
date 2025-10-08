@@ -126,7 +126,7 @@ export default function Home() {
       <AboutSection />
       <InteractiveImageBentoGallery
         items={bentoItems}
-        title="Explore Our World-Class Facilities"
+        title="World-Class Facilities"
         description="A tour of our zones, designed for every fitness goal. Drag to explore, click to expand."
       />
       <FounderSection />

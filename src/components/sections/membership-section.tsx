@@ -33,22 +33,15 @@ export function MembershipSection() {
     <section id="membership" className="bg-black py-20 md:py-28">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-            <div>
-                <Badge className="mb-4 text-sm" variant="outline">
-                    <BadgeCheck className="w-4 h-4 mr-2 text-green-500"/>
-                    No Contracts. No Hidden Fees.
-                </Badge>
-            </div>
-            <div>
-                <h2 className="font-headline text-3xl font-extrabold tracking-tight sm:text-4xl">
-                Membership & Trial Options
-                </h2>
-            </div>
-            <div>
-                <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-                Simple, transparent pricing to fuel your fitness journey.
-                </p>
-            </div>
+            <p className="font-semibold text-primary tracking-widest uppercase">
+                Transparent Pricing
+            </p>
+            <h2 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tight">
+                PLANS FOR <span className="text-primary">EVERY GOAL</span>
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+                Simple, transparent pricing to fuel your fitness journey. No contracts. No hidden fees.
+            </p>
         </div>
         <div className="grid max-w-5xl mx-auto gap-8 md:grid-cols-3">
           {plans.map((plan, index) => (

@@ -29,9 +29,12 @@ const testimonials = [
 export function TestimonialsSection() {
   return (
     <section id="testimonials" className="bg-background py-20 md:py-28">
-      <div className="text-center mb-12">
-        <h2 className="font-headline text-3xl font-extrabold tracking-tight sm:text-4xl">
-          Real Stories, Real Results
+      <div className="text-center mb-12 container mx-auto px-4">
+        <p className="font-semibold text-primary tracking-widest uppercase">
+          Member Stories
+        </p>
+        <h2 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tight">
+          REAL <span className="text-primary">STORIES</span>, REAL <span className="text-primary">RESULTS</span>
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
           See what our members have accomplished and what they love about Body Factory.

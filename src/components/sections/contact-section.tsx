@@ -27,8 +27,8 @@ export function ContactSection() {
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="space-y-6">
                 <p className="font-semibold text-primary tracking-widest uppercase">Get Started</p>
-                <h2 className="font-headline text-3xl font-extrabold tracking-tight sm:text-4xl">
-                   Instant Access to Everything You Need to Start
+                <h2 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tight">
+                   START YOUR <span className="text-primary">JOURNEY</span>
                 </h2>
                 <p className="text-lg text-muted-foreground">Here’s what you’ll receive access to:</p>
                 <ul className="space-y-4 text-xl">

@@ -163,8 +163,11 @@ const InteractiveImageBentoGallery: React.FC<
       <div
         className="container mx-auto px-4 text-center"
       >
-        <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-          {title}
+        <p className="font-semibold text-primary tracking-widest uppercase">
+          Discover Our Spaces
+        </p>
+        <h2 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tight">
+          <span className="text-primary">WORLD-CLASS</span> FACILITIES
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
           {description}
