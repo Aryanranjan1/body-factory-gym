@@ -44,7 +44,7 @@ const facilitiesData: Facility[] = [
 
 export function FacilitiesSection() {
   return (
-    <AnimatedSection className="bg-background">
+    <AnimatedSection className="bg-black">
       <div className="text-center">
         <h2 className="font-headline text-3xl font-extrabold tracking-tight sm:text-4xl">
           {/* CMS: facilities_headline */}
