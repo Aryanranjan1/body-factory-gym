@@ -29,9 +29,9 @@ export function FounderSection() {
                 )}
             </div>
             <div className="space-y-6">
-                <h2 className="font-headline text-3xl font-extrabold tracking-tight sm:text-4xl">
+                <h1 className="font-headline text-3xl font-extrabold tracking-tight sm:text-4xl uppercase">
                    Led by a <span className="text-primary">Champion</span>. Built for <span className="text-primary">Champions</span>.
-                </h2>
+                </h1>
                 <p className="text-lg text-muted-foreground">
                     Our founder, Mr. Kumareswarren, transformed himself from a 110kg enthusiast into the Mr. Malaysia 2023 Champion. He built Body Factory on the principles of hard work, dedication, and community, and he is passionate about helping everyone unlock their true potential.
                 </p>
