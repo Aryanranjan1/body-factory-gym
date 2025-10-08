@@ -92,7 +92,7 @@ export function AboutSection() {
               What We Believe
             </p>
             <h2 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tight">
-              WORK HARD. LIVE FIT.
+              WORK HARD. <span className="text-primary">LIVE</span> FIT.
             </h2>
             <p className="text-lg text-muted-foreground">
               Body Factory is more than a gym, it's a lifestyle. We believe in the transformative power of hard work. Through dedication and effort, you'll build mental and physical strength to conquer life's challenges, inside and outside of the gym.
