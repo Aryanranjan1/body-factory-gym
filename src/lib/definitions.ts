@@ -1,3 +1,5 @@
+import type { ImagePlaceholder } from './placeholder-images';
+
 export type Trainer = {
   name: string;
   expertise: string;
@@ -14,10 +16,13 @@ export type Testimonial = {
 export type Facility = {
   id: string;
   title: string;
+  tagline: string;
   description: string;
-  imageUrl: string;
-  imageHint: string;
+  features: string[];
+  image: ImagePlaceholder;
+  layout: '1x1' | '2x1' | '1x2' | '2x2';
 };
+
 
 export type MembershipPlan = {
   title: string;

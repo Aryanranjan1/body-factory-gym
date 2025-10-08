@@ -20,7 +20,7 @@ export function HeroSection() {
           Your browser does not support the video tag.
         </video>
       )}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent z-10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent z-10" />
       
       <div className="relative z-20 text-center text-white container px-4">
           <div className="flex justify-center items-center gap-3 mb-4 bg-black/20 backdrop-blur-sm rounded-full px-4 py-2 w-fit mx-auto">

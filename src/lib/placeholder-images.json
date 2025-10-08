@@ -83,6 +83,24 @@
       "description": "Person doing a core workout on a mat",
       "imageUrl": "https://picsum.photos/seed/core-workout/400/400",
       "imageHint": "core exercise"
+    },
+    {
+      "id": "facility-functional",
+      "description": "Functional training area with various equipment",
+      "imageUrl": "https://picsum.photos/seed/bf-functional/800/600",
+      "imageHint": "functional training"
+    },
+    {
+      "id": "facility-personal-training",
+      "description": "Personal trainer assisting a member",
+      "imageUrl": "https://picsum.photos/seed/bf-personal-training/800/600",
+      "imageHint": "personal training"
+    },
+    {
+      "id": "facility-lockers",
+      "description": "Modern and clean locker room area",
+      "imageUrl": "https://picsum.photos/seed/bf-lockers/800/600",
+      "imageHint": "gym locker room"
     }
   ]
 }
