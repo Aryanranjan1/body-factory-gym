@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useEffect, type ElementType, type ReactNode } from 'react';
+import { useRef, type ElementType, type ReactNode } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
 interface AnimatedSectionProps {
@@ -16,43 +17,55 @@ export function AnimatedSection({
   as: Comp = 'section',
   ...props
 }: AnimatedSectionProps) {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
 
-  useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
-    
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          element.classList.remove('opacity-0', 'translate-y-4');
-          observer.unobserve(element);
-        }
+  const variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: 'easeOut',
+        staggerChildren: 0.2,
       },
-      {
-        threshold: 0.1,
-      }
-    );
-
-    observer.observe(element);
-
-    return () => {
-      if(element) {
-        observer.unobserve(element);
-      }
-    }
-  }, []);
+    },
+  };
 
   return (
     <Comp
       ref={ref}
-      className={cn(
-        'py-16 md:py-24 opacity-0 translate-y-4 transition-all duration-700 ease-out',
-        className
-      )}
+      className={cn('py-20 md:py-28', className)}
       {...props}
     >
-      <div className="container mx-auto px-4">{children}</div>
+      <motion.div
+        className="container mx-auto px-4"
+        variants={variants}
+        initial="hidden"
+        animate={isInView ? 'visible' : 'hidden'}
+      >
+        {children}
+      </motion.div>
     </Comp>
   );
 }
+
+export const AnimatedItem = ({ children, className }: { children: ReactNode, className?: string }) => {
+  const variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: 'easeOut',
+      },
+    },
+  };
+  return (
+    <motion.div variants={variants} className={className}>
+      {children}
+    </motion.div>
+  );
+};

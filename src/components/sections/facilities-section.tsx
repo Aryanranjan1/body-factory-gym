@@ -2,96 +2,99 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { placeholderImages } from "@/lib/placeholder-images";
 import type { Facility } from "@/lib/definitions";
-import { AnimatedSection } from "../common/animated-section";
+import { AnimatedItem, AnimatedSection } from "../common/animated-section";
+import { Button } from "../ui/button";
+import { Dumbbell, HeartPulse, Sparkles, User, Flame } from "lucide-react";
+import { ReactElement } from "react";
 
-const facilitiesData: Facility[] = [
+const facilitiesData: (Omit<Facility, 'id' | 'imageUrl' | 'imageHint'> & { icon: ReactElement, imageId: string, imageHint: string})[] = [
   {
-    id: "facility-cardio",
+    title: "Strength Training",
+    description: "Extensive free weights, racks, and machines to build pure strength.",
+    icon: <Dumbbell />,
+    imageId: 'facility-weights',
+    imageHint: 'free weights'
+  },
+  {
+    title: "Functional Training",
+    description: "Kettlebells, battle ropes, and open space for dynamic workouts.",
+    icon: <HeartPulse />,
+    imageId: 'trainer-3',
+    imageHint: 'functional training'
+  },
+  {
     title: "Cardio Zone",
-    description: "Get your heart pumping with our top-of-the-line treadmills, ellipticals, and bikes.",
-    imageUrl: placeholderImages.find((p) => p.id === "facility-cardio")?.imageUrl || "",
-    imageHint: placeholderImages.find((p) => p.id === "facility-cardio")?.imageHint || "",
+    description: "Treadmills, ellipticals, and rowers to boost your endurance.",
+    icon: <Sparkles />,
+    imageId: 'facility-cardio',
+    imageHint: 'cardio zone'
   },
   {
-    id: "facility-weights",
-    title: "Free Weights Area",
-    description: "Build serious strength with a massive selection of dumbbells, barbells, and benches.",
-    imageUrl: placeholderImages.find((p) => p.id === "facility-weights")?.imageUrl || "",
-    imageHint: placeholderImages.find((p) => p.id === "facility-weights")?.imageHint || "",
-  },
-  {
-    id: "facility-machines",
-    title: "Machine Zone",
-    description: "Target every muscle group with our extensive range of modern strength machines.",
-    imageUrl: placeholderImages.find((p) => p.id === "facility-machines")?.imageUrl || "",
-    imageHint: placeholderImages.find((p) => p.id === "facility-machines")?.imageHint || "",
-  },
-  {
-    id: "facility-sauna",
     title: "Infrared Sauna",
-    description: "Relax and recover after a hard workout. Available for a small extra fee of RM5.",
-    imageUrl: placeholderImages.find((p) => p.id === "facility-sauna")?.imageUrl || "",
-    imageHint: placeholderImages.find((p) => p.id === "facility-sauna")?.imageHint || "",
+    description: "Relax and accelerate recovery in our state-of-the-art infrared sauna.",
+    icon: <Flame />,
+    imageId: 'facility-sauna',
+    imageHint: 'infrared sauna'
+  },
+  {
+    title: "Personal Training",
+    description: "Get expert guidance tailored to your specific fitness goals.",
+    icon: <User />,
+    imageId: 'trainer-1',
+    imageHint: 'personal training'
   },
 ];
 
 export function FacilitiesSection() {
   return (
-    <AnimatedSection className="bg-black">
-      <div className="text-center">
-        <h2 className="font-headline text-3xl font-extrabold tracking-tight sm:text-4xl">
-          {/* CMS: facilities_headline */}
-          Explore Our 3 Floors of Fitness
-          {/* /CMS */}
-        </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-          {/* CMS: facilities_subheadline */}
-          We've got everything you need to crush your goals, from heavy iron to high-tech recovery.
-          {/* /CMS */}
-        </p>
-      </div>
-      <div className="mt-12">
-        <Carousel
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          className="w-full"
-        >
-          <CarouselContent>
-            {facilitiesData.map((facility, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                <div className="p-1">
-                  <Card className="overflow-hidden">
-                    <CardContent className="relative aspect-video p-0">
-                      <Image
-                        src={facility.imageUrl}
-                        alt={facility.title}
-                        fill
-                        className="object-cover transition-transform duration-300 hover:scale-105"
-                        data-ai-hint={facility.imageHint}
-                      />
-                       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-4 text-white">
-                        <h3 className="font-bold">{facility.title}</h3>
-                        <p className="text-sm opacity-90">{facility.description}</p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="ml-14" />
-          <CarouselNext className="mr-14" />
-        </Carousel>
-      </div>
+    <AnimatedSection className="bg-background">
+        <div className="text-center space-y-4 mb-12">
+            <AnimatedItem>
+                <h2 className="font-headline text-3xl font-extrabold tracking-tight sm:text-4xl">
+                    Programs & Facilities
+                </h2>
+            </AnimatedItem>
+            <AnimatedItem>
+                <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
+                    Everything you need to build strength, improve endurance, and recover like a pro.
+                </p>
+            </AnimatedItem>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+            {facilitiesData.map((facility, index) => {
+                 const image = placeholderImages.find(p => p.id === facility.imageId);
+                 if (!image) return null;
+                return (
+                    <AnimatedItem key={index}>
+                        <Card className="h-full overflow-hidden flex flex-col">
+                            <div className="relative aspect-[4/5] w-full">
+                                <Image
+                                src={image.imageUrl}
+                                alt={facility.title}
+                                fill
+                                className="object-cover"
+                                data-ai-hint={facility.imageHint}
+                                />
+                            </div>
+                            <CardContent className="p-4 flex-grow flex flex-col">
+                                <div className="flex-grow">
+                                    <div className="text-primary mb-2">{facility.icon}</div>
+                                    <h3 className="font-semibold text-lg mb-1">{facility.title}</h3>
+                                    <p className="text-sm text-muted-foreground">{facility.description}</p>
+                                </div>
+                            </CardContent>
+                        </Card>
+                    </AnimatedItem>
+            )})}
+        </div>
+        <AnimatedItem className="text-center mt-12">
+            <Button size="lg">View Full Facility</Button>
+        </AnimatedItem>
     </AnimatedSection>
   );
 }

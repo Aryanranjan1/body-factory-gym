@@ -1,67 +1,53 @@
 import { AnimatedSection } from "../common/animated-section";
 import { ContactForm } from "./contact-form";
-import { ChevronRight } from "lucide-react";
-import Image from "next/image";
-import { placeholderImages } from "@/lib/placeholder-images";
-
-const benefits = [
-  "One-Day Free Trial Pass",
-  "Personalized Starter Plan",
-  "Exclusive Community Access",
-];
+import { MapPin, ParkingCircle, Clock } from "lucide-react";
+import Link from "next/link";
+import { Button } from "../ui/button";
 
 export function ContactSection() {
-  const contactImage = placeholderImages.find((p) => p.id === "contact-background");
-
   return (
-    <AnimatedSection
-      id="contact-us"
-      className="relative text-white py-24 md:py-32"
-    >
-      {contactImage && (
-        <Image
-          src={contactImage.imageUrl}
-          alt={contactImage.description}
-          fill
-          className="object-cover"
-          data-ai-hint={contactImage.imageHint}
-        />
-      )}
-      <div className="absolute inset-0 bg-black/70" />
-      <div className="relative z-10 grid gap-12 md:grid-cols-2 items-center">
-        <div className="space-y-6">
-          <p className="font-semibold text-primary tracking-widest">
-            {/* CMS: contact_get_started */}
-            GET STARTED
-            {/* /CMS */}
-          </p>
-          <h2 className="font-headline text-4xl font-extrabold tracking-tight sm:text-5xl">
-            {/* CMS: contact_headline */}
-            START YOUR FITNESS JOURNEY AT BODY FACTORY TODAY
-            {/* /CMS */}
-          </h2>
-          <p className="text-lg text-neutral-300">
-            {/* CMS: contact_subheadline */}
-            Sign up now to instantly receive:
-            {/* /CMS */}
-          </p>
-          <ul className="space-y-4 text-xl font-semibold">
-            {benefits.map((benefit, index) => (
-              <li key={index} className="flex items-center gap-3">
-                <ChevronRight className="h-6 w-6 text-primary" />
-                <span>
-                  {/* CMS: contact_benefit_`index` */}
-                  {benefit}
-                  {/* /CMS */}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="rounded-lg bg-background/80 backdrop-blur-sm border border-border p-8 shadow-2xl">
-          <ContactForm />
-        </div>
+    <section className="relative bg-black text-white">
+      <div className="relative z-10">
+        <AnimatedSection id="contact-us" className="py-20 md:py-28">
+            <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div className="space-y-8">
+                     <h2 className="font-headline text-3xl font-extrabold tracking-tight sm:text-4xl">
+                        Find Us & Drop In Today
+                    </h2>
+                     <div className="space-y-6 text-lg">
+                        <div className="flex items-start gap-4">
+                            <MapPin className="h-7 w-7 text-primary mt-1 flex-shrink-0" />
+                            <div>
+                                <h3 className="font-semibold">Body Factory Gym & Fitness Centre</h3>
+                                <p className="text-muted-foreground">PJ21 Commercial Centre, Jalan SS 3/39, 47300 Petaling Jaya, Selangor</p>
+                            </div>
+                        </div>
+                         <div className="flex items-start gap-4">
+                            <Clock className="h-7 w-7 text-primary mt-1 flex-shrink-0" />
+                            <div>
+                                <h3 className="font-semibold">Operating Hours</h3>
+                                <p className="text-muted-foreground">Open 24/7 for members. Staffed hours vary.</p>
+                            </div>
+                        </div>
+                         <div className="flex items-start gap-4">
+                            <ParkingCircle className="h-7 w-7 text-primary mt-1 flex-shrink-0" />
+                            <div>
+                                <h3 className="font-semibold">Parking</h3>
+                                <p className="text-muted-foreground">Ample free parking available onsite.</p>
+                            </div>
+                        </div>
+                     </div>
+                      <Button size="lg" asChild>
+                        <Link href="https://maps.google.com" target="_blank">Get Directions</Link>
+                    </Button>
+                </div>
+                <div className="rounded-lg bg-card/5 backdrop-blur-sm border border-border p-8 shadow-2xl">
+                    <ContactForm />
+                </div>
+            </div>
+        </AnimatedSection>
       </div>
-    </AnimatedSection>
+      <div className="absolute bottom-0 h-2/3 w-full bg-gradient-to-t from-background to-transparent" />
+    </section>
   );
 }

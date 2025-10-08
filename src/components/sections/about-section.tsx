@@ -1,61 +1,50 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Clock, DollarSign, Users } from "lucide-react";
-import { AnimatedSection } from "../common/animated-section";
+import Image from "next/image";
+import { placeholderImages } from "@/lib/placeholder-images";
+import { AnimatedItem, AnimatedSection } from "../common/animated-section";
+import { Button } from "../ui/button";
 
-const pillars = [
-  {
-    icon: <DollarSign className="h-8 w-8 text-primary" />,
-    title: "Unbeatable Value",
-    description: "We believe world-class fitness shouldn't break the bank. Get access to premium equipment and champion-level insights at a price you'll love.",
-  },
-  {
-    icon: <Clock className="h-8 w-8 text-primary" />,
-    title: "24/7 Access",
-    description: "Your fitness goals don't work 9-to-5, and neither do we. Train whenever inspiration strikes with around-the-clock access for members.",
-  },
-  {
-    icon: <Users className="h-8 w-8 text-primary" />,
-    title: "Thriving Community",
-    description: "More than just a gym, we're a family. Join a supportive, motivating community of fitness lovers who celebrate every win, big or small.",
-  },
-];
+const images = [
+    { id: "founder", imageHint: "gym owner bodybuilder", className: "col-span-2 row-span-2" },
+    { id: "trainer-1", imageHint: "fitness community", className: "" },
+    { id: "facility-weights", imageHint: "gym interior", className: "" },
+    { id: "trainer-2", imageHint: "members training", className: "col-span-2" },
+]
 
 export function AboutSection() {
   return (
-    <AnimatedSection id="about-us" className="bg-black">
-      <div className="text-center">
-        <h2 className="font-headline text-3xl font-extrabold tracking-tight sm:text-4xl">
-          {/* CMS: about_headline */}
-          The Body Factory Difference
-          {/* /CMS */}
-        </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-          {/* CMS: about_subheadline */}
-          For over 10 years, we've provided a clean, powerful, and affordable fitness hub for the PJ community. Here's what makes us unique.
-          {/* /CMS */}
-        </p>
-      </div>
-      <div className="mt-12 grid gap-8 md:grid-cols-3">
-        {pillars.map((pillar, index) => (
-          <Card key={index} className="flex flex-col text-center">
-            <CardHeader className="items-center">
-              {pillar.icon}
-              <CardTitle className="pt-4 font-headline text-2xl">
-                {/* CMS: about_pillar_title_`index` */}
-                {pillar.title}
-                {/* /CMS */}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="flex-grow">
-              <p className="text-muted-foreground">
-                {/* CMS: about_pillar_description_`index` */}
-                {pillar.description}
-                {/* /CMS */}
-              </p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+    <AnimatedSection id="about-us" className="bg-black text-white">
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <AnimatedItem className="space-y-6">
+                <h2 className="font-headline text-3xl font-extrabold tracking-tight sm:text-4xl">
+                Established in 2013. Three Floors of Fitness.
+                </h2>
+                <p className="text-lg text-muted-foreground">
+                For over a decade, Body Factory has been the go-to 24/7 fitness hub in Petaling Jaya. We’ve built more than just a gym; we’ve created a strong, supportive community dedicated to achieving their goals. With three floors of top-tier equipment, affordability, and unbeatable access, your fitness journey starts here.
+                </p>
+                 <Button variant="outline" size="lg" asChild>
+                    <a href="#testimonials">Discover Why Members Love Us</a>
+                </Button>
+            </AnimatedItem>
+            <div className="grid grid-cols-3 gap-4">
+                {images.map((imgData) => {
+                    const image = placeholderImages.find(p => p.id === imgData.id);
+                    if (!image) return null;
+                    return (
+                        <AnimatedItem key={image.id} className={imgData.className}>
+                             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg">
+                                <Image
+                                    src={image.imageUrl}
+                                    alt={image.description}
+                                    fill
+                                    className="object-cover transition-transform duration-300 hover:scale-105"
+                                    data-ai-hint={imgData.imageHint}
+                                />
+                             </div>
+                        </AnimatedItem>
+                    )
+                })}
+            </div>
+        </div>
     </AnimatedSection>
   );
 }
