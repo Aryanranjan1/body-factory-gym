@@ -1,4 +1,4 @@
-
+import React from 'react';
 import { HeroSection } from "@/components/sections/hero-section";
 import { AboutSection } from "@/components/sections/about-section";
 import { FounderSection } from "@/components/sections/founder-section";
@@ -126,7 +126,7 @@ export default function Home() {
     <>
       <HeroSection />
       <AboutSection />
-      <AnimatedSection once={false}>
+      <AnimatedSection once={false} amount={0.3}>
         <InteractiveImageBentoGallery
           items={bentoItems}
           title="World-Class Facilities"

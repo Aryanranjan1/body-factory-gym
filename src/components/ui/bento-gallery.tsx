@@ -157,21 +157,13 @@ const InteractiveImageBentoGallery: React.FC<
   }, [items])
 
   return (
-    <motion.section
+    <section
       ref={targetRef}
       className="relative w-full overflow-hidden bg-background py-16 sm:py-24"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.5 }}
     >
       <div className="container mx-auto px-4">
-        <motion.div 
-          className="md:flex md:justify-between md:items-center text-center md:text-left"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ type: "spring", stiffness: 100 }}
+        <div 
+          className="md:flex md:items-center md:justify-between text-center md:text-left"
         >
           <div>
             <p className="font-semibold text-primary tracking-widest uppercase">
@@ -184,7 +176,7 @@ const InteractiveImageBentoGallery: React.FC<
           <p className="mt-4 md:mt-0 max-w-2xl md:max-w-xs text-lg text-muted-foreground mx-auto md:mx-0 md:text-left">
             {description}
           </p>
-        </motion.div>
+        </div>
       </div>
 
       <div
@@ -242,7 +234,7 @@ const InteractiveImageBentoGallery: React.FC<
           <DetailModal item={selectedItem} onClose={() => setSelectedItem(null)} />
         )}
       </AnimatePresence>
-    </motion.section>
+    </section>
   )
 }
 
