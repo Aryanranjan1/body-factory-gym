@@ -125,7 +125,9 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <AboutSection />
+      <AnimatedSection once={false} amount={0.3}>
+        <AboutSection />
+      </AnimatedSection>
       <AnimatedSection>
         <InteractiveImageBentoGallery
           items={bentoItems}

@@ -9,18 +9,18 @@ type AnimatedSectionProps = {
   children: ReactNode;
   className?: string;
   stagger?: number;
+  once?: boolean;
+  amount?: number;
 };
 
 export function AnimatedSection({
   children,
   className,
   stagger = 0.1,
+  once = true,
+  amount = 0.2,
 }: AnimatedSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
 
   const childrenArray = React.Children.toArray(children);
 
@@ -30,7 +30,7 @@ export function AnimatedSection({
       className={cn("relative", className)}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once, amount }}
       transition={{ staggerChildren: stagger }}
     >
       {childrenArray.map((child, i) => (
