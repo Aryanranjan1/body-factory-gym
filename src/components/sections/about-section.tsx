@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useEffect } from "react";
@@ -21,7 +22,10 @@ export function AboutSection() {
     }, 5000);
 
     const rightInterval = setInterval(() => {
-      setCurrentRightIndex((prevIndex) => (prevIndex + 1) % rightImageIds.length);
+      // Add a slight delay to desynchronize the two image changes
+      setTimeout(() => {
+        setCurrentRightIndex((prevIndex) => (prevIndex + 1) % rightImageIds.length);
+      }, 2500);
     }, 5000);
 
     return () => {
@@ -39,14 +43,14 @@ export function AboutSection() {
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="flex gap-4 sm:gap-8 justify-center">
             <div className="w-1/2 relative aspect-[3/4] rounded-lg overflow-hidden mt-8">
-              <AnimatePresence>
+              <AnimatePresence initial={false}>
                 {currentLeftImage && (
                   <motion.div
                     key={currentLeftImage.id}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 1, ease: "easeInOut" }}
+                    transition={{ duration: 1.5, ease: "easeInOut" }}
                     className="absolute inset-0"
                   >
                     <Image
@@ -61,14 +65,14 @@ export function AboutSection() {
               </AnimatePresence>
             </div>
             <div className="w-1/2 relative aspect-[3/4] rounded-lg overflow-hidden mb-8">
-               <AnimatePresence>
+               <AnimatePresence initial={false}>
                 {currentRightImage && (
                   <motion.div
                     key={currentRightImage.id}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 1, ease: "easeInOut" }}
+                    transition={{ duration: 1.5, ease: "easeInOut" }}
                     className="absolute inset-0"
                   >
                     <Image
