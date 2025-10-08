@@ -1,49 +1,102 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 import { placeholderImages } from "@/lib/placeholder-images";
 import { Button } from "../ui/button";
 
-const images = [
-    { id: "founder", imageHint: "gym owner bodybuilder", className: "col-span-2 row-span-2" },
-    { id: "trainer-1", imageHint: "fitness community", className: "" },
-    { id: "facility-weights", imageHint: "gym interior", className: "" },
-    { id: "trainer-2", imageHint: "members training", className: "col-span-2" },
-]
+const leftImageIds = ["about-1", "about-3"];
+const rightImageIds = ["about-2", "about-4"];
+
+const getImageById = (id: string) => placeholderImages.find(p => p.id === id);
 
 export function AboutSection() {
+  const [currentLeftIndex, setCurrentLeftIndex] = useState(0);
+  const [currentRightIndex, setCurrentRightIndex] = useState(0);
+
+  useEffect(() => {
+    const leftInterval = setInterval(() => {
+      setCurrentLeftIndex((prevIndex) => (prevIndex + 1) % leftImageIds.length);
+    }, 5000);
+
+    const rightInterval = setInterval(() => {
+      setCurrentRightIndex((prevIndex) => (prevIndex + 1) % rightImageIds.length);
+    }, 5000);
+
+    return () => {
+      clearInterval(leftInterval);
+      clearInterval(rightInterval);
+    };
+  }, []);
+
+  const currentLeftImage = getImageById(leftImageIds[currentLeftIndex]);
+  const currentRightImage = getImageById(rightImageIds[currentRightIndex]);
+
   return (
     <section id="about-us" className="bg-black text-white py-20 md:py-28">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="space-y-6">
-                <h2 className="font-headline text-3xl font-extrabold tracking-tight sm:text-4xl">
-                Established in 2013. Three Floors of Fitness.
-                </h2>
-                <p className="text-lg text-muted-foreground">
-                For over a decade, Body Factory has been the go-to 24/7 fitness hub in Petaling Jaya. We’ve built more than just a gym; we’ve created a strong, supportive community dedicated to achieving their goals. With three floors of top-tier equipment, affordability, and unbeatable access, your fitness journey starts here.
-                </p>
-                 <Button variant="outline" size="lg" asChild>
-                    <a href="#testimonials">Discover Why Members Love Us</a>
-                </Button>
+          <div className="flex gap-4 sm:gap-8 justify-center">
+            <div className="w-1/2 relative aspect-[3/4] rounded-lg overflow-hidden mt-8">
+              <AnimatePresence>
+                {currentLeftImage && (
+                  <motion.div
+                    key={currentLeftImage.id}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 1, ease: "easeInOut" }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={currentLeftImage.imageUrl}
+                      alt={currentLeftImage.description}
+                      fill
+                      className="object-cover"
+                      data-ai-hint={currentLeftImage.imageHint}
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
-            <div className="grid grid-cols-3 gap-4">
-                {images.map((imgData) => {
-                    const image = placeholderImages.find(p => p.id === imgData.id);
-                    if (!image) return null;
-                    return (
-                        <div key={image.id} className={imgData.className}>
-                             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg">
-                                <Image
-                                    src={image.imageUrl}
-                                    alt={image.description}
-                                    fill
-                                    className="object-cover transition-transform duration-300 hover:scale-105"
-                                    data-ai-hint={imgData.imageHint}
-                                />
-                             </div>
-                        </div>
-                    )
-                })}
+            <div className="w-1/2 relative aspect-[3/4] rounded-lg overflow-hidden mb-8">
+               <AnimatePresence>
+                {currentRightImage && (
+                  <motion.div
+                    key={currentRightImage.id}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 1, ease: "easeInOut" }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={currentRightImage.imageUrl}
+                      alt={currentRightImage.description}
+                      fill
+                      className="object-cover"
+                      data-ai-hint={currentRightImage.imageHint}
+                    />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
+          </div>
+          <div className="space-y-6">
+            <p className="font-semibold text-primary tracking-widest uppercase">
+              What We Believe
+            </p>
+            <h2 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tight">
+              WORK HARD. LIVE FIT.
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Body Factory is more than a gym, it's a lifestyle. We believe in the transformative power of hard work. Through dedication and effort, you'll build mental and physical strength to conquer life's challenges, inside and outside of the gym.
+            </p>
+            <Button variant="outline" size="lg" asChild className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+              <a href="#testimonials">Discover Why Members Love Us</a>
+            </Button>
+          </div>
         </div>
       </div>
     </section>

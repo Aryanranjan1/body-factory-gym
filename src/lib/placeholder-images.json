@@ -137,6 +137,30 @@
       "description": "A group of people stretching in a yoga class.",
       "imageUrl": "https://picsum.photos/seed/prog-mobility/800/600",
       "imageHint": "yoga class"
+    },
+    {
+      "id": "about-1",
+      "description": "Woman doing pull-ups in a gym",
+      "imageUrl": "https://picsum.photos/seed/about1/600/800",
+      "imageHint": "pull ups"
+    },
+    {
+      "id": "about-2",
+      "description": "Woman standing on a log in front of a lake",
+      "imageUrl": "https://picsum.photos/seed/about2/600/800",
+      "imageHint": "woman outdoors"
+    },
+    {
+      "id": "about-3",
+      "description": "Man lifting weights in a gym",
+      "imageUrl": "https://picsum.photos/seed/about3/600/800",
+      "imageHint": "man lifting"
+    },
+    {
+      "id": "about-4",
+      "description": "Woman doing yoga pose outdoors",
+      "imageUrl": "https://picsum.photos/seed/about4/600/800",
+      "imageHint": "woman yoga"
     }
   ]
 }
