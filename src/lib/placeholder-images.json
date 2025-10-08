@@ -1,3 +1,64 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-background",
+      "description": "Founder Kumareswarren in the Body Factory Gym",
+      "imageUrl": "https://picsum.photos/seed/bf-hero/1200/800",
+      "imageHint": "gym owner"
+    },
+    {
+      "id": "founder",
+      "description": "Mr. Kumareswarren, Mr. Malaysia 2023 Champion",
+      "imageUrl": "https://picsum.photos/seed/bf-founder/400/400",
+      "imageHint": "bodybuilder champion"
+    },
+    {
+      "id": "trainer-1",
+      "description": "Fitness trainer posing",
+      "imageUrl": "https://picsum.photos/seed/bf-trainer1/400/400",
+      "imageHint": "fitness trainer"
+    },
+    {
+      "id": "trainer-2",
+      "description": "Yoga instructor in a pose",
+      "imageUrl": "https://picsum.photos/seed/bf-trainer2/400/400",
+      "imageHint": "yoga instructor"
+    },
+    {
+      "id": "trainer-3",
+      "description": "Crossfit coach with equipment",
+      "imageUrl": "https://picsum.photos/seed/bf-trainer3/400/400",
+      "imageHint": "crossfit coach"
+    },
+    {
+      "id": "facility-cardio",
+      "description": "Treadmills and cardio machines at Body Factory Gym",
+      "imageUrl": "https://picsum.photos/seed/bf-cardio/800/600",
+      "imageHint": "cardio machines"
+    },
+    {
+      "id": "facility-weights",
+      "description": "Free weights and dumbbell racks at Body Factory Gym",
+      "imageUrl": "https://picsum.photos/seed/bf-weights/800/600",
+      "imageHint": "free weights"
+    },
+    {
+      "id": "facility-machines",
+      "description": "Weight machines and strength training equipment",
+      "imageUrl": "https://picsum.photos/seed/bf-machines/800/600",
+      "imageHint": "gym equipment"
+    },
+    {
+      "id": "facility-sauna",
+      "description": "Infrared sauna for recovery",
+      "imageUrl": "https://picsum.photos/seed/bf-sauna/800/600",
+      "imageHint": "infrared sauna"
+    },
+    {
+      "id": "map-location",
+      "description": "Map showing location of Body Factory Gym",
+      "imageUrl": "https://picsum.photos/seed/bf-map/600/400",
+      "imageHint": "map location"
+    }
+  ]
 }
