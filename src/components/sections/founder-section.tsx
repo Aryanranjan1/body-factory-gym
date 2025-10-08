@@ -29,7 +29,7 @@ export function FounderSection() {
                 )}
             </div>
             <div className="space-y-6">
-                <h1 className="font-headline text-3xl font-extrabold tracking-tight sm:text-4xl uppercase">
+                <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tight uppercase">
                    Led by a <span className="text-primary">Champion</span>. Built for <span className="text-primary">Champions</span>.
                 </h1>
                 <p className="text-lg text-muted-foreground">
