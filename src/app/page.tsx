@@ -130,9 +130,9 @@ export default function Home() {
         description="A tour of our zones, designed for every fitness goal. Drag to explore, click to expand."
       />
       <FounderSection />
-      <GallerySection />
       <CommunitySection />
       <MembershipSection />
+      <GallerySection />
       <TestimonialsSection />
       <ContactSection />
     </>
