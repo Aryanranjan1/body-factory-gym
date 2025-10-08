@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { placeholderImages } from "@/lib/placeholder-images";
@@ -29,8 +30,11 @@ export function FounderSection() {
                 )}
             </div>
             <div className="space-y-6">
+                <p className="font-semibold text-primary tracking-widest uppercase">
+                  MEET THE FOUNDER
+                </p>
                 <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tight uppercase">
-                   Led by a <span className="text-primary">Champion</span>. Built for <span className="text-primary">Champions</span>.
+                   LED BY A <span className="text-primary">CHAMPION</span>. BUILT FOR <span className="text-primary">CHAMPIONS</span>.
                 </h1>
                 <p className="text-lg text-muted-foreground">
                     Our founder, Mr. Kumareswarren, transformed himself from a 110kg enthusiast into the Mr. Malaysia 2023 Champion. He built Body Factory on the principles of hard work, dedication, and community, and he is passionate about helping everyone unlock their true potential.
