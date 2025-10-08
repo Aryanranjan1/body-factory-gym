@@ -20,3 +20,14 @@ export type MembershipPlan = {
   features: string[];
   isFeatured: boolean;
 };
+
+export type Program = {
+  id: string;
+  title: string;
+  tagline: string;
+  image: ImagePlaceholder;
+  details: {
+    description: string;
+    features: string[];
+  };
+};

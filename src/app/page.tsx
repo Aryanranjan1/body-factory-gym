@@ -6,12 +6,14 @@ import { TestimonialsSection } from "@/components/sections/testimonials-section"
 import { ContactSection } from "@/components/sections/contact-section";
 import { CommunitySection } from "@/components/sections/community-section";
 import { GallerySection } from "@/components/sections/gallery-section";
+import { ProgramsSection } from "@/components/sections/programs-section";
 
 export default function Home() {
   return (
     <>
       <HeroSection />
       <AboutSection />
+      <ProgramsSection />
       <FounderSection />
       <CommunitySection />
       <MembershipSection />
