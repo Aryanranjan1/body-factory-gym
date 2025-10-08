@@ -39,7 +39,7 @@ export function FounderSection() {
   const line2 = "BUILT FOR CHAMPIONS.";
 
   return (
-    <AnimatedSection className="bg-black text-white py-20 md:py-28 overflow-hidden">
+    <AnimatedSection className="bg-black text-white py-20 md:py-28 overflow-hidden" once={false}>
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <motion.div 

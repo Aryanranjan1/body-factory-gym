@@ -7,6 +7,7 @@ import { placeholderImages } from "@/lib/placeholder-images";
 import { ParallaxImage } from "../common/animated-section";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from 'react';
+import { AnimatedSection } from "../common/animated-section";
 
 const benefits = [
     "One-Day Free Trial Pass",
@@ -21,10 +22,11 @@ export function ContactSection() {
     const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.05]);
 
   return (
-    <motion.section 
+    <AnimatedSection 
       id="contact-us" 
       ref={ref}
       className="relative text-white py-20 md:py-28 overflow-hidden"
+      once={false}
     >
         {contactBg && (
             <motion.div style={{ scale }} className="absolute inset-0">
@@ -75,6 +77,6 @@ export function ContactSection() {
             </div>
         </motion.div>
       </div>
-    </motion.section>
+    </AnimatedSection>
   );
 }

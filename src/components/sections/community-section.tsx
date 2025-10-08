@@ -82,7 +82,7 @@ export function CommunitySection() {
   }, [api]);
 
   return (
-    <AnimatedSection id="community" className="bg-background text-foreground py-20 md:py-28">
+    <AnimatedSection id="community" className="bg-background text-foreground py-20 md:py-28" once={false}>
       <div className="container mx-auto px-4">
         
         <div>

@@ -126,7 +126,7 @@ export default function Home() {
     <>
       <HeroSection />
       <AboutSection />
-      <AnimatedSection>
+      <AnimatedSection once={false}>
         <InteractiveImageBentoGallery
           items={bentoItems}
           title="World-Class Facilities"

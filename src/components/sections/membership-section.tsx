@@ -4,6 +4,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from 'framer-motion';
+import { AnimatedSection } from "../common/animated-section";
 
 const plans = [
   {
@@ -46,7 +47,7 @@ const itemVariants = {
 
 export function MembershipSection() {
   return (
-    <section id="membership" className="bg-black py-20 md:py-28 overflow-hidden">
+    <AnimatedSection id="membership" className="bg-black py-20 md:py-28 overflow-hidden" once={false}>
       <div className="container mx-auto px-4">
         <motion.div 
             className="text-left mb-12"
@@ -102,6 +103,6 @@ export function MembershipSection() {
             <Button variant="outline" size="lg">View All Plans</Button>
         </motion.div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 }
