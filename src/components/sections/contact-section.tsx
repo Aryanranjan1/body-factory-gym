@@ -5,9 +5,9 @@ import Image from "next/image";
 import { placeholderImages } from "@/lib/placeholder-images";
 
 const benefits = [
-  "Virtual Facility Tour",
-  "Membership Prices",
-  "Discounts Details",
+  "One-Day Free Trial Pass",
+  "Personalized Starter Plan",
+  "Exclusive Community Access",
 ];
 
 export function ContactSection() {
@@ -37,12 +37,12 @@ export function ContactSection() {
           </p>
           <h2 className="font-headline text-4xl font-extrabold tracking-tight sm:text-5xl">
             {/* CMS: contact_headline */}
-            INSTANT ACCESS TO EVERYTHING YOU NEED TO START AT BODY FACTORY
+            START YOUR FITNESS JOURNEY AT BODY FACTORY TODAY
             {/* /CMS */}
           </h2>
           <p className="text-lg text-neutral-300">
             {/* CMS: contact_subheadline */}
-            Here's what you'll receive access to:
+            Sign up now to instantly receive:
             {/* /CMS */}
           </p>
           <ul className="space-y-4 text-xl font-semibold">
@@ -56,17 +56,6 @@ export function ContactSection() {
                 </span>
               </li>
             ))}
-             <li className="flex items-center gap-3">
-                <span className="font-bold text-primary pl-9">PLUS</span>
-              </li>
-             <li className="flex items-center gap-3">
-                <ChevronRight className="h-6 w-6 text-primary" />
-                <span>
-                  {/* CMS: contact_benefit_free_class */}
-                  YOUR FIRST CLASS FREE!
-                  {/* /CMS */}
-                </span>
-              </li>
           </ul>
         </div>
         <div className="rounded-lg bg-background/80 backdrop-blur-sm border border-border p-8 shadow-2xl">
