@@ -59,6 +59,12 @@
       "description": "Map showing location of Body Factory Gym",
       "imageUrl": "https://picsum.photos/seed/bf-map/600/400",
       "imageHint": "map location"
+    },
+    {
+      "id": "contact-background",
+      "description": "Man working out in a gym",
+      "imageUrl": "https://picsum.photos/seed/bf-contact/1200/800",
+      "imageHint": "gym workout"
     }
   ]
 }

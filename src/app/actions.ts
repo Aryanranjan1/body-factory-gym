@@ -4,18 +4,20 @@
 import { z } from "zod";
 
 const contactSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters."),
+  firstName: z.string().min(2, "First name must be at least 2 characters."),
+  lastName: z.string().min(2, "Last name must be at least 2 characters."),
   phone: z.string().min(6, "Please enter a valid phone number."),
-  message: z.string().min(10, "Message must be at least 10 characters."),
+  email: z.string().email("Please enter a valid email address."),
 });
 
 export type FormState = {
   message: string;
   success: boolean;
   errors?: {
-    name?: string[];
+    firstName?: string[];
+    lastName?: string[];
     phone?: string[];
-    message?: string[];
+    email?: string[];
   };
 };
 
@@ -24,9 +26,10 @@ export async function submitContactForm(
   formData: FormData
 ): Promise<FormState> {
   const validatedFields = contactSchema.safeParse({
-    name: formData.get("name"),
+    firstName: formData.get("firstName"),
+    lastName: formData.get("lastName"),
     phone: formData.get("phone"),
-    message: formData.get("message"),
+    email: formData.get("email"),
   });
 
   if (!validatedFields.success) {
