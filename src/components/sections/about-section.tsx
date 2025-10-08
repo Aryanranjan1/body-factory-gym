@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { placeholderImages } from "@/lib/placeholder-images";
-import { AnimatedItem, AnimatedSection } from "../common/animated-section";
 import { Button } from "../ui/button";
 
 const images = [
@@ -12,9 +11,10 @@ const images = [
 
 export function AboutSection() {
   return (
-    <AnimatedSection id="about-us" className="bg-black text-white">
+    <section id="about-us" className="bg-black text-white py-20 md:py-28">
+      <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <AnimatedItem className="space-y-6">
+            <div className="space-y-6">
                 <h2 className="font-headline text-3xl font-extrabold tracking-tight sm:text-4xl">
                 Established in 2013. Three Floors of Fitness.
                 </h2>
@@ -24,13 +24,13 @@ export function AboutSection() {
                  <Button variant="outline" size="lg" asChild>
                     <a href="#testimonials">Discover Why Members Love Us</a>
                 </Button>
-            </AnimatedItem>
+            </div>
             <div className="grid grid-cols-3 gap-4">
                 {images.map((imgData) => {
                     const image = placeholderImages.find(p => p.id === imgData.id);
                     if (!image) return null;
                     return (
-                        <AnimatedItem key={image.id} className={imgData.className}>
+                        <div key={image.id} className={imgData.className}>
                              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg">
                                 <Image
                                     src={image.imageUrl}
@@ -40,11 +40,12 @@ export function AboutSection() {
                                     data-ai-hint={imgData.imageHint}
                                 />
                              </div>
-                        </AnimatedItem>
+                        </div>
                     )
                 })}
             </div>
         </div>
-    </AnimatedSection>
+      </div>
+    </section>
   );
 }

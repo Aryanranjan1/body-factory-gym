@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils";
 import { Header } from "@/components/common/header";
 import { Footer } from "@/components/common/footer";
 import { Toaster } from "@/components/ui/toaster";
-import { SmoothScroll } from "@/components/common/smooth-scroll";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -28,11 +27,9 @@ export default function RootLayout({
           inter.variable
         )}
       >
-        <SmoothScroll>
-          <Header />
-          <main className="flex-grow">{children}</main>
-          <Footer />
-        </SmoothScroll>
+        <Header />
+        <main className="flex-grow">{children}</main>
+        <Footer />
         <Toaster />
       </body>
     </html>

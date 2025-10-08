@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { placeholderImages } from "@/lib/placeholder-images";
-import { AnimatedItem, AnimatedSection } from "../common/animated-section";
 
 const founderImage = placeholderImages.find((p) => p.id === "founder");
 
@@ -13,9 +12,10 @@ const pressLogos = [
 
 export function FounderSection() {
   return (
-    <AnimatedSection className="bg-card">
+    <section className="bg-card py-20 md:py-28">
+      <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <AnimatedItem>
+            <div>
                 {founderImage && (
                     <div className="relative aspect-square max-w-md mx-auto">
                         <Image
@@ -27,8 +27,8 @@ export function FounderSection() {
                         />
                     </div>
                 )}
-            </AnimatedItem>
-            <AnimatedItem className="space-y-6">
+            </div>
+            <div className="space-y-6">
                 <h2 className="font-headline text-3xl font-extrabold tracking-tight sm:text-4xl">
                    Led by a Champion. Built for Champions.
                 </h2>
@@ -46,8 +46,9 @@ export function FounderSection() {
                     </div>
                 </div>
                  <Button size="lg">Train with Kumareswarren</Button>
-            </AnimatedItem>
+            </div>
         </div>
-    </AnimatedSection>
+      </div>
+    </section>
   );
 }

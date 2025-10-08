@@ -7,7 +7,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { placeholderImages } from "@/lib/placeholder-images";
 import type { Facility } from "@/lib/definitions";
-import { AnimatedItem, AnimatedSection } from "../common/animated-section";
 import { Button } from "../ui/button";
 import { Dumbbell, HeartPulse, Sparkles, User, Flame } from "lucide-react";
 import { ReactElement } from "react";
@@ -52,25 +51,26 @@ const facilitiesData: (Omit<Facility, 'id' | 'imageUrl' | 'imageHint'> & { icon:
 
 export function FacilitiesSection() {
   return (
-    <AnimatedSection className="bg-background">
+    <section className="bg-background py-20 md:py-28">
+      <div className="container mx-auto px-4">
         <div className="text-center space-y-4 mb-12">
-            <AnimatedItem>
+            <div>
                 <h2 className="font-headline text-3xl font-extrabold tracking-tight sm:text-4xl">
                     Programs & Facilities
                 </h2>
-            </AnimatedItem>
-            <AnimatedItem>
+            </div>
+            <div>
                 <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
                     Everything you need to build strength, improve endurance, and recover like a pro.
                 </p>
-            </AnimatedItem>
+            </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {facilitiesData.map((facility, index) => {
                  const image = placeholderImages.find(p => p.id === facility.imageId);
                  if (!image) return null;
                 return (
-                    <AnimatedItem key={index}>
+                    <div key={index}>
                         <Card className="h-full overflow-hidden flex flex-col">
                             <div className="relative aspect-[4/5] w-full">
                                 <Image
@@ -89,12 +89,13 @@ export function FacilitiesSection() {
                                 </div>
                             </CardContent>
                         </Card>
-                    </AnimatedItem>
+                    </div>
             )})}
         </div>
-        <AnimatedItem className="text-center mt-12">
+        <div className="text-center mt-12">
             <Button size="lg">View Full Facility</Button>
-        </AnimatedItem>
-    </AnimatedSection>
+        </div>
+      </div>
+    </section>
   );
 }
