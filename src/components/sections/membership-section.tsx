@@ -33,7 +33,7 @@ export function MembershipSection() {
                 Our Memberships
             </p>
             <h2 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tight">
-                MORE OPTIONS, <span className="text-primary">MORE VALUE.</span>
+                MORE OPTIONS, <br /> MORE VALUE.
             </h2>
         </div>
         <div className="grid max-w-5xl mx-auto gap-8 md:grid-cols-3">
