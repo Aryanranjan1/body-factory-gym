@@ -162,7 +162,7 @@ const InteractiveImageBentoGallery: React.FC<
       className="relative w-full overflow-hidden bg-background py-16 sm:py-24"
     >
       <div className="container mx-auto px-4">
-        <div className="md:flex md:justify-between md:items-end text-center md:text-left">
+        <div className="md:flex md:justify-between md:items-center text-center md:text-left">
           <div>
             <p className="font-semibold text-primary tracking-widest uppercase">
               Discover Our Spaces
