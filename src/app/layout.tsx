@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils";
 import { Header } from "@/components/common/header";
 import { Footer } from "@/components/common/footer";
 import { Toaster } from "@/components/ui/toaster";
-import { ReactLenis } from '@studio-freight/react-lenis'
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -30,12 +29,10 @@ export default function RootLayout({
           inter.variable
         )}
       >
-        <ReactLenis root>
-          <Header />
-          <main className="flex-grow">{children}</main>
-          <Footer />
-          <Toaster />
-        </ReactLenis>
+        <Header />
+        <main className="flex-grow">{children}</main>
+        <Footer />
+        <Toaster />
       </body>
     </html>
   );
