@@ -1,10 +1,13 @@
 import { ContactForm } from "./contact-form";
-import { MapPin, ParkingCircle, Clock } from "lucide-react";
-import Link from "next/link";
-import { Button } from "../ui/button";
+import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { placeholderImages } from "@/lib/placeholder-images";
 
+const benefits = [
+    "One-Day Free Trial Pass",
+    "Personalized Starter Plan",
+    "Exclusive Community Access",
+]
 
 export function ContactSection() {
     const contactBg = placeholderImages.find(p => p.id === 'contact-background');
@@ -22,36 +25,20 @@ export function ContactSection() {
        <div className="absolute inset-0 bg-black/70 z-10" />
       <div className="relative z-20 container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="space-y-8">
+            <div className="space-y-6">
+                <p className="font-semibold text-primary tracking-widest uppercase">Get Started</p>
                 <h2 className="font-headline text-3xl font-extrabold tracking-tight sm:text-4xl">
-                    Find Us & Drop In Today
+                   Instant Access to Everything You Need to Start
                 </h2>
-                <div className="space-y-6 text-lg">
-                    <div className="flex items-start gap-4">
-                        <MapPin className="h-7 w-7 text-primary mt-1 flex-shrink-0" />
-                        <div>
-                            <h3 className="font-semibold">Body Factory Gym & Fitness Centre</h3>
-                            <p className="text-muted-foreground">PJ21 Commercial Centre, Jalan SS 3/39, 47300 Petaling Jaya, Selangor</p>
-                        </div>
-                    </div>
-                    <div className="flex items-start gap-4">
-                        <Clock className="h-7 w-7 text-primary mt-1 flex-shrink-0" />
-                        <div>
-                            <h3 className="font-semibold">Operating Hours</h3>
-                            <p className="text-muted-foreground">Open 24/7 for members. Staffed hours vary.</p>
-                        </div>
-                    </div>
-                    <div className="flex items-start gap-4">
-                        <ParkingCircle className="h-7 w-7 text-primary mt-1 flex-shrink-0" />
-                        <div>
-                            <h3 className="font-semibold">Parking</h3>
-                            <p className="text-muted-foreground">Ample free parking available onsite.</p>
-                        </div>
-                    </div>
-                </div>
-                  <Button size="lg" asChild>
-                    <Link href="https://maps.google.com" target="_blank">Get Directions</Link>
-                </Button>
+                <p className="text-lg text-muted-foreground">Here’s what you’ll receive access to:</p>
+                <ul className="space-y-4 text-xl">
+                    {benefits.map((benefit, index) => (
+                        <li key={index} className="flex items-center gap-3">
+                            <ChevronRight className="h-6 w-6 text-primary" />
+                            <span>{benefit}</span>
+                        </li>
+                    ))}
+                </ul>
             </div>
             <div className="rounded-lg bg-card/5 backdrop-blur-sm border border-border p-8 shadow-2xl">
                 <ContactForm />
