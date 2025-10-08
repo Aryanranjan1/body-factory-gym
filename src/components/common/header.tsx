@@ -36,6 +36,8 @@ export const pageLinks = [
 ]
 
 export function Header() {
+  const navLinkClasses = "bg-transparent hover:bg-transparent text-foreground/80 hover:text-foreground focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent transition-colors";
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 max-w-screen-2xl items-center">
@@ -46,18 +48,18 @@ export function Header() {
           </span>
         </Link>
 
-        <div className="hidden md:flex items-center space-x-2">
+        <div className="hidden md:flex items-center space-x-6">
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
                   <Link href="/" passHref>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), navLinkClasses)}>
                       Home
                     </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>Shop</NavigationMenuTrigger>
+                  <NavigationMenuTrigger className={cn(navLinkClasses)}>Shop</NavigationMenuTrigger>
                   <NavigationMenuContent>
                     <div className="grid w-[600px] grid-cols-4 gap-x-4 gap-y-2 p-4 md:w-[700px] lg:w-[800px]">
                       {Object.entries(shopItems).map(([category, items]) => (
@@ -81,13 +83,13 @@ export function Header() {
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                    <Link href="/#about-us" passHref>
-                    <NavigationMenuLink className={cn(navigationMenuTriggerStyle())}>
+                    <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), navLinkClasses)}>
                       About
                     </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                   <NavigationMenuTrigger>Pages</NavigationMenuTrigger>
+                   <NavigationMenuTrigger className={cn(navLinkClasses)}>Pages</NavigationMenuTrigger>
                     <NavigationMenuContent>
                        <ul className="grid w-[200px] gap-3 p-4 md:w-[250px]">
                          {pageLinks.map(page => (
@@ -109,7 +111,7 @@ export function Header() {
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <Link href="/#contact-us" passHref>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), navLinkClasses)}>
                       Contact
                     </NavigationMenuLink>
                   </Link>
@@ -117,7 +119,7 @@ export function Header() {
               </NavigationMenuList>
             </NavigationMenu>
 
-             <div className="w-px h-6 bg-border mx-2"></div>
+             <div className="w-px h-6 bg-border"></div>
 
              <div className="flex items-center space-x-1">
                 <LockedFeatureModal>
