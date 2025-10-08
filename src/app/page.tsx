@@ -6,6 +6,7 @@ import { TestimonialsSection } from "@/components/sections/testimonials-section"
 import { ContactSection } from "@/components/sections/contact-section";
 import { CommunitySection } from "@/components/sections/community-section";
 import InteractiveImageBentoGallery from "@/components/ui/bento-gallery";
+import { GallerySection } from "@/components/sections/gallery-section";
 
 const bentoItems = [
   {
@@ -129,6 +130,7 @@ export default function Home() {
         description="A tour of our zones, designed for every fitness goal. Drag to explore, click to expand."
       />
       <FounderSection />
+      <GallerySection />
       <CommunitySection />
       <MembershipSection />
       <TestimonialsSection />
