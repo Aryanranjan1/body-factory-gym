@@ -14,25 +14,36 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
+import { MobileNav } from "./mobile-nav";
 
-const shopItems = {
+export const shopItems = {
   "Home Gym": ["Treadmill", "Kettlebell", "Elliptical Trainer", "Dumbbell", "Resistance band"],
   "Cardio Machines": ["Jump Rope", "Arc Trainer", "Hydrow Rower", "Versaclimber", "Rowing Machine"],
   "Free Weights": ["Weight Plate", "Curl Bars", "Hexagon Dumbbell", "Barbell", "Olympic Barbells"],
   "Power Equipment": ["Calibrated Plates", "Squat Bar", "Squat Rack", "Deadlift", "Curl Bench"],
 }
 
+export const pageLinks = [
+  {
+    title: "Blog",
+    description: "Read our latest articles.",
+  },
+  {
+    title: "FAQs",
+    description: "Frequently asked questions.",
+  }
+]
+
 export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 max-w-screen-2xl items-center">
-        <div className="mr-4 flex">
+        <MobileNav />
+        <div className="mr-4 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <Dumbbell className="h-6 w-6 text-primary" />
             <span className="font-bold sm:inline-block text-lg tracking-wider">
-              {/* CMS: site_name */}
               BFG
-              {/* /CMS */}
             </span>
           </Link>
           <NavigationMenu>
@@ -78,30 +89,20 @@ export function Header() {
                  <NavigationMenuTrigger>Pages</NavigationMenuTrigger>
                   <NavigationMenuContent>
                      <ul className="grid w-[200px] gap-3 p-4 md:w-[250px]">
-                       <li>
-                         <LockedFeatureModal>
-                           <NavigationMenuLink asChild>
-                              <a className="block w-full select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                                <div className="text-sm font-medium leading-none">Blog</div>
-                                <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                                  Read our latest articles.
-                                </p>
-                              </a>
-                            </NavigationMenuLink>
-                          </LockedFeatureModal>
-                       </li>
-                       <li>
-                          <LockedFeatureModal>
-                            <NavigationMenuLink asChild>
-                              <a className="block w-full select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                                <div className="text-sm font-medium leading-none">FAQs</div>
-                                <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                                  Frequently asked questions.
-                                </p>
-                              </a>
-                            </NavigationMenuLink>
-                          </LockedFeatureModal>
-                       </li>
+                       {pageLinks.map(page => (
+                         <li key={page.title}>
+                           <LockedFeatureModal>
+                             <NavigationMenuLink asChild>
+                                <a className="block w-full select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                                  <div className="text-sm font-medium leading-none">{page.title}</div>
+                                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                    {page.description}
+                                  </p>
+                                </a>
+                              </NavigationMenuLink>
+                            </LockedFeatureModal>
+                         </li>
+                       ))}
                      </ul>
                   </NavigationMenuContent>
               </NavigationMenuItem>
