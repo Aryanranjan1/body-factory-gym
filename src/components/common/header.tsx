@@ -36,7 +36,7 @@ export const pageLinks = [
 ]
 
 export function Header() {
-  const navLinkClasses = "bg-transparent hover:bg-transparent text-foreground/80 hover:text-foreground focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent transition-colors";
+  const navLinkClasses = "bg-transparent hover:bg-transparent text-foreground/80 hover:text-primary focus:text-primary focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-primary transition-colors";
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
