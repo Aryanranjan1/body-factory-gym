@@ -171,7 +171,7 @@ const InteractiveImageBentoGallery: React.FC<
               <span className="text-primary">WORLD-CLASS</span> FACILITIES
             </h2>
           </div>
-          <p className="mt-4 md:mt-0 max-w-2xl md:max-w-xs md:text-right text-lg text-muted-foreground mx-auto md:mx-0">
+          <p className="mt-4 md:mt-0 max-w-2xl md:max-w-xs text-lg text-muted-foreground mx-auto md:mx-0">
             {description}
           </p>
         </div>
