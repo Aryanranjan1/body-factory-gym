@@ -5,7 +5,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Dumbbell, Menu } from "lucide-react";
+import { Dumbbell, Menu, Search, Heart, ShoppingBag, User } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -20,15 +20,34 @@ export function MobileNav() {
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      <SheetTrigger asChild>
-        <Button
-          variant="ghost"
-          className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
-        >
-          <Menu className="h-6 w-6" />
-          <span className="sr-only">Toggle Menu</span>
-        </Button>
-      </SheetTrigger>
+      <div className="flex items-center">
+        <div className="md:hidden flex items-center space-x-2">
+           <LockedFeatureModal>
+            <Button variant="ghost" size="icon">
+              <Search className="h-5 w-5" />
+            </Button>
+          </LockedFeatureModal>
+          <LockedFeatureModal>
+            <Button variant="ghost" size="icon">
+              <Heart className="h-5 w-5" />
+            </Button>
+          </LockedFeatureModal>
+          <LockedFeatureModal>
+            <Button variant="ghost" size="icon">
+              <ShoppingBag className="h-5 w-5" />
+            </Button>
+          </LockedFeatureModal>
+        </div>
+        <SheetTrigger asChild>
+          <Button
+            variant="ghost"
+            className="px-2 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0"
+          >
+            <Menu className="h-6 w-6" />
+            <span className="sr-only">Toggle Menu</span>
+          </Button>
+        </SheetTrigger>
+      </div>
       <SheetContent side="left" className="pr-0">
         <Link
           href="/"
@@ -101,6 +120,13 @@ export function MobileNav() {
             >
               Contact
             </Link>
+            <div className="w-full h-px bg-border my-4"></div>
+            <LockedFeatureModal>
+              <div className="flex items-center space-x-2 text-foreground">
+                <User className="h-5 w-5" />
+                <span>Account</span>
+              </div>
+            </LockedFeatureModal>
           </div>
         </div>
       </SheetContent>

@@ -38,106 +38,113 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 max-w-screen-2xl items-center">
-        <MobileNav />
-        <div className="mr-4 hidden md:flex">
+        <div className="mr-4 flex items-center">
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <Dumbbell className="h-6 w-6 text-primary" />
             <span className="font-bold sm:inline-block text-lg tracking-wider">
               BFG
             </span>
           </Link>
-          <NavigationMenu>
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <Link href="/" passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Home
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger>Shop</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <div className="grid w-[600px] grid-cols-4 gap-x-4 gap-y-2 p-4 md:w-[700px] lg:w-[800px]">
-                    {Object.entries(shopItems).map(([category, items]) => (
-                      <div key={category}>
-                        <h3 className="mb-2 font-bold text-foreground">{category}</h3>
-                        <ul className="space-y-1">
-                          {items.map(item => (
-                             <li key={item}>
-                               <LockedFeatureModal>
-                                <a className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-sm text-muted-foreground">
-                                  {item}
-                                </a>
-                               </LockedFeatureModal>
-                             </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                 <Link href="/#about-us" passHref>
-                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle())}>
-                    About
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                 <NavigationMenuTrigger>Pages</NavigationMenuTrigger>
+          <div className="hidden md:flex">
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <Link href="/" passHref>
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                      Home
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger>Shop</NavigationMenuTrigger>
                   <NavigationMenuContent>
-                     <ul className="grid w-[200px] gap-3 p-4 md:w-[250px]">
-                       {pageLinks.map(page => (
-                         <li key={page.title}>
-                           <LockedFeatureModal>
-                             <NavigationMenuLink asChild>
-                                <a className="block w-full select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
-                                  <div className="text-sm font-medium leading-none">{page.title}</div>
-                                  <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                                    {page.description}
-                                  </p>
-                                </a>
-                              </NavigationMenuLink>
-                            </LockedFeatureModal>
-                         </li>
-                       ))}
-                     </ul>
+                    <div className="grid w-[600px] grid-cols-4 gap-x-4 gap-y-2 p-4 md:w-[700px] lg:w-[800px]">
+                      {Object.entries(shopItems).map(([category, items]) => (
+                        <div key={category}>
+                          <h3 className="mb-2 font-bold text-foreground">{category}</h3>
+                          <ul className="space-y-1">
+                            {items.map(item => (
+                               <li key={item}>
+                                 <LockedFeatureModal>
+                                  <a className="block select-none space-y-1 rounded-md p-2 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground text-sm text-muted-foreground">
+                                    {item}
+                                  </a>
+                                 </LockedFeatureModal>
+                               </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
                   </NavigationMenuContent>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link href="/#contact-us" passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Contact
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                   <Link href="/#about-us" passHref>
+                    <NavigationMenuLink className={cn(navigationMenuTriggerStyle())}>
+                      About
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                   <NavigationMenuTrigger>Pages</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                       <ul className="grid w-[200px] gap-3 p-4 md:w-[250px]">
+                         {pageLinks.map(page => (
+                           <li key={page.title}>
+                             <LockedFeatureModal>
+                               <NavigationMenuLink asChild>
+                                  <a className="block w-full select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground">
+                                    <div className="text-sm font-medium leading-none">{page.title}</div>
+                                    <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                      {page.description}
+                                    </p>
+                                  </a>
+                                </NavigationMenuLink>
+                              </LockedFeatureModal>
+                           </li>
+                         ))}
+                       </ul>
+                    </NavigationMenuContent>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Link href="/#contact-us" passHref>
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                      Contact
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+          </div>
         </div>
+
         <div className="flex flex-1 items-center justify-end space-x-2">
-          <LockedFeatureModal>
-            <Button variant="ghost" size="icon">
-              <Search className="h-5 w-5" />
-            </Button>
-          </LockedFeatureModal>
-          <LockedFeatureModal>
-            <Button variant="ghost" size="icon">
-              <Heart className="h-5 w-5" />
-            </Button>
-          </LockedFeatureModal>
-          <LockedFeatureModal>
-            <Button variant="ghost" size="icon">
-              <ShoppingBag className="h-5 w-5" />
-            </Button>
-          </LockedFeatureModal>
-           <div className="w-px h-6 bg-border mx-2"></div>
-          <LockedFeatureModal>
-            <Button variant="ghost" size="icon">
-              <User className="h-5 w-5" />
-            </Button>
-          </LockedFeatureModal>
+          <div className="hidden md:flex">
+             <div className="flex items-center space-x-2">
+                <LockedFeatureModal>
+                  <Button variant="ghost" size="icon">
+                    <Search className="h-5 w-5" />
+                  </Button>
+                </LockedFeatureModal>
+                <LockedFeatureModal>
+                  <Button variant="ghost" size="icon">
+                    <Heart className="h-5 w-5" />
+                  </Button>
+                </LockedFeatureModal>
+                <LockedFeatureModal>
+                  <Button variant="ghost" size="icon">
+                    <ShoppingBag className="h-5 w-5" />
+                  </Button>
+                </LockedFeatureModal>
+                 <div className="w-px h-6 bg-border mx-2"></div>
+                <LockedFeatureModal>
+                  <Button variant="ghost" size="icon">
+                    <User className="h-5 w-5" />
+                  </Button>
+                </LockedFeatureModal>
+             </div>
+          </div>
+          <MobileNav />
         </div>
       </div>
     </header>
