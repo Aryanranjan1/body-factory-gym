@@ -36,10 +36,7 @@ export function HeroSection() {
           Your browser does not support the video tag.
         </motion.video>
       )}
-      <motion.div 
-        style={{ opacity }}
-        className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent z-10" 
-      />
+      <div className="absolute inset-0 bg-black/50 z-10" />
       
       <motion.div 
         style={{ y: contentY, opacity }}
