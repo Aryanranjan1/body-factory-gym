@@ -9,18 +9,6 @@ export function HeroSection() {
 
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-      {/* {heroImage && (
-        <Image
-          src={heroImage.imageUrl}
-          alt={heroImage.description}
-          fill
-          className="object-cover blur-sm scale-105"
-          placeholder="blur"
-          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8/wcAAtMB1tSK/s0AAAAASUVORK5CYII="
-          priority
-          data-ai-hint={heroImage.imageHint}
-        />
-      )} */}
       {heroVideo && (
         <video
           autoPlay
@@ -34,7 +22,7 @@ export function HeroSection() {
           Your browser does not support the video tag.
         </video>
       )}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent from-0% via-20% to-40% z-10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
       <div className="relative z-20 text-center text-white container px-4">
           <h1 className="font-headline text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
             {/* CMS: hero_headline */}
