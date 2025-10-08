@@ -3,10 +3,9 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { placeholderImages } from "@/lib/placeholder-images";
 import { Button } from "../ui/button";
-import { AnimatedSection } from "../common/animated-section";
 import React from 'react';
 
 const leftImageIds = ["about-1", "about-3"];
@@ -14,11 +13,63 @@ const rightImageIds = ["about-2", "about-4"];
 
 const getImageById = (id: string) => placeholderImages.find(p => p.id === id);
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const imageContainerVariants = {
+  hidden: { opacity: 0, x: -80 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: "spring",
+      stiffness: 80,
+      damping: 15,
+    },
+  },
+};
+
+const sentenceVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.03,
+    },
+  },
+};
+
+const letterVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+  },
+};
+
+const popInVariants = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      type: "spring",
+      damping: 15,
+      stiffness: 100
+    },
+  },
+};
+
 export function AboutSection() {
   const [currentLeftIndex, setCurrentLeftIndex] = useState(0);
   const [currentRightIndex, setCurrentRightIndex] = useState(0);
-  const ref = React.useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
 
   useEffect(() => {
     const leftInterval = setInterval(() => {
@@ -40,17 +91,22 @@ export function AboutSection() {
   const currentLeftImage = getImageById(leftImageIds[currentLeftIndex]);
   const currentRightImage = getImageById(rightImageIds[currentRightIndex]);
 
-  const textX = useTransform(scrollYProgress, [0, 1], ['-80px', '0px']);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
-  const imagesX = useTransform(scrollYProgress, [0, 1], ['80px', '0px']);
-  const imagesOpacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+  const line1 = "WORK HARD.";
+  const line2 = "LIVE FIT.";
 
   return (
-    <section id="about-us" ref={ref} className="bg-black text-white py-20 md:py-28 overflow-hidden">
+    <motion.section 
+      id="about-us" 
+      className="bg-black text-white py-20 md:py-28 overflow-hidden"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={containerVariants}
+    >
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div 
-            style={{ x: imagesX, opacity: imagesOpacity }}
+            variants={imageContainerVariants}
             className="flex gap-4 sm:gap-8 justify-center"
           >
             <div className="w-1/2 relative aspect-[3/4] rounded-lg overflow-hidden mt-8">
@@ -99,24 +155,48 @@ export function AboutSection() {
             </div>
           </motion.div>
           <motion.div 
-            style={{ x: textX, opacity: textOpacity }}
             className="space-y-6"
+            variants={containerVariants}
           >
-            <p className="font-semibold text-primary tracking-widest uppercase">
+            <motion.p 
+              className="font-semibold text-primary tracking-widest uppercase"
+              variants={popInVariants}
+            >
               What We Believe
-            </p>
-            <h2 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tight">
-              WORK HARD. <span className="text-primary">LIVE</span> FIT.
-            </h2>
-            <p className="text-lg text-muted-foreground">
+            </motion.p>
+            <motion.h2 
+              className="font-headline text-5xl md:text-6xl font-extrabold tracking-tight"
+              variants={sentenceVariants}
+            >
+              <span className="block">
+                {line1.split("").map((char, index) => (
+                  <motion.span key={char + "-" + index} variants={letterVariants}>
+                    {char}
+                  </motion.span>
+                ))}
+              </span>
+              <span className="text-primary">
+                 {line2.split("").map((char, index) => (
+                  <motion.span key={char + "-" + index} variants={letterVariants}>
+                    {char}
+                  </motion.span>
+                ))}
+              </span>
+            </motion.h2>
+            <motion.p 
+              className="text-lg text-muted-foreground"
+              variants={popInVariants}
+            >
               Body Factory is more than a gym, it's a lifestyle. We believe in the transformative power of hard work. Through dedication and effort, you'll build mental and physical strength to conquer life's challenges, inside and outside of the gym.
-            </p>
-            <Button variant="outline" size="lg" asChild className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-              <a href="#testimonials">Discover Why Members Love Us</a>
-            </Button>
+            </motion.p>
+            <motion.div variants={popInVariants}>
+              <Button variant="outline" size="lg" asChild className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                <a href="#testimonials">Discover Why Members Love Us</a>
+              </Button>
+            </motion.div>
           </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
