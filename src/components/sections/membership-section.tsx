@@ -28,7 +28,7 @@ export function MembershipSection() {
   return (
     <section id="membership" className="bg-black py-20 md:py-28">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <div className="text-left mb-12">
             <p className="font-semibold text-primary tracking-widest uppercase">
                 Our Memberships
             </p>
