@@ -22,11 +22,10 @@ export function ContactSection() {
     const scale = useTransform(scrollYProgress, [0, 0.5], [1, 1.05]);
 
   return (
-    <AnimatedSection 
+    <section 
       id="contact-us" 
       ref={ref}
       className="relative text-white py-20 md:py-28 overflow-hidden"
-      once={false}
     >
         {contactBg && (
             <motion.div style={{ scale }} className="absolute inset-0">
@@ -40,12 +39,9 @@ export function ContactSection() {
         )}
        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black z-10" />
       <div className="relative z-20 container mx-auto px-4">
-        <motion.div 
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ type: 'spring', stiffness: 100, damping: 20 }}
+        <AnimatedSection 
             className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center"
+            once={false}
         >
             <div className="space-y-6">
                 <p className="font-semibold text-primary tracking-widest uppercase">Get Started</p>
@@ -53,30 +49,25 @@ export function ContactSection() {
                    START YOUR <span className="text-primary">JOURNEY</span>
                 </h2>
                 <p className="text-lg text-muted-foreground">Here’s what you’ll receive access to:</p>
-                <motion.ul 
+                <ul 
                     className="space-y-4 text-xl"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.5 }}
-                    transition={{ staggerChildren: 0.2 }}
                 >
                     {benefits.map((benefit, index) => (
-                        <motion.li 
+                        <li 
                             key={index} 
                             className="flex items-center gap-3"
-                            variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}
                         >
                             <ChevronRight className="h-6 w-6 text-primary" />
                             <span>{benefit}</span>
-                        </motion.li>
+                        </li>
                     ))}
-                </motion.ul>
+                </ul>
             </div>
             <div className="rounded-lg bg-card border border-border p-8 shadow-2xl">
                 <ContactForm />
             </div>
-        </motion.div>
+        </AnimatedSection>
       </div>
-    </AnimatedSection>
+    </section>
   );
 }

@@ -39,9 +39,9 @@ export function FounderSection() {
   const line2 = "BUILT FOR CHAMPIONS.";
 
   return (
-    <AnimatedSection className="bg-black text-white py-20 md:py-28 overflow-hidden" once={false}>
+    <section className="bg-black text-white py-20 md:py-28 overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <AnimatedSection className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center" once={false}>
             <motion.div 
               className="lg:order-first"
               initial={{ opacity: 0, x: 80 }}
@@ -109,8 +109,8 @@ export function FounderSection() {
                     <Button size="lg">Train with Kumareswarren</Button>
                  </motion.div>
             </div>
-        </div>
+        </AnimatedSection>
       </div>
-    </AnimatedSection>
+    </section>
   );
 }

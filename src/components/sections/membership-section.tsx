@@ -47,62 +47,53 @@ const itemVariants = {
 
 export function MembershipSection() {
   return (
-    <AnimatedSection id="membership" className="bg-black py-20 md:py-28 overflow-hidden" once={false}>
+    <section id="membership" className="bg-black py-20 md:py-28 overflow-hidden">
       <div className="container mx-auto px-4">
-        <motion.div 
-            className="text-left mb-12"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ type: 'spring', stiffness: 100 }}
-        >
-            <p className="font-semibold text-primary tracking-widest uppercase">
-                Our Memberships
-            </p>
-            <h2 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tight">
-                MORE <span className="text-primary">OPTIONS</span>, <br /> MORE VALUE.
-            </h2>
-        </motion.div>
-        <motion.div 
-          className="grid max-w-5xl mx-auto gap-8 md:grid-cols-3"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          {plans.map((plan, index) => (
-            <motion.div key={index} variants={itemVariants}>
-              <Card className="flex flex-col h-full bg-transparent border-white/20 rounded-lg p-6">
-                <CardHeader className="p-0 text-left">
-                  <p className="text-lg font-bold tracking-widest uppercase text-primary">{plan.title}</p>
-                  <CardTitle className="font-semibold tracking-wider uppercase text-foreground/50 text-sm">
-                    Membership
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="flex-grow p-0 mt-4">
-                    <p className="text-muted-foreground mb-6">{plan.description}</p>
-                  <ul className="space-y-3">
-                    {plan.features.map((feature, fIndex) => (
-                      <li key={fIndex} className="text-foreground font-medium">
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
-        <motion.div 
-            className="mt-12 text-center"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.8 }}
-            transition={{ type: 'spring', stiffness: 100 }}
-        >
-            <Button variant="outline" size="lg">View All Plans</Button>
-        </motion.div>
+        <AnimatedSection once={false}>
+          <div 
+              className="text-left mb-12"
+          >
+              <p className="font-semibold text-primary tracking-widest uppercase">
+                  Our Memberships
+              </p>
+              <h2 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tight">
+                  MORE <span className="text-primary">OPTIONS</span>, <br /> MORE VALUE.
+              </h2>
+          </div>
+          <motion.div 
+            className="grid max-w-5xl mx-auto gap-8 md:grid-cols-3"
+            variants={containerVariants}
+          >
+            {plans.map((plan, index) => (
+              <motion.div key={index} variants={itemVariants}>
+                <Card className="flex flex-col h-full bg-transparent border-white/20 rounded-lg p-6">
+                  <CardHeader className="p-0 text-left">
+                    <p className="text-lg font-bold tracking-widest uppercase text-primary">{plan.title}</p>
+                    <CardTitle className="font-semibold tracking-wider uppercase text-foreground/50 text-sm">
+                      Membership
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex-grow p-0 mt-4">
+                      <p className="text-muted-foreground mb-6">{plan.description}</p>
+                    <ul className="space-y-3">
+                      {plan.features.map((feature, fIndex) => (
+                        <li key={fIndex} className="text-foreground font-medium">
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </motion.div>
+          <div 
+              className="mt-12 text-center"
+          >
+              <Button variant="outline" size="lg">View All Plans</Button>
+          </div>
+        </AnimatedSection>
       </div>
-    </AnimatedSection>
+    </section>
   );
 }

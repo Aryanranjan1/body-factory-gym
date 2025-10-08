@@ -7,6 +7,7 @@ import { placeholderImages } from "@/lib/placeholder-images";
 import { Star } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from 'react';
+import { AnimatedSection } from "../common/animated-section";
 
 export function HeroSection() {
   const heroVideo = placeholderImages.find(p => p.id === 'hero-video');
@@ -44,12 +45,8 @@ export function HeroSection() {
         style={{ y: contentY, opacity }}
         className="relative z-20 text-center text-white container px-4"
       >
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-            className="flex justify-center items-center gap-3 mb-4 bg-black/20 backdrop-blur-sm rounded-full px-4 py-2 w-fit mx-auto"
-          >
+        <AnimatedSection once={false}>
+          <div className="flex justify-center items-center gap-3 mb-4 bg-black/20 backdrop-blur-sm rounded-full px-4 py-2 w-fit mx-auto">
             <div className="flex text-yellow-400">
                 <Star className="w-5 h-5 fill-current" />
                 <Star className="w-5 h-5 fill-current" />
@@ -58,27 +55,18 @@ export function HeroSection() {
                 <Star className="w-5 h-5 fill-current" />
             </div>
             <p className="text-sm">4.9 Stars on Google</p>
-          </motion.div>
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
+          </div>
+          <h1 
             className="font-headline text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
           >
             Petaling Jaya’s 24/7 Budget Gym Since 2013.
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.5 }}
+          </h1>
+          <p
             className="mx-auto mt-6 max-w-3xl font-body text-lg text-neutral-200 md:text-xl"
           >
             Train Anytime. RM12 Entry. RM110 Monthly. No Excuses.
-          </motion.p>
-          <motion.div 
-            initial={{ opacity: 0, y: 20, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ delay: 0.5, type: "spring", stiffness: 150, damping: 15 }}
+          </p>
+          <div
             className="mt-8 flex justify-center gap-4"
           >
             <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold">
@@ -91,7 +79,8 @@ export function HeroSection() {
                 Visit Us Today
               </Link>
             </Button>
-          </motion.div>
+          </div>
+        </AnimatedSection>
       </motion.div>
     </section>
   );
