@@ -1,7 +1,9 @@
 
+"use client";
+
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { motion } from 'framer-motion';
 
 const plans = [
   {
@@ -24,21 +26,51 @@ const plans = [
   },
 ];
 
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 100, damping: 15 },
+  },
+};
+
 export function MembershipSection() {
   return (
-    <section id="membership" className="bg-black py-20 md:py-28">
+    <section id="membership" className="bg-black py-20 md:py-28 overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="text-left mb-12">
+        <motion.div 
+            className="text-left mb-12"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ type: 'spring', stiffness: 100 }}
+        >
             <p className="font-semibold text-primary tracking-widest uppercase">
                 Our Memberships
             </p>
             <h2 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tight">
                 MORE <span className="text-primary">OPTIONS</span>, <br /> MORE VALUE.
             </h2>
-        </div>
-        <div className="grid max-w-5xl mx-auto gap-8 md:grid-cols-3">
+        </motion.div>
+        <motion.div 
+          className="grid max-w-5xl mx-auto gap-8 md:grid-cols-3"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           {plans.map((plan, index) => (
-            <div key={index}>
+            <motion.div key={index} variants={itemVariants}>
               <Card className="flex flex-col h-full bg-transparent border-white/20 rounded-lg p-6">
                 <CardHeader className="p-0 text-left">
                   <p className="text-lg font-bold tracking-widest uppercase text-primary">{plan.title}</p>
@@ -57,12 +89,18 @@ export function MembershipSection() {
                   </ul>
                 </CardContent>
               </Card>
-            </div>
+            </motion.div>
           ))}
-        </div>
-        <div className="mt-12 text-center">
+        </motion.div>
+        <motion.div 
+            className="mt-12 text-center"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.8 }}
+            transition={{ type: 'spring', stiffness: 100 }}
+        >
             <Button variant="outline" size="lg">View All Plans</Button>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

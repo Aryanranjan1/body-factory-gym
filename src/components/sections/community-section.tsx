@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Instagram, Facebook, Youtube } from "lucide-react";
 import { placeholderImages } from "@/lib/placeholder-images";
 import Link from 'next/link';
+import { AnimatedSection } from '../common/animated-section';
 
 const carouselSlides = [
   {
@@ -81,7 +82,7 @@ export function CommunitySection() {
   }, [api]);
 
   return (
-    <section id="community" className="bg-background text-foreground py-20 md:py-28">
+    <AnimatedSection id="community" className="bg-background text-foreground py-20 md:py-28">
       <div className="container mx-auto px-4">
         
         <div>
@@ -202,6 +203,6 @@ export function CommunitySection() {
             </div>
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 }

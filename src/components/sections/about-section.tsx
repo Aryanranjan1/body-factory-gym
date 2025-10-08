@@ -3,9 +3,11 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { placeholderImages } from "@/lib/placeholder-images";
 import { Button } from "../ui/button";
+import { AnimatedSection } from "../common/animated-section";
+import React from 'react';
 
 const leftImageIds = ["about-1", "about-3"];
 const rightImageIds = ["about-2", "about-4"];
@@ -15,6 +17,8 @@ const getImageById = (id: string) => placeholderImages.find(p => p.id === id);
 export function AboutSection() {
   const [currentLeftIndex, setCurrentLeftIndex] = useState(0);
   const [currentRightIndex, setCurrentRightIndex] = useState(0);
+  const ref = React.useRef(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
 
   useEffect(() => {
     const leftInterval = setInterval(() => {
@@ -22,7 +26,6 @@ export function AboutSection() {
     }, 5000);
 
     const rightInterval = setInterval(() => {
-      // Add a slight delay to desynchronize the two image changes
       setTimeout(() => {
         setCurrentRightIndex((prevIndex) => (prevIndex + 1) % rightImageIds.length);
       }, 2500);
@@ -37,11 +40,19 @@ export function AboutSection() {
   const currentLeftImage = getImageById(leftImageIds[currentLeftIndex]);
   const currentRightImage = getImageById(rightImageIds[currentRightIndex]);
 
+  const textX = useTransform(scrollYProgress, [0, 1], ['-80px', '0px']);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+  const imagesX = useTransform(scrollYProgress, [0, 1], ['80px', '0px']);
+  const imagesOpacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
+
   return (
-    <section id="about-us" className="bg-black text-white py-20 md:py-28">
+    <section id="about-us" ref={ref} className="bg-black text-white py-20 md:py-28 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="flex gap-4 sm:gap-8 justify-center">
+          <motion.div 
+            style={{ x: imagesX, opacity: imagesOpacity }}
+            className="flex gap-4 sm:gap-8 justify-center"
+          >
             <div className="w-1/2 relative aspect-[3/4] rounded-lg overflow-hidden mt-8">
               <AnimatePresence initial={false}>
                 {currentLeftImage && (
@@ -86,8 +97,11 @@ export function AboutSection() {
                 )}
               </AnimatePresence>
             </div>
-          </div>
-          <div className="space-y-6">
+          </motion.div>
+          <motion.div 
+            style={{ x: textX, opacity: textOpacity }}
+            className="space-y-6"
+          >
             <p className="font-semibold text-primary tracking-widest uppercase">
               What We Believe
             </p>
@@ -100,7 +114,7 @@ export function AboutSection() {
             <Button variant="outline" size="lg" asChild className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
               <a href="#testimonials">Discover Why Members Love Us</a>
             </Button>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

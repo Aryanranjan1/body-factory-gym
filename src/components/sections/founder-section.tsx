@@ -1,7 +1,11 @@
 
+"use client";
+
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { placeholderImages } from "@/lib/placeholder-images";
+import { AnimatedSection } from "../common/animated-section";
+import { motion } from 'framer-motion';
 
 const founderImage = placeholderImages.find((p) => p.id === "founder");
 
@@ -11,12 +15,40 @@ const pressLogos = [
     { name: "Bernama", url: "https://www.bernama.com/", hint: "Bernama logo" }
 ]
 
+const sentence = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delay: 0.5,
+      staggerChildren: 0.04,
+    },
+  },
+}
+
+const letter = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+  },
+}
+
 export function FounderSection() {
+  const line1 = "LED BY A CHAMPION.";
+  const line2 = "BUILT FOR CHAMPIONS.";
+
   return (
-    <section className="bg-black text-white py-20 md:py-28">
+    <AnimatedSection className="bg-black text-white py-20 md:py-28 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="lg:order-first">
+            <motion.div 
+              className="lg:order-first"
+              initial={{ opacity: 0, x: 80 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ type: 'spring', stiffness: 80, damping: 20, delay: 0.5 }}
+            >
                 {founderImage && (
                     <div className="relative aspect-square max-w-md mx-auto">
                         <Image
@@ -28,14 +60,33 @@ export function FounderSection() {
                         />
                     </div>
                 )}
-            </div>
+            </motion.div>
             <div className="space-y-6">
                 <p className="font-semibold text-primary tracking-widest uppercase">
                   MEET THE FOUNDER
                 </p>
-                <h1 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tight uppercase">
-                   LED BY A <span className="text-primary">CHAMPION</span>. BUILT FOR <span className="text-primary">CHAMPIONS</span>.
-                </h1>
+                <motion.h1 
+                  className="font-headline text-5xl md:text-6xl font-extrabold tracking-tight uppercase"
+                  variants={sentence}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{once: true}}
+                >
+                   <span className="block">
+                    {line1.split("").map((char, index) => (
+                      <motion.span key={char + "-" + index} variants={letter}>
+                        {char}
+                      </motion.span>
+                    ))}
+                  </span>
+                  <span className="text-primary block">
+                    {line2.split("").map((char, index) => (
+                      <motion.span key={char + "-" + index} variants={letter}>
+                        {char}
+                      </motion.span>
+                    ))}
+                  </span>
+                </motion.h1>
                 <p className="text-lg text-muted-foreground">
                     Our founder, Mr. Kumareswarren, transformed himself from a 110kg enthusiast into the Mr. Malaysia 2023 Champion. He built Body Factory on the principles of hard work, dedication, and community, and he is passionate about helping everyone unlock their true potential.
                 </p>
@@ -49,10 +100,17 @@ export function FounderSection() {
                         ))}
                     </div>
                 </div>
-                 <Button size="lg">Train with Kumareswarren</Button>
+                 <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true, amount: 0.8 }}
+                    transition={{ type: 'spring', stiffness: 150, damping: 10, delay: 1 }}
+                 >
+                    <Button size="lg">Train with Kumareswarren</Button>
+                 </motion.div>
             </div>
         </div>
       </div>
-    </section>
+    </AnimatedSection>
   );
 }

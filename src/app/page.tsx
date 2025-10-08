@@ -1,3 +1,4 @@
+
 import { HeroSection } from "@/components/sections/hero-section";
 import { AboutSection } from "@/components/sections/about-section";
 import { FounderSection } from "@/components/sections/founder-section";
