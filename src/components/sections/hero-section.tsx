@@ -5,20 +5,36 @@ import Link from 'next/link';
 
 export function HeroSection() {
   const heroImage = placeholderImages.find(p => p.id === 'hero-background');
+  const heroVideo = placeholderImages.find(p => p.id === 'hero-video');
 
   return (
-    <section className="relative h-[calc(100vh-3.5rem)] w-full flex items-center justify-center">
+    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
       {heroImage && (
         <Image
           src={heroImage.imageUrl}
           alt={heroImage.description}
           fill
-          className="object-cover"
+          className="object-cover blur-sm scale-105"
+          placeholder="blur"
+          blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8/wcAAtMB1tSK/s0AAAAASUVORK5CYII="
           priority
           data-ai-hint={heroImage.imageHint}
         />
       )}
-      <div className="absolute inset-0 bg-black/60" />
+      {heroVideo && (
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute z-0 w-auto min-w-full min-h-full max-w-none"
+          poster={heroImage?.imageUrl}
+        >
+          <source src={heroVideo.imageUrl} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      )}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent from-0% via-20% to-40%" />
       <div className="relative z-10 text-center text-white container px-4">
           <h1 className="font-headline text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
             {/* CMS: hero_headline */}

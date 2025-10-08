@@ -7,6 +7,12 @@
       "imageHint": "gym owner"
     },
     {
+      "id": "hero-video",
+      "description": "A dynamic video showcasing the Body Factory Gym atmosphere.",
+      "imageUrl": "https://storage.googleapis.com/builder-next-example-1-project-assets/hero-video.mp4",
+      "imageHint": "gym video"
+    },
+    {
       "id": "founder",
       "description": "Mr. Kumareswarren, Mr. Malaysia 2023 Champion",
       "imageUrl": "https://picsum.photos/seed/bf-founder/400/400",
