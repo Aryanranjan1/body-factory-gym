@@ -8,6 +8,7 @@ import { ContactSection } from "@/components/sections/contact-section";
 import { CommunitySection } from "@/components/sections/community-section";
 import InteractiveImageBentoGallery from "@/components/ui/bento-gallery";
 import { GallerySection } from "@/components/sections/gallery-section";
+import { AnimatedSection } from "@/components/common/animated-section";
 
 const bentoItems = [
   {
@@ -125,11 +126,13 @@ export default function Home() {
     <>
       <HeroSection />
       <AboutSection />
-      <InteractiveImageBentoGallery
-        items={bentoItems}
-        title="World-Class Facilities"
-        description="A tour of our zones, designed for every fitness goal. Drag to explore, click to expand."
-      />
+      <AnimatedSection>
+        <InteractiveImageBentoGallery
+          items={bentoItems}
+          title="World-Class Facilities"
+          description="A tour of our zones, designed for every fitness goal. Drag to explore, click to expand."
+        />
+      </AnimatedSection>
       <FounderSection />
       <CommunitySection />
       <MembershipSection />
