@@ -34,8 +34,8 @@ export function HeroSection() {
           Your browser does not support the video tag.
         </video>
       )}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent from-0% via-20% to-40%" />
-      <div className="relative z-10 text-center text-white container px-4">
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent from-0% via-20% to-40% z-10" />
+      <div className="relative z-20 text-center text-white container px-4">
           <h1 className="font-headline text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
             {/* CMS: hero_headline */}
             Train Like a Champion, Anytime—24/7.
