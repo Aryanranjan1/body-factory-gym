@@ -135,11 +135,6 @@ export function Footer() {
       <div className="border-t border-border/40 py-6">
         <div className="container mx-auto px-4 flex justify-between items-center text-center text-sm">
           <p>&copy; {new Date().getFullYear()} Body Factory Gym. All rights reserved.</p>
-          <Button asChild size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold">
-            <Link href="#contact-us">
-              Start Free Trial
-            </Link>
-          </Button>
         </div>
       </div>
     </footer>
