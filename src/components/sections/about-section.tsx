@@ -22,7 +22,7 @@ const pillars = [
 
 export function AboutSection() {
   return (
-    <AnimatedSection className="bg-background">
+    <AnimatedSection id="about-us" className="bg-background">
       <div className="text-center">
         <h2 className="font-headline text-3xl font-extrabold tracking-tight sm:text-4xl">
           {/* CMS: about_headline */}
