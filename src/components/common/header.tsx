@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Dumbbell, Heart, Search, ShoppingBag, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -67,7 +69,7 @@ export function Header() {
               </NavigationMenuItem>
               <NavigationMenuItem>
                  <Link href="/#about-us" legacyBehavior passHref>
-                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-yellow-400")}>
+                  <NavigationMenuLink className={cn(navigationMenuTriggerStyle())}>
                     About
                   </NavigationMenuLink>
                 </Link>
