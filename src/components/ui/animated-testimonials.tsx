@@ -2,10 +2,11 @@
 "use client";
 
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { cn } from "@/lib/utils";
+import { ReactCompareSlider, ReactCompareSliderImage } from "react-compare-slider";
 
 type Testimonial = {
   quote: string;
@@ -25,25 +26,67 @@ export const AnimatedTestimonials = ({
   className?: string;
 }) => {
   const [active, setActive] = useState(0);
+  const [isInteracting, setIsInteracting] = useState(false);
+  const autoplayTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const interactionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const sliderControls = useAnimation();
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setActive((prev) => (prev + 1) % testimonials.length);
-  };
+  }, [testimonials.length]);
 
   const handlePrev = () => {
     setActive((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
-  const isActive = (index: number) => {
-    return index === active;
+  const startAutoplay = useCallback(() => {
+    if (autoplayTimeoutRef.current) {
+      clearInterval(autoplayTimeoutRef.current);
+    }
+    autoplayTimeoutRef.current = setInterval(() => {
+      if (!isInteracting) {
+        handleNext();
+      }
+    }, 15000); // Increased to 15 seconds
+  }, [isInteracting, handleNext]);
+
+  const resetInteractionTimer = useCallback(() => {
+    if (interactionTimeoutRef.current) {
+      clearTimeout(interactionTimeoutRef.current);
+    }
+    interactionTimeoutRef.current = setTimeout(() => {
+      setIsInteracting(false);
+      startAutoplay(); // Resume autoplay after 10s of inactivity
+    }, 10000); // 10 seconds
+  }, [startAutoplay]);
+
+  const handleSliderInteraction = () => {
+    setIsInteracting(true);
+    if (autoplayTimeoutRef.current) {
+      clearInterval(autoplayTimeoutRef.current);
+    }
+    resetInteractionTimer();
   };
+
 
   useEffect(() => {
     if (autoplay) {
-      const interval = setInterval(handleNext, 7000);
-      return () => clearInterval(interval);
+      startAutoplay();
     }
-  }, [autoplay, testimonials.length]);
+    return () => {
+      if (autoplayTimeoutRef.current) clearInterval(autoplayTimeoutRef.current);
+      if (interactionTimeoutRef.current) clearTimeout(interactionTimeoutRef.current);
+    };
+  }, [autoplay, startAutoplay]);
+
+  useEffect(() => {
+    // Animate slider on active testimonial change
+    sliderControls.set({ x: "100%" });
+    sliderControls.start({
+      x: "0%",
+      transition: { duration: 0.8, ease: "easeInOut", delay: 0.5 },
+    });
+  }, [active, sliderControls]);
 
 
   return (
@@ -57,30 +100,22 @@ export const AnimatedTestimonials = ({
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.8 }}
                     transition={{ duration: 0.5, ease: "easeInOut" }}
-                    className="absolute inset-0 grid grid-cols-2 gap-4"
+                    className="absolute inset-0"
+                    onPointerDown={handleSliderInteraction}
                 >
-                    <div className="relative h-full w-full">
-                        <Image
-                            src={testimonials[active].beforeSrc}
-                            alt={`${testimonials[active].name} - Before`}
-                            width={500}
-                            height={500}
-                            draggable={false}
-                            className="h-full w-full rounded-3xl object-cover object-center"
+                    <ReactCompareSlider
+                      itemOne={<ReactCompareSliderImage src={testimonials[active].beforeSrc} alt="Before" />}
+                      itemTwo={<ReactCompareSliderImage src={testimonials[active].afterSrc} alt="After" />}
+                      className="h-full w-full rounded-3xl object-cover object-center overflow-hidden"
+                      handle={
+                        <motion.div
+                          className="h-full w-2 bg-white/80 backdrop-blur-sm"
+                          animate={sliderControls}
                         />
-                         <div className="absolute bottom-2 left-2 bg-black/50 text-white text-xs font-semibold px-2 py-1 rounded">BEFORE</div>
-                    </div>
-                     <div className="relative h-full w-full">
-                        <Image
-                            src={testimonials[active].afterSrc}
-                            alt={`${testimonials[active].name} - After`}
-                            width={500}
-                            height={500}
-                            draggable={false}
-                            className="h-full w-full rounded-3xl object-cover object-center"
-                        />
-                        <div className="absolute bottom-2 left-2 bg-primary text-white text-xs font-semibold px-2 py-1 rounded">AFTER</div>
-                    </div>
+                      }
+                   />
+                   <div className="absolute top-2 left-2 bg-black/50 text-white text-xs font-semibold px-2 py-1 rounded">BEFORE</div>
+                   <div className="absolute top-2 right-2 bg-primary text-white text-xs font-semibold px-2 py-1 rounded">AFTER</div>
                 </motion.div>
             </AnimatePresence>
         </div>
