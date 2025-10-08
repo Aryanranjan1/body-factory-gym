@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useRef, useState, useEffect } from "react"
@@ -160,18 +161,20 @@ const InteractiveImageBentoGallery: React.FC<
       ref={targetRef}
       className="relative w-full overflow-hidden bg-background py-16 sm:py-24"
     >
-      <div
-        className="container mx-auto px-4 text-center"
-      >
-        <p className="font-semibold text-primary tracking-widest uppercase">
-          Discover Our Spaces
-        </p>
-        <h2 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tight">
-          <span className="text-primary">WORLD-CLASS</span> FACILITIES
-        </h2>
-        <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-          {description}
-        </p>
+      <div className="container mx-auto px-4">
+        <div className="md:flex md:justify-between md:items-end text-center md:text-left">
+          <div>
+            <p className="font-semibold text-primary tracking-widest uppercase">
+              Discover Our Spaces
+            </p>
+            <h2 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tight">
+              <span className="text-primary">WORLD-CLASS</span> FACILITIES
+            </h2>
+          </div>
+          <p className="mt-4 md:mt-0 max-w-2xl md:max-w-xs md:text-right text-lg text-muted-foreground mx-auto md:mx-0">
+            {description}
+          </p>
+        </div>
       </div>
 
       <div
