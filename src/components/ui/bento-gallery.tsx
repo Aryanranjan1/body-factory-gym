@@ -8,7 +8,7 @@ import {
   AnimatePresence,
 } from "framer-motion"
 import { cn } from "@/lib/utils"
-import { X, Check } from "lucide-react"
+import { X, Check, Target, Dumbbell, Sparkles } from "lucide-react"
 import { Button } from "./button"
 
 type BentoItem = {
@@ -20,6 +20,9 @@ type BentoItem = {
   imageHint: string
   features?: string[]
   cta?: string
+  targetAudience?: string;
+  equipment?: string[];
+  coachTip?: string;
 }
 
 interface InteractiveImageBentoGalleryProps {
@@ -84,17 +87,31 @@ const DetailModal = ({
             <h2 className="text-3xl font-bold font-headline text-primary mb-2">{item.title}</h2>
             <p className="text-lg text-muted-foreground mb-6">{item.desc}</p>
             
-            {item.features && (
-                <div className="mb-8">
-                    <h3 className="font-semibold text-foreground mb-3">Key Features</h3>
-                    <ul className="space-y-3">
-                        {item.features.map((feature, index) => (
+            {item.targetAudience && (
+                 <div className="mb-6">
+                    <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2"><Target className="w-5 h-5 text-primary" /> Who It's For</h3>
+                    <p className="text-muted-foreground">{item.targetAudience}</p>
+                </div>
+            )}
+
+            {item.equipment && item.equipment.length > 0 && (
+                <div className="mb-6">
+                    <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2"><Dumbbell className="w-5 h-5 text-primary" /> Key Equipment</h3>
+                    <ul className="space-y-2">
+                        {item.equipment.map((equip, index) => (
                              <li key={index} className="flex items-start gap-3">
-                                <Check className="h-5 w-5 flex-shrink-0 text-green-500 mt-1" />
-                                <span className="text-muted-foreground">{feature}</span>
+                                <Check className="h-4 w-4 flex-shrink-0 text-green-500 mt-1" />
+                                <span className="text-muted-foreground text-sm">{equip}</span>
                             </li>
                         ))}
                     </ul>
+                </div>
+            )}
+
+            {item.coachTip && (
+                 <div className="mb-8 p-4 bg-secondary rounded-lg border border-border">
+                    <h3 className="font-semibold text-foreground mb-2 flex items-center gap-2"><Sparkles className="w-5 h-5 text-primary" /> Coach's Tip</h3>
+                    <p className="text-muted-foreground italic text-sm">"{item.coachTip}"</p>
                 </div>
             )}
             
