@@ -87,7 +87,7 @@ export function CommunitySection() {
         <div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
             <div>
-              <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">
+              <h2 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tight">
                 JOIN THE <span className="text-primary">COMMUNITY</span>
               </h2>
             </div>
