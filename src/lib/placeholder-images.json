@@ -71,6 +71,18 @@
       "description": "Man working out in a gym",
       "imageUrl": "https://picsum.photos/seed/bf-contact/1200/800",
       "imageHint": "gym workout"
+    },
+    {
+      "id": "recipe-smoothie",
+      "description": "High-protein smoothie in a gym bottle",
+      "imageUrl": "https://picsum.photos/seed/recipe-smoothie/400/400",
+      "imageHint": "protein shake"
+    },
+    {
+      "id": "core-workout",
+      "description": "Person doing a core workout on a mat",
+      "imageUrl": "https://picsum.photos/seed/core-workout/400/400",
+      "imageHint": "core exercise"
     }
   ]
 }
