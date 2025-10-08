@@ -133,7 +133,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-border/40 py-6">
-        <div className="container mx-auto px-4 flex justify-between items-center text-center text-sm">
+        <div className="container mx-auto px-4 flex justify-center items-center text-center text-sm">
           <p>&copy; {new Date().getFullYear()} Body Factory Gym. All rights reserved.</p>
         </div>
       </div>
