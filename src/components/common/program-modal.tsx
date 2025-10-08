@@ -2,9 +2,11 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { X, Check } from "lucide-react";
+import { X, Check, Dumbbell, Target, MessageSquareQuote } from "lucide-react";
 import type { Program } from "@/lib/definitions";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 type ProgramModalProps = {
   program: Program | null;
@@ -46,7 +48,7 @@ export function ProgramModal({ program, isOpen, onClose }: ProgramModalProps) {
               <X className="w-6 h-6" />
             </button>
 
-            <div className="relative w-full h-1/2">
+            <div className="relative w-full h-1/3">
               <Image
                 src={program.image.imageUrl}
                 alt={program.title}
@@ -59,17 +61,46 @@ export function ProgramModal({ program, isOpen, onClose }: ProgramModalProps) {
 
             <div className="flex-grow p-8 overflow-y-auto">
               <h2 className="text-4xl font-extrabold text-primary">{program.title}</h2>
-              <p className="mt-4 text-lg text-muted-foreground">{program.details.description}</p>
+              <p className="mt-2 text-lg text-muted-foreground">{program.details.description}</p>
               
-              <h3 className="mt-8 text-2xl font-bold">Features & Benefits</h3>
-              <ul className="mt-4 space-y-3">
-                {program.details.features.map((feature, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <Check className="h-5 w-5 flex-shrink-0 text-green-500 mt-1" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h3 className="flex items-center gap-2 text-xl font-bold"><Target className="w-5 h-5 text-primary" /> Who It's For</h3>
+                  <p className="mt-2 text-muted-foreground">{program.details.targetAudience}</p>
+                </div>
+                <div>
+                  <h3 className="flex items-center gap-2 text-xl font-bold"><Check className="w-5 h-5 text-green-500" /> Core Features</h3>
+                  <ul className="mt-2 space-y-2">
+                    {program.details.features.map((feature, index) => (
+                      <li key={index} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <span className="text-green-500 mt-1">✓</span>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="mt-8">
+                 <h3 className="flex items-center gap-2 text-xl font-bold mb-4"><Dumbbell className="w-5 h-5 text-primary" /> Sample Workout</h3>
+                 <Card>
+                    <CardContent className="p-4">
+                        <p className="font-semibold text-primary">{program.details.sampleWorkout.day}</p>
+                        <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
+                            {program.details.sampleWorkout.exercises.map((ex, i) => <li key={i}>{ex}</li>)}
+                        </ul>
+                    </CardContent>
+                 </Card>
+              </div>
+
+               <div className="mt-8">
+                 <h3 className="flex items-center gap-2 text-xl font-bold mb-4"><MessageSquareQuote className="w-5 h-5 text-primary" /> Coach's Tip</h3>
+                 <Card className="bg-secondary border-primary/50 border-l-4">
+                    <CardContent className="p-4">
+                        <p className="italic text-muted-foreground">"{program.details.coachTip}"</p>
+                    </CardContent>
+                 </Card>
+              </div>
 
               <div className="mt-10">
                 <Button size="lg" className="w-full sm:w-auto">Start This Program</Button>

@@ -28,6 +28,12 @@ export type Program = {
   image: ImagePlaceholder;
   details: {
     description: string;
+    targetAudience: string;
     features: string[];
+    sampleWorkout: {
+      day: string;
+      exercises: string[];
+    };
+    coachTip: string;
   };
 };
