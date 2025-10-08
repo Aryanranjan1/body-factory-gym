@@ -39,7 +39,7 @@ export function MembershipSection() {
         <div className="grid max-w-5xl mx-auto gap-8 md:grid-cols-3">
           {plans.map((plan, index) => (
             <div key={index}>
-              <Card className="flex flex-col h-full bg-transparent border-border/50 rounded-lg p-6">
+              <Card className="flex flex-col h-full bg-transparent border-white/20 rounded-lg p-6">
                 <CardHeader className="p-0 text-left">
                   <p className="text-lg font-bold tracking-widest uppercase text-primary">{plan.title}</p>
                   <CardTitle className="font-semibold tracking-wider uppercase text-foreground/50 text-sm">
