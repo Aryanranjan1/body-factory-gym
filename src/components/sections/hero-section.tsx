@@ -9,7 +9,7 @@ export function HeroSection() {
 
   return (
     <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-      {heroImage && (
+      {/* {heroImage && (
         <Image
           src={heroImage.imageUrl}
           alt={heroImage.description}
@@ -20,7 +20,7 @@ export function HeroSection() {
           priority
           data-ai-hint={heroImage.imageHint}
         />
-      )}
+      )} */}
       {heroVideo && (
         <video
           autoPlay
