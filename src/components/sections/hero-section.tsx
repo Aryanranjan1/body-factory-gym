@@ -1,10 +1,8 @@
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { placeholderImages } from "@/lib/placeholder-images";
 import Link from 'next/link';
 
 export function HeroSection() {
-  const heroImage = placeholderImages.find(p => p.id === 'hero-background');
   const heroVideo = placeholderImages.find(p => p.id === 'hero-video');
 
   return (
@@ -15,14 +13,13 @@ export function HeroSection() {
           loop
           muted
           playsInline
-          className="absolute z-0 w-auto min-w-full min-h-full max-w-none"
-          poster={heroImage?.imageUrl}
+          className="absolute z-0 w-auto min-w-full min-h-full max-w-none object-cover"
         >
           <source src={heroVideo.imageUrl} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       )}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
       <div className="relative z-20 text-center text-white container px-4">
           <h1 className="font-headline text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
             {/* CMS: hero_headline */}
