@@ -95,15 +95,17 @@ export function AboutSection() {
   const line2 = "LIVE FIT.";
 
   return (
-    <motion.section 
+    <section 
       id="about-us" 
       className="bg-black text-white py-20 md:py-28 overflow-hidden"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: false, amount: 0.3 }}
-      variants={containerVariants}
     >
-      <div className="container mx-auto px-4">
+      <motion.div
+        className="container mx-auto px-4"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.3 }}
+        variants={containerVariants}
+      >
         <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div 
             variants={imageContainerVariants}
@@ -196,7 +198,7 @@ export function AboutSection() {
             </motion.div>
           </motion.div>
         </div>
-      </div>
-    </motion.section>
+      </motion.div>
+    </section>
   );
 }
