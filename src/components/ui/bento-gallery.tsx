@@ -1,9 +1,11 @@
 
 "use client"
 
-import React, { useState } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import {
   motion,
+  useScroll,
+  useTransform,
   AnimatePresence,
 } from "framer-motion"
 import { cn } from "@/lib/utils"
@@ -19,9 +21,9 @@ type BentoItem = {
   imageHint: string
   features?: string[]
   cta?: string
-  targetAudience?: string;
-  equipment?: string[];
-  coachTip?: string;
+  targetAudience?: string
+  equipment?: string[]
+  coachTip?: string
 }
 
 interface InteractiveImageBentoGalleryProps {
@@ -73,52 +75,64 @@ const DetailModal = ({
         onClick={(e) => e.stopPropagation()}
       >
         <div className="w-full md:w-1/2 h-64 md:h-auto relative">
-            <img
-                src={item.url}
-                alt={item.title}
-                data-ai-hint={item.imageHint}
-                className="absolute inset-0 h-full w-full object-cover"
-            />
-             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+          <img
+            src={item.url}
+            alt={item.title}
+            data-ai-hint={item.imageHint}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         </div>
 
         <div className="w-full md:w-1/2 p-8 overflow-y-auto">
-            <h2 className="text-3xl font-bold font-headline text-primary mb-2">{item.title}</h2>
-            <p className="text-lg text-muted-foreground mb-6">{item.desc}</p>
-            
-            {item.targetAudience && (
-                 <div className="mb-6">
-                    <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2"><Target className="w-5 h-5 text-primary" /> Who It's For</h3>
-                    <p className="text-muted-foreground">{item.targetAudience}</p>
-                </div>
-            )}
+          <h2 className="text-3xl font-bold font-headline text-primary mb-2">
+            {item.title}
+          </h2>
+          <p className="text-lg text-muted-foreground mb-6">{item.desc}</p>
 
-            {item.equipment && item.equipment.length > 0 && (
-                <div className="mb-6">
-                    <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2"><Dumbbell className="w-5 h-5 text-primary" /> Key Equipment</h3>
-                    <ul className="space-y-2">
-                        {item.equipment.map((equip, index) => (
-                             <li key={index} className="flex items-start gap-3">
-                                <Check className="h-4 w-4 flex-shrink-0 text-green-500 mt-1" />
-                                <span className="text-muted-foreground text-sm">{equip}</span>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            )}
+          {item.targetAudience && (
+            <div className="mb-6">
+              <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                <Target className="w-5 h-5 text-primary" /> Who It's For
+              </h3>
+              <p className="text-muted-foreground">{item.targetAudience}</p>
+            </div>
+          )}
 
-            {item.coachTip && (
-                 <div className="mb-8 p-4 bg-secondary rounded-lg border border-border">
-                    <h3 className="font-semibold text-foreground mb-2 flex items-center gap-2"><Sparkles className="w-5 h-5 text-primary" /> Coach's Tip</h3>
-                    <p className="text-muted-foreground italic text-sm">"{item.coachTip}"</p>
-                </div>
-            )}
-            
-            {item.cta && (
-                 <Button size="lg" className="w-full">
-                    {item.cta}
-                </Button>
-            )}
+          {item.equipment && item.equipment.length > 0 && (
+            <div className="mb-6">
+              <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                <Dumbbell className="w-5 h-5 text-primary" /> Key Equipment
+              </h3>
+              <ul className="space-y-2">
+                {item.equipment.map((equip, index) => (
+                  <li key={index} className="flex items-start gap-3">
+                    <Check className="h-4 w-4 flex-shrink-0 text-green-500 mt-1" />
+                    <span className="text-muted-foreground text-sm">
+                      {equip}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {item.coachTip && (
+            <div className="mb-8 p-4 bg-secondary rounded-lg border border-border">
+              <h3 className="font-semibold text-foreground mb-2 flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-primary" /> Coach's Tip
+              </h3>
+              <p className="text-muted-foreground italic text-sm">
+                "{item.coachTip}"
+              </p>
+            </div>
+          )}
+
+          {item.cta && (
+            <Button size="lg" className="w-full">
+              {item.cta}
+            </Button>
+          )}
         </div>
       </motion.div>
       <button
@@ -136,13 +150,43 @@ const InteractiveImageBentoGallery: React.FC<
   InteractiveImageBentoGalleryProps
 > = ({ items, title, description }) => {
   const [selectedItem, setSelectedItem] = useState<BentoItem | null>(null)
+  const [dragConstraint, setDragConstraint] = useState(0)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const gridRef = useRef<HTMLDivElement>(null)
+  const targetRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const calculateConstraints = () => {
+      if (gridRef.current && containerRef.current) {
+        const containerWidth = containerRef.current.offsetWidth
+        const gridWidth = gridRef.current.scrollWidth
+        const newConstraint = Math.min(0, containerWidth - gridWidth - 32)
+        setDragConstraint(newConstraint)
+      }
+    }
+
+    calculateConstraints()
+    window.addEventListener("resize", calculateConstraints)
+    return () => window.removeEventListener("resize", calculateConstraints)
+  }, [items])
+
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start end", "end start"],
+  })
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
+  const y = useTransform(scrollYProgress, [0, 0.2], [30, 0])
 
   return (
     <section
+      ref={targetRef}
       className="relative w-full overflow-hidden bg-card py-16 sm:py-24"
     >
-      <div className="container mx-auto px-4">
-        <div 
+      <motion.div
+        style={{ opacity, y }}
+        className="container mx-auto px-4"
+      >
+         <div 
           className="md:flex md:items-center md:justify-between text-center md:text-left"
         >
           <div>
@@ -157,22 +201,32 @@ const InteractiveImageBentoGallery: React.FC<
             {description}
           </p>
         </div>
-      </div>
+      </motion.div>
 
-      <div className="container mx-auto px-4 mt-12">
+      <div
+        ref={containerRef}
+        className="relative mt-12 w-full cursor-grab active:cursor-grabbing"
+      >
         <motion.div
-            className="grid grid-cols-1 md:grid-cols-4 auto-rows-[20rem] gap-4"
+          className="w-max"
+          drag="x"
+          dragConstraints={{ left: dragConstraint, right: 0 }}
+          dragElastic={0.05}
+        >
+          <motion.div
+            ref={gridRef}
+            className="grid auto-cols-[minmax(15rem,1fr)] grid-flow-col gap-4 px-4 md:px-8"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
-        >
+          >
             {items.map((item) => (
               <motion.div
                 key={item.id}
                 variants={itemVariants}
                 className={cn(
-                  "group relative flex h-full w-full cursor-pointer items-end overflow-hidden rounded-xl border bg-card p-4 shadow-sm transition-shadow duration-300 ease-in-out hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                  "group relative flex h-full min-h-[20rem] w-full min-w-[20rem] cursor-pointer items-end overflow-hidden rounded-xl border bg-card p-4 shadow-sm transition-shadow duration-300 ease-in-out hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                   item.span,
                 )}
                 whileHover={{ scale: 1.02 }}
@@ -195,6 +249,7 @@ const InteractiveImageBentoGallery: React.FC<
                 </div>
               </motion.div>
             ))}
+          </motion.div>
         </motion.div>
       </div>
 
@@ -208,3 +263,5 @@ const InteractiveImageBentoGallery: React.FC<
 }
 
 export default InteractiveImageBentoGallery
+
+    
