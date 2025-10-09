@@ -123,7 +123,7 @@ export const bentoItems = [
       title: "Cardio Zone",
       desc: "Boost your endurance.",
       url: "https://images.unsplash.com/photo-1723117418780-1b74b25af9bc?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      span: "md:row-span-1",
+      span: "md:col-span-1 md:row-span-1",
       imageHint: "cardio machines",
       targetAudience: "Individuals aiming to improve cardiovascular health, increase stamina, or manage weight.",
        equipment: [
@@ -141,7 +141,7 @@ export const bentoItems = [
       title: "Functional Training",
       desc: "Move with purpose.",
       url: "https://plus.unsplash.com/premium_photo-1713251456388-484a1cc64209?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      span: "md:row-span-1",
+      span: "md:col-span-1 md:row-span-1",
       imageHint: "functional training",
       targetAudience: "Athletes and individuals who want to improve real-world strength, coordination, and mobility.",
        equipment: [
@@ -159,7 +159,7 @@ export const bentoItems = [
       title: "Personal Training",
       desc: "Expert guidance tailored to you.",
       url: "https://plus.unsplash.com/premium_photo-1663050901483-ee8703cc8372?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      span: "md:row-span-2",
+      span: "md:col-span-1 md:row-span-2",
       imageHint: "personal trainer",
       targetAudience: "Beginners needing direction, experienced members breaking plateaus, or anyone with specific goals.",
       features: [
@@ -177,7 +177,7 @@ export const bentoItems = [
       title: "Infrared Sauna",
       desc: "Relax and accelerate recovery.",
       url: "https://images.unsplash.com/photo-1660735698223-23a4edefa264?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      span: "md:row-span-1",
+      span: "md:col-span-1 md:row-span-1",
       imageHint: "infrared sauna",
       targetAudience: "Everyone looking to reduce muscle soreness, improve circulation, and de-stress after a hard workout.",
       features: [
