@@ -53,6 +53,10 @@ export function FounderSection() {
                         className="rounded-lg object-cover"
                         data-ai-hint={founderImage.imageHint}
                         />
+                        <div 
+                          className="absolute inset-0 rounded-lg"
+                          style={{background: 'linear-gradient(to bottom, transparent 70%, black 100%)'}} 
+                        />
                     </div>
                 )}
             </motion.div>
