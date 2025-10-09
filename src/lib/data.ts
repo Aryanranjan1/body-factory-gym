@@ -16,85 +16,85 @@ export const placeholderImages: ImagePlaceholder[] = [
     {
       "id": "founder",
       "description": "Founder Kumareswarren posing with his Mr. Malaysia 2023 champion medal in the gym",
-      "imageUrl": "https://picsum.photos/seed/founder-champ/600/600",
+      "imageUrl": "https://images.unsplash.com/photo-1627063383848-990b09ca1617?q=80&w=437&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "bodybuilder champion"
     },
     {
       "id": "trainer-1",
       "description": "A fitness trainer actively coaching a client on their form during a lift",
-      "imageUrl": "https://picsum.photos/seed/trainer-coaching/400/400",
+      "imageUrl": "https://images.unsplash.com/photo-1584466977773-e625c37cdd50?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "personal trainer coaching"
     },
     {
       "id": "trainer-2",
       "description": "A yoga instructor guiding a member through a stretch in a calm gym corner",
-      "imageUrl": "https://picsum.photos/seed/yoga-instructor-gym/400/400",
+      "imageUrl": "https://plus.unsplash.com/premium_photo-1664477148527-2517908f49da?q=80&w=1117&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "yoga instructor"
     },
     {
       "id": "trainer-3",
       "description": "A crossfit coach demonstrating a kettlebell swing to a small group",
-      "imageUrl": "https://picsum.photos/seed/crossfit-coach-group/400/400",
+      "imageUrl": "https://images.unsplash.com/photo-1601422407692-ec4eeec1d9b3?q=80&w=1025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "crossfit coach"
     },
     {
       "id": "facility-cardio",
       "description": "A clean row of modern treadmills and elliptical machines, well-lit",
-      "imageUrl": "https://picsum.photos/seed/gym-cardio-zone/800/600",
+      "imageUrl": "https://images.unsplash.com/photo-1652364653960-1c23c208ef43?q=80&w=580&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "cardio machines"
     },
     {
       "id": "facility-weights",
       "description": "An organized rack of dumbbells and free weights with a person lifting in the background",
-      "imageUrl": "https://picsum.photos/seed/gym-free-weights/800/600",
+      "imageUrl": "https://images.unsplash.com/photo-1576678927484-cc907957088c?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "free weights"
     },
     {
       "id": "facility-machines",
       "description": "A view of the selectorized weight machine area, showing various stations",
-      "imageUrl": "https://picsum.photos/seed/gym-strength-machines/800/600",
+      "imageUrl": "https://images.unsplash.com/photo-1590487988256-9ed24133863e?q=80&w=428&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "gym equipment"
     },
     {
       "id": "contact-background",
       "description": "Person focused and determined while doing a deadlift",
-      "imageUrl": "https://picsum.photos/seed/gym-deadlift/1200/800",
+      "imageUrl": "https://unsplash.com/photos/a-bodybuilder-flexes-his-biceps-for-the-camera-juDsXkTMHdU",
       "imageHint": "deadlift workout"
     },
     {
       "id": "recipe-smoothie",
       "description": "High-protein smoothie in a shaker bottle next to a piece of fruit",
-      "imageUrl": "https://picsum.photos/seed/gym-recipe-smoothie/400/400",
+      "imageUrl": "https://images.unsplash.com/photo-1579722822163-0504256cf3a7?q=80&w=1031&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "protein shake"
     },
     {
       "id": "core-workout",
       "description": "Person holding a plank with good form on a gym mat",
-      "imageUrl": "https://picsum.photos/seed/gym-core-plank/400/400",
+      "imageUrl": "https://images.unsplash.com/photo-1600881333343-8b8ae0f1da56?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "plank exercise"
     },
     {
       "id": "about-1",
       "description": "Woman lifting weights in a gym",
-      "imageUrl": "https://picsum.photos/seed/woman-lifting/600/800",
+      "imageUrl": "https://images.unsplash.com/photo-1605296867304-46d5465a13f1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "woman lifting"
     },
     {
       "id": "about-2",
       "description": "Man doing pull-ups in a gym",
-      "imageUrl": "https://picsum.photos/seed/man-pullups/600/800",
+      "imageUrl": "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "man training"
     },
     {
       "id": "about-3",
       "description": "Woman doing squats with a barbell",
-      "imageUrl": "https://picsum.photos/seed/woman-squat/600/800",
+      "imageUrl": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "woman workout"
     },
     {
       "id": "about-4",
       "description": "Man working out with battle ropes",
-      "imageUrl": "https://picsum.photos/seed/man-battleropes/600/800",
+      "imageUrl": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "imageHint": "man fitness"
     }
   ];
@@ -104,7 +104,7 @@ export const bentoItems = [
       id: "strength-training",
       title: "Strength Training",
       desc: "Extensive free weights and machines.",
-      url: "https://picsum.photos/seed/bento-strength/800/600",
+      url: "https://images.unsplash.com/photo-1506197061617-7f5c0b093236?q=80&w=1118&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       span: "md:col-span-2 md:row-span-2",
       imageHint: "strength training",
       targetAudience: "Anyone looking to build muscle mass, increase raw strength, or improve body composition.",
@@ -122,7 +122,7 @@ export const bentoItems = [
       id: "cardio-zone",
       title: "Cardio Zone",
       desc: "Boost your endurance.",
-      url: "https://picsum.photos/seed/bento-cardio/800/600",
+      url: "https://images.unsplash.com/photo-1723117418780-1b74b25af9bc?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       span: "md:row-span-1",
       imageHint: "cardio machines",
       targetAudience: "Individuals aiming to improve cardiovascular health, increase stamina, or manage weight.",
@@ -140,7 +140,7 @@ export const bentoItems = [
       id: "functional-training",
       title: "Functional Training",
       desc: "Move with purpose.",
-      url: "https://picsum.photos/seed/bento-functional/800/600",
+      url: "https://plus.unsplash.com/premium_photo-1713251456388-484a1cc64209?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       span: "md:row-span-1",
       imageHint: "functional training",
       targetAudience: "Athletes and individuals who want to improve real-world strength, coordination, and mobility.",
@@ -158,7 +158,7 @@ export const bentoItems = [
       id: "personal-training",
       title: "Personal Training",
       desc: "Expert guidance tailored to you.",
-      url: "https://picsum.photos/seed/bento-personal/800/600",
+      url: "https://plus.unsplash.com/premium_photo-1663050901483-ee8703cc8372?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       span: "md:row-span-2",
       imageHint: "personal trainer",
       targetAudience: "Beginners needing direction, experienced members breaking plateaus, or anyone with specific goals.",
@@ -176,7 +176,7 @@ export const bentoItems = [
       id: "sauna",
       title: "Infrared Sauna",
       desc: "Relax and accelerate recovery.",
-      url: "https://picsum.photos/seed/bento-sauna/800/600",
+      url: "https://images.unsplash.com/photo-1660735698223-23a4edefa264?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       span: "md:row-span-1",
       imageHint: "infrared sauna",
       targetAudience: "Everyone looking to reduce muscle soreness, improve circulation, and de-stress after a hard workout.",
@@ -193,7 +193,7 @@ export const bentoItems = [
       id: "challenges",
       title: "Community Challenges",
       desc: "Compete and grow together.",
-      url: "https://picsum.photos/seed/bento-challenge/800/600",
+      url: "https://plus.unsplash.com/premium_photo-1663102811360-aeaab9dbcf68?q=80&w=1165&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       span: "md:col-span-2 md:row-span-1",
       imageHint: "gym community",
       targetAudience: "Members who thrive on competition, accountability, and community support to stay motivated.",
