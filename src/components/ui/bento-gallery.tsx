@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useRef, useState, useEffect } from "react"
+import React, { useRef, useState } from "react"
 import {
   motion,
   useScroll,
@@ -16,9 +16,8 @@ type BentoItem = {
   title: string
   desc: string
   url: string
-  span: string
-  imageHint: string
-  features?: string[]
+  span?: string
+  imageHint?: string
   cta?: string
   targetAudience?: string
   equipment?: string[]
@@ -33,9 +32,7 @@ interface InteractiveImageBentoGalleryProps {
 
 const containerVariants = {
   hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.1 },
-  },
+  visible: { transition: { staggerChildren: 0.1 } },
 }
 
 const itemVariants = {
@@ -74,54 +71,13 @@ const DetailModal = ({
         <img
           src={item.url}
           alt={item.title}
-          data-ai-hint={item.imageHint}
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
       </div>
-
       <div className="w-full md:w-1/2 p-8 overflow-y-auto">
-        <h2 className="text-3xl font-bold font-headline text-primary mb-2">
-          {item.title}
-        </h2>
+        <h2 className="text-3xl font-bold text-primary mb-2">{item.title}</h2>
         <p className="text-lg text-muted-foreground mb-6">{item.desc}</p>
-
-        {item.targetAudience && (
-          <div className="mb-6">
-            <h3 className="font-semibold mb-3 flex items-center gap-2">
-              <Target className="w-5 h-5 text-primary" /> Who It’s For
-            </h3>
-            <p className="text-muted-foreground">{item.targetAudience}</p>
-          </div>
-        )}
-
-        {item.equipment?.length ? (
-          <div className="mb-6">
-            <h3 className="font-semibold mb-3 flex items-center gap-2">
-              <Dumbbell className="w-5 h-5 text-primary" /> Equipment
-            </h3>
-            <ul className="space-y-2">
-              {item.equipment.map((equip, index) => (
-                <li key={index} className="flex items-start gap-3">
-                  <Check className="h-4 w-4 text-green-500 mt-1" />
-                  <span className="text-muted-foreground text-sm">{equip}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ) : null}
-
-        {item.coachTip && (
-          <div className="mb-8 p-4 bg-secondary rounded-xl border border-border">
-            <h3 className="font-semibold mb-2 flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-primary" /> Coach’s Tip
-            </h3>
-            <p className="text-muted-foreground italic text-sm">
-              “{item.coachTip}”
-            </p>
-          </div>
-        )}
-
         {item.cta && (
           <Button size="lg" className="w-full">
             {item.cta}
@@ -132,7 +88,6 @@ const DetailModal = ({
     <button
       onClick={onClose}
       className="absolute right-4 top-4 text-white/80 hover:text-white transition-colors"
-      aria-label="Close detail view"
     >
       <X size={26} />
     </button>
@@ -153,29 +108,26 @@ const InteractiveImageBentoGallery: React.FC<
   const y = useTransform(scrollYProgress, [0, 0.2], [30, 0])
 
   return (
-    <section
-      ref={targetRef}
-      className="relative w-full overflow-hidden bg-card py-16 sm:py-24"
-    >
+    <section ref={targetRef} className="relative w-full bg-card py-16 sm:py-24">
       <motion.div style={{ opacity, y }} className="container mx-auto px-4">
         <div className="md:flex md:items-center md:justify-between text-center md:text-left">
           <div>
             <p className="font-semibold text-primary tracking-widest uppercase">
-              Discover Our Spaces
+              {title}
             </p>
-            <h2 className="font-headline text-5xl md:text-6xl font-extrabold tracking-tight">
+            <h2 className="font-headline text-5xl md:text-6xl font-extrabold">
               <span className="text-primary">WORLD-CLASS</span> FACILITIES
             </h2>
           </div>
-          <p className="mt-4 md:mt-0 max-w-2xl md:max-w-xs text-lg text-muted-foreground mx-auto md:mx-0 md:text-left">
+          <p className="mt-4 md:mt-0 max-w-2xl text-lg text-muted-foreground">
             {description}
           </p>
         </div>
       </motion.div>
 
-      {/* Responsive Bento Grid */}
+      {/* Responsive uneven grid */}
       <motion.div
-        className="container mx-auto mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[12rem] gap-5"
+        className="container mx-auto mt-12 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 auto-rows-[14rem] gap-5"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -186,15 +138,12 @@ const InteractiveImageBentoGallery: React.FC<
             key={item.id}
             variants={itemVariants}
             className={cn(
-              "group relative flex h-full w-full cursor-pointer items-end overflow-hidden rounded-2xl border bg-card p-4 shadow-md transition-all duration-300 hover:shadow-xl",
+              "group relative overflow-hidden rounded-2xl border bg-card shadow-md transition-all duration-500 hover:shadow-xl cursor-pointer",
               "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50",
               item.span,
             )}
-            whileHover={{ scale: 1.03 }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            whileHover={{ scale: 1.02 }}
             onClick={() => setSelectedItem(item)}
-            onKeyDown={(e) => e.key === "Enter" && setSelectedItem(item)}
-            tabIndex={0}
           >
             <img
               src={item.url}
@@ -202,12 +151,10 @@ const InteractiveImageBentoGallery: React.FC<
               data-ai-hint={item.imageHint}
               className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-2xl" />
-            <div className="relative z-10 translate-y-4 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-              <h3 className="text-lg font-semibold text-white drop-shadow-md">
-                {item.title}
-              </h3>
-              <p className="mt-1 text-sm text-white/80">{item.desc}</p>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-2xl" />
+            <div className="relative z-10 p-4 sm:p-6 flex flex-col justify-end h-full">
+              <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+              <p className="text-sm text-white/80">{item.desc}</p>
             </div>
           </motion.div>
         ))}
