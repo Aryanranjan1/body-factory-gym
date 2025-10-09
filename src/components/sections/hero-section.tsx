@@ -47,7 +47,7 @@ export function HeroSection() {
       
       <motion.div 
         style={{ y: contentY, opacity }}
-        className="relative z-20 text-left text-white container px-4"
+        className="relative z-20 text-center md:text-left text-white container px-4"
       >
         <AnimatedSection once={false} className="max-w-3xl md:w-1/2">
           <h1 
@@ -61,7 +61,7 @@ export function HeroSection() {
             Founded by a champion, built for everyone. Discover Petaling Jaya's premier 24/7 fitness destination.
           </p>
           <div
-            className="mt-8 flex justify-start"
+            className="mt-8 flex justify-center md:justify-start"
           >
             <Button asChild size="lg" variant="outline" className="bg-transparent border-primary text-primary hover:bg-primary hover:text-primary-foreground font-bold">
               <Link href="#membership">
