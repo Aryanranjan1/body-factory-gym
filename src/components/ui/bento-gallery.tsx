@@ -201,7 +201,7 @@ const InteractiveImageBentoGallery: React.FC<
               variants={itemVariants}
               className={cn(
                 "group relative flex h-full w-full cursor-pointer items-end overflow-hidden rounded-xl border bg-card p-4 shadow-sm transition-shadow duration-300 ease-in-out hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-                item.span,
+                item.span
               )}
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
