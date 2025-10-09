@@ -3,7 +3,7 @@
 
 import { ContactForm } from "./contact-form";
 import { ChevronRight } from "lucide-react";
-import { placeholderImages } from "@/lib/placeholder-images";
+import { placeholderImages } from "@/lib/data";
 import { ParallaxImage } from "../common/animated-section";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from 'react';
@@ -25,7 +25,7 @@ export function ContactSection() {
     <section 
       id="contact-us" 
       ref={ref}
-      className="relative text-white py-20 md:py-28 overflow-hidden"
+      className="relative text-white py-20 md:py-28 overflow-hidden bg-background"
     >
         {contactBg && (
             <motion.div style={{ scale }} className="absolute inset-0">

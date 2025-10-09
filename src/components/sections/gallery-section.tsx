@@ -1,6 +1,7 @@
+
 'use client';
 
-import { placeholderImages } from "@/lib/placeholder-images";
+import { placeholderImages } from "@/lib/data";
 import Image from "next/image";
 
 const leftColIds = [
@@ -27,7 +28,7 @@ const getImage = (id: string) => placeholderImages.find(p => p.id === id);
 
 export function GallerySection() {
   return (
-    <section className='w-full bg-background'>
+    <section className='w-full bg-card'>
       <div className='grid grid-cols-12 gap-2 p-2'>
         <div className='grid gap-2 col-span-4'>
           {leftColIds.map(id => {

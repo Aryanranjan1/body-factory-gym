@@ -1,0 +1,172 @@
+
+export type ImagePlaceholder = {
+  id: string;
+  description: string;
+  imageUrl: string;
+  imageHint: string;
+};
+
+export const placeholderImages: ImagePlaceholder[] = [
+    {
+      "id": "hero-background",
+      "description": "Dynamic shot of a person mid-workout in a gym",
+      "imageUrl": "https://picsum.photos/seed/hero-action/1920/1080",
+      "imageHint": "dynamic workout"
+    },
+    {
+      "id": "hero-video",
+      "description": "A man lifting weights in a gym using a lat pulldown machine.",
+      "imageUrl": "/video/3209802-uhd_3840_2160_25fps.mp4",
+      "imageHint": "gym workout video"
+    },
+    {
+      "id": "founder",
+      "description": "Founder Kumareswarren posing with his Mr. Malaysia 2023 champion medal in the gym",
+      "imageUrl": "https://picsum.photos/seed/founder-champ/600/600",
+      "imageHint": "bodybuilder champion"
+    },
+    {
+      "id": "trainer-1",
+      "description": "A fitness trainer actively coaching a client on their form during a lift",
+      "imageUrl": "https://picsum.photos/seed/trainer-coaching/400/400",
+      "imageHint": "personal trainer coaching"
+    },
+    {
+      "id": "trainer-2",
+      "description": "A yoga instructor guiding a member through a stretch in a calm gym corner",
+      "imageUrl": "https://picsum.photos/seed/yoga-instructor-gym/400/400",
+      "imageHint": "yoga instructor"
+    },
+    {
+      "id": "trainer-3",
+      "description": "A crossfit coach demonstrating a kettlebell swing to a small group",
+      "imageUrl": "https://picsum.photos/seed/crossfit-coach-group/400/400",
+      "imageHint": "crossfit coach"
+    },
+    {
+      "id": "facility-cardio",
+      "description": "A clean row of modern treadmills and elliptical machines, well-lit",
+      "imageUrl": "https://picsum.photos/seed/gym-cardio-zone/800/600",
+      "imageHint": "cardio machines"
+    },
+    {
+      "id": "facility-weights",
+      "description": "An organized rack of dumbbells and free weights with a person lifting in the background",
+      "imageUrl": "https://picsum.photos/seed/gym-free-weights/800/600",
+      "imageHint": "free weights"
+    },
+    {
+      "id": "facility-machines",
+      "description": "A view of the selectorized weight machine area, showing various stations",
+      "imageUrl": "https://picsum.photos/seed/gym-strength-machines/800/600",
+      "imageHint": "gym equipment"
+    },
+    {
+      "id": "facility-sauna",
+      "description": "Clean interior of a modern infrared sauna",
+      "imageUrl": "https://picsum.photos/seed/gym-sauna-interior/800/600",
+      "imageHint": "infrared sauna"
+    },
+    {
+      "id": "map-location",
+      "description": "Map showing location of Body Factory Gym",
+      "imageUrl": "https://picsum.photos/seed/bf-map/600/400",
+      "imageHint": "map location"
+    },
+    {
+      "id": "contact-background",
+      "description": "Person focused and determined while doing a deadlift",
+      "imageUrl": "https://picsum.photos/seed/gym-deadlift/1200/800",
+      "imageHint": "deadlift workout"
+    },
+    {
+      "id": "recipe-smoothie",
+      "description": "High-protein smoothie in a shaker bottle next to a piece of fruit",
+      "imageUrl": "https://picsum.photos/seed/gym-recipe-smoothie/400/400",
+      "imageHint": "protein shake"
+    },
+    {
+      "id": "core-workout",
+      "description": "Person holding a plank with good form on a gym mat",
+      "imageUrl": "https://picsum.photos/seed/gym-core-plank/400/400",
+      "imageHint": "plank exercise"
+    },
+    {
+      "id": "facility-functional",
+      "description": "Functional training area with battle ropes, kettlebells, and turf",
+      "imageUrl": "https://picsum.photos/seed/gym-functional-area/800/600",
+      "imageHint": "functional training"
+    },
+    {
+      "id": "facility-personal-training",
+      "description": "A personal trainer spotting a member on a bench press",
+      "imageUrl": "https://picsum.photos/seed/gym-personal-training/800/600",
+      "imageHint": "personal training"
+    },
+    {
+      "id": "facility-lockers",
+      "description": "Modern and clean locker room with secure lockers",
+      "imageUrl": "https://picsum.photos/seed/gym-lockers/800/600",
+      "imageHint": "gym locker room"
+    },
+    {
+      "id": "program-strength-machines",
+      "description": "A person using a leg press machine with intensity",
+      "imageUrl": "https://picsum.photos/seed/program-leg-press/800/600",
+      "imageHint": "leg press"
+    },
+    {
+      "id": "program-free-weights",
+      "description": "A full rack of various sized dumbbells",
+      "imageUrl": "https://picsum.photos/seed/program-dumbbell-rack/800/600",
+      "imageHint": "dumbbell rack"
+    },
+    {
+      "id": "program-cardio",
+      "description": "A side view of a row of modern treadmills",
+      "imageUrl": "https://picsum.photos/seed/program-treadmills/800/600",
+      "imageHint": "treadmills"
+    },
+    {
+      "id": "program-hiit",
+      "description": "A person performing box jumps in a HIIT class",
+      "imageUrl": "https://picsum.photos/seed/program-box-jump/800/600",
+      "imageHint": "HIIT workout"
+    },
+    {
+      "id": "program-strength-challenge",
+      "description": "A person successfully completing a heavy squat at a competition",
+      "imageUrl": "https://picsum.photos/seed/program-powerlifting/800/600",
+      "imageHint": "powerlifting"
+    },
+    {
+      "id": "program-mobility-workshop",
+      "description": "A group of people stretching together in a mobility workshop",
+      "imageUrl": "https://picsum.photos/seed/program-stretching-class/800/600",
+      "imageHint": "yoga class"
+    },
+    {
+      "id": "about-1",
+      "description": "Woman lifting weights in a gym",
+      "imageUrl": "https://picsum.photos/seed/woman-lifting/600/800",
+      "imageHint": "woman lifting"
+    },
+    {
+      "id": "about-2",
+      "description": "Man doing pull-ups in a gym",
+      "imageUrl": "https://picsum.photos/seed/man-pullups/600/800",
+      "imageHint": "man training"
+    },
+    {
+      "id": "about-3",
+      "description": "Woman doing squats with a barbell",
+      "imageUrl": "https://picsum.photos/seed/woman-squat/600/800",
+      "imageHint": "woman workout"
+    },
+    {
+      "id": "about-4",
+      "description": "Man working out with battle ropes",
+      "imageUrl": "https://picsum.photos/seed/man-battleropes/600/800",
+      "imageHint": "man fitness"
+    }
+  ];

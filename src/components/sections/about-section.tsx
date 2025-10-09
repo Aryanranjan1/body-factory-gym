@@ -4,7 +4,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { placeholderImages } from "@/lib/placeholder-images";
+import { placeholderImages } from "@/lib/data";
 import { Button } from "../ui/button";
 import React from 'react';
 
@@ -97,7 +97,7 @@ export function AboutSection() {
   return (
     <section 
       id="about-us" 
-      className="bg-black text-white py-20 md:py-28 overflow-hidden"
+      className="bg-background text-white py-20 md:py-28 overflow-hidden"
     >
       <motion.div
         className="container mx-auto px-4"

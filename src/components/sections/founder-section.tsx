@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { placeholderImages } from "@/lib/placeholder-images";
+import { placeholderImages } from "@/lib/data";
 import { AnimatedSection } from "../common/animated-section";
 import { motion } from 'framer-motion';
 

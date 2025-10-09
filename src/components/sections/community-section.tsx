@@ -14,7 +14,7 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Instagram, Facebook, Youtube } from "lucide-react";
-import { placeholderImages } from "@/lib/placeholder-images";
+import { placeholderImages } from "@/lib/data";
 import Link from 'next/link';
 import { AnimatedSection } from '../common/animated-section';
 

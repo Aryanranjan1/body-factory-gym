@@ -1,7 +1,7 @@
 
 "use client";
 
-import { placeholderImages } from "@/lib/placeholder-images";
+import { placeholderImages } from "@/lib/data";
 import { AnimatedTestimonials } from "../ui/animated-testimonials";
 import { AnimatedSection } from "../common/animated-section";
 import { motion } from "framer-motion";

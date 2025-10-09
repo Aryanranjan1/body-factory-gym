@@ -3,7 +3,7 @@
 
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
-import { placeholderImages } from "@/lib/placeholder-images";
+import { placeholderImages } from "@/lib/data";
 import { Star } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from 'react';

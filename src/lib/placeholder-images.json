@@ -1,5 +1,11 @@
-{
-  "placeholderImages": [
+export type ImagePlaceholder = {
+  id: string;
+  description: string;
+  imageUrl: string;
+  imageHint: string;
+};
+
+export const placeholderImages: ImagePlaceholder[] = [
     {
       "id": "hero-background",
       "description": "Dynamic shot of a person mid-workout in a gym",
@@ -162,5 +168,4 @@
       "imageUrl": "https://picsum.photos/seed/man-battleropes/600/800",
       "imageHint": "man fitness"
     }
-  ]
-}
+  ];
