@@ -1,4 +1,5 @@
 
+
 export type ImagePlaceholder = {
   id: string;
   description: string;
