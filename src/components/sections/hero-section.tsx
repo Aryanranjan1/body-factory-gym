@@ -36,7 +36,10 @@ export function HeroSection() {
           Your browser does not support the video tag.
         </motion.video>
       )}
-      <div className="absolute inset-0 bg-black/50 z-10" />
+      <div 
+        className="absolute inset-0 z-10"
+        style={{background: 'linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.4) 100%)'}} 
+      />
       <div 
         className="absolute inset-0 z-10"
         style={{background: 'linear-gradient(to bottom, transparent 50%, black 100%)'}} 
@@ -50,12 +53,12 @@ export function HeroSection() {
           <h1 
             className="font-headline text-5xl font-extrabold tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl"
           >
-            BUILDING STRONGER LIVES
+            BUILDING <span className="text-primary">STRONGER</span> LIVES
           </h1>
           <p
             className="mt-6 font-body text-lg text-neutral-200 md:text-xl"
           >
-            Petaling Jaya's Premier 24/7 Fitness Destination.
+            Founded by a champion, built for everyone. Discover Petaling Jaya's premier 24/7 fitness destination.
           </p>
           <div
             className="mt-8 flex justify-start"
