@@ -163,7 +163,7 @@ const InteractiveImageBentoGallery: React.FC<
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-2xl" />
-              <div className="relative z-10 p-4 sm:p-6 flex flex-col justify-end h-full">
+              <div className="relative z-10 p-4 sm:p-6 flex flex-col justify-end h-full opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
                 <h3 className="text-lg font-semibold text-white">
                   {item.title}
                 </h3>
