@@ -44,40 +44,25 @@ export function HeroSection() {
       
       <motion.div 
         style={{ y: contentY, opacity }}
-        className="relative z-20 text-center text-white container px-4"
+        className="relative z-20 text-left text-white container px-4"
       >
-        <AnimatedSection once={false}>
-          <div className="flex justify-center items-center gap-3 mb-4 bg-black/20 backdrop-blur-sm rounded-full px-4 py-2 w-fit mx-auto">
-            <div className="flex text-yellow-400">
-                <Star className="w-5 h-5 fill-current" />
-                <Star className="w-5 h-5 fill-current" />
-                <Star className="w-5 h-5 fill-current" />
-                <Star className="w-5 h-5 fill-current" />
-                <Star className="w-5 h-5 fill-current" />
-            </div>
-            <p className="text-sm">4.9 Stars on Google</p>
-          </div>
+        <AnimatedSection once={false} className="max-w-2xl">
           <h1 
-            className="font-headline text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl"
+            className="font-headline text-5xl font-extrabold tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl"
           >
-            Petaling Jaya’s 24/7 Budget Gym Since 2013.
+            BUILDING STRONGER LIVES
           </h1>
           <p
-            className="mx-auto mt-6 max-w-3xl font-body text-lg text-neutral-200 md:text-xl"
+            className="mt-6 font-body text-lg text-neutral-200 md:text-xl"
           >
-            Train Anytime. RM12 Entry. RM110 Monthly. No Excuses.
+            Petaling Jaya's Premier 24/7 Fitness Destination.
           </p>
           <div
-            className="mt-8 flex justify-center gap-4"
+            className="mt-8 flex justify-start"
           >
             <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold">
               <Link href="#membership">
-                Join Now
-              </Link>
-            </Button>
-             <Button asChild size="lg" variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-black">
-              <Link href="#contact-us">
-                Visit Us Today
+                Start Your Journey
               </Link>
             </Button>
           </div>
@@ -86,4 +71,3 @@ export function HeroSection() {
     </section>
   );
 }
-
