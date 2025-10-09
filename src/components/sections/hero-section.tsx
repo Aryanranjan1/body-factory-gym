@@ -37,6 +37,10 @@ export function HeroSection() {
         </motion.video>
       )}
       <div className="absolute inset-0 bg-black/50 z-10" />
+      <div 
+        className="absolute inset-0 z-10"
+        style={{background: 'linear-gradient(to bottom, transparent 70%, black 100%)'}} 
+      />
       
       <motion.div 
         style={{ y: contentY, opacity }}
