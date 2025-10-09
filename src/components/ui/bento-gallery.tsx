@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useRef, useState, useEffect } from "react"
@@ -35,9 +34,7 @@ interface InteractiveImageBentoGalleryProps {
 const containerVariants = {
   hidden: {},
   visible: {
-    transition: {
-      staggerChildren: 0.1,
-    },
+    transition: { staggerChildren: 0.1 },
   },
 }
 
@@ -57,94 +54,90 @@ const DetailModal = ({
 }: {
   item: BentoItem
   onClose: () => void
-}) => {
-  return (
+}) => (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+    onClick={onClose}
+  >
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
-      onClick={onClose}
+      initial={{ scale: 0.9, y: 50 }}
+      animate={{ scale: 1, y: 0 }}
+      exit={{ scale: 0.9, y: 50, opacity: 0 }}
+      transition={{ type: "spring", stiffness: 120, damping: 20 }}
+      className="relative flex flex-col md:flex-row bg-card w-full max-w-4xl max-h-[90vh] rounded-2xl overflow-hidden shadow-2xl border border-border"
+      onClick={(e) => e.stopPropagation()}
     >
-      <motion.div
-        initial={{ scale: 0.9, y: 50 }}
-        animate={{ scale: 1, y: 0 }}
-        exit={{ scale: 0.9, y: 50, opacity: 0 }}
-        transition={{ type: "spring", stiffness: 120, damping: 20 }}
-        className="relative flex flex-col md:flex-row bg-card w-full max-w-4xl max-h-[90vh] rounded-lg overflow-hidden shadow-2xl border border-border"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="w-full md:w-1/2 h-64 md:h-auto relative">
-          <img
-            src={item.url}
-            alt={item.title}
-            data-ai-hint={item.imageHint}
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-        </div>
+      <div className="w-full md:w-1/2 h-64 md:h-auto relative">
+        <img
+          src={item.url}
+          alt={item.title}
+          data-ai-hint={item.imageHint}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+      </div>
 
-        <div className="w-full md:w-1/2 p-8 overflow-y-auto">
-          <h2 className="text-3xl font-bold font-headline text-primary mb-2">
-            {item.title}
-          </h2>
-          <p className="text-lg text-muted-foreground mb-6">{item.desc}</p>
+      <div className="w-full md:w-1/2 p-8 overflow-y-auto">
+        <h2 className="text-3xl font-bold font-headline text-primary mb-2">
+          {item.title}
+        </h2>
+        <p className="text-lg text-muted-foreground mb-6">{item.desc}</p>
 
-          {item.targetAudience && (
-            <div className="mb-6">
-              <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
-                <Target className="w-5 h-5 text-primary" /> Who It's For
-              </h3>
-              <p className="text-muted-foreground">{item.targetAudience}</p>
-            </div>
-          )}
+        {item.targetAudience && (
+          <div className="mb-6">
+            <h3 className="font-semibold mb-3 flex items-center gap-2">
+              <Target className="w-5 h-5 text-primary" /> Who It’s For
+            </h3>
+            <p className="text-muted-foreground">{item.targetAudience}</p>
+          </div>
+        )}
 
-          {item.equipment && item.equipment.length > 0 && (
-            <div className="mb-6">
-              <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
-                <Dumbbell className="w-5 h-5 text-primary" /> Key Equipment
-              </h3>
-              <ul className="space-y-2">
-                {item.equipment.map((equip, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <Check className="h-4 w-4 flex-shrink-0 text-green-500 mt-1" />
-                    <span className="text-muted-foreground text-sm">
-                      {equip}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+        {item.equipment?.length ? (
+          <div className="mb-6">
+            <h3 className="font-semibold mb-3 flex items-center gap-2">
+              <Dumbbell className="w-5 h-5 text-primary" /> Equipment
+            </h3>
+            <ul className="space-y-2">
+              {item.equipment.map((equip, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <Check className="h-4 w-4 text-green-500 mt-1" />
+                  <span className="text-muted-foreground text-sm">{equip}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
 
-          {item.coachTip && (
-            <div className="mb-8 p-4 bg-secondary rounded-lg border border-border">
-              <h3 className="font-semibold text-foreground mb-2 flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-primary" /> Coach's Tip
-              </h3>
-              <p className="text-muted-foreground italic text-sm">
-                "{item.coachTip}"
-              </p>
-            </div>
-          )}
+        {item.coachTip && (
+          <div className="mb-8 p-4 bg-secondary rounded-xl border border-border">
+            <h3 className="font-semibold mb-2 flex items-center gap-2">
+              <Sparkles className="w-5 h-5 text-primary" /> Coach’s Tip
+            </h3>
+            <p className="text-muted-foreground italic text-sm">
+              “{item.coachTip}”
+            </p>
+          </div>
+        )}
 
-          {item.cta && (
-            <Button size="lg" className="w-full">
-              {item.cta}
-            </Button>
-          )}
-        </div>
-      </motion.div>
-      <button
-        onClick={onClose}
-        className="absolute right-4 top-4 text-white/80 transition-colors hover:text-white"
-        aria-label="Close detail view"
-      >
-        <X size={24} />
-      </button>
+        {item.cta && (
+          <Button size="lg" className="w-full">
+            {item.cta}
+          </Button>
+        )}
+      </div>
     </motion.div>
-  )
-}
+    <button
+      onClick={onClose}
+      className="absolute right-4 top-4 text-white/80 hover:text-white transition-colors"
+      aria-label="Close detail view"
+    >
+      <X size={26} />
+    </button>
+  </motion.div>
+)
 
 const InteractiveImageBentoGallery: React.FC<
   InteractiveImageBentoGalleryProps
@@ -164,13 +157,8 @@ const InteractiveImageBentoGallery: React.FC<
       ref={targetRef}
       className="relative w-full overflow-hidden bg-card py-16 sm:py-24"
     >
-      <motion.div
-        style={{ opacity, y }}
-        className="container mx-auto px-4"
-      >
-         <div 
-          className="md:flex md:items-center md:justify-between text-center md:text-left"
-        >
+      <motion.div style={{ opacity, y }} className="container mx-auto px-4">
+        <div className="md:flex md:items-center md:justify-between text-center md:text-left">
           <div>
             <p className="font-semibold text-primary tracking-widest uppercase">
               Discover Our Spaces
@@ -185,47 +173,45 @@ const InteractiveImageBentoGallery: React.FC<
         </div>
       </motion.div>
 
-      <div
-        className="relative mt-12 w-full"
+      {/* Responsive Bento Grid */}
+      <motion.div
+        className="container mx-auto mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 auto-rows-[12rem] gap-5"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
       >
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-4 gap-4 container mx-auto h-[42rem]"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {items.map((item) => (
-            <motion.div
-              key={item.id}
-              variants={itemVariants}
-              className={cn(
-                "group relative flex h-full w-full cursor-pointer items-end overflow-hidden rounded-xl border bg-card p-4 shadow-sm transition-shadow duration-300 ease-in-out hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-                item.span
-              )}
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              onClick={() => setSelectedItem(item)}
-              onKeyDown={(e) => e.key === "Enter" && setSelectedItem(item)}
-              tabIndex={0}
-              aria-label={`View ${item.title}`}
-            >
-              <img
-                src={item.url}
-                alt={item.title}
-                data-ai-hint={item.imageHint}
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-              <div className="relative z-10 translate-y-4 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                <h3 className="text-lg font-bold text-white">{item.title}</h3>
-                <p className="mt-1 text-sm text-white/80">{item.desc}</p>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
+        {items.map((item) => (
+          <motion.div
+            key={item.id}
+            variants={itemVariants}
+            className={cn(
+              "group relative flex h-full w-full cursor-pointer items-end overflow-hidden rounded-2xl border bg-card p-4 shadow-md transition-all duration-300 hover:shadow-xl",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50",
+              item.span,
+            )}
+            whileHover={{ scale: 1.03 }}
+            transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            onClick={() => setSelectedItem(item)}
+            onKeyDown={(e) => e.key === "Enter" && setSelectedItem(item)}
+            tabIndex={0}
+          >
+            <img
+              src={item.url}
+              alt={item.title}
+              data-ai-hint={item.imageHint}
+              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-2xl" />
+            <div className="relative z-10 translate-y-4 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+              <h3 className="text-lg font-semibold text-white drop-shadow-md">
+                {item.title}
+              </h3>
+              <p className="mt-1 text-sm text-white/80">{item.desc}</p>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
 
       <AnimatePresence>
         {selectedItem && (
