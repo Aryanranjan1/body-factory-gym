@@ -150,25 +150,7 @@ const InteractiveImageBentoGallery: React.FC<
   InteractiveImageBentoGalleryProps
 > = ({ items, title, description }) => {
   const [selectedItem, setSelectedItem] = useState<BentoItem | null>(null)
-  const [dragConstraint, setDragConstraint] = useState(0)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const gridRef = useRef<HTMLDivElement>(null)
   const targetRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const calculateConstraints = () => {
-      if (gridRef.current && containerRef.current) {
-        const containerWidth = containerRef.current.offsetWidth
-        const gridWidth = gridRef.current.scrollWidth
-        const newConstraint = Math.min(0, containerWidth - gridWidth - 32)
-        setDragConstraint(newConstraint)
-      }
-    }
-
-    calculateConstraints()
-    window.addEventListener("resize", calculateConstraints)
-    return () => window.removeEventListener("resize", calculateConstraints)
-  }, [items])
 
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -204,52 +186,43 @@ const InteractiveImageBentoGallery: React.FC<
       </motion.div>
 
       <div
-        ref={containerRef}
-        className="relative mt-12 w-full cursor-grab active:cursor-grabbing"
+        className="relative mt-12 w-full"
       >
         <motion.div
-          className="w-max"
-          drag="x"
-          dragConstraints={{ left: dragConstraint, right: 0 }}
-          dragElastic={0.05}
+          className="grid grid-cols-1 md:grid-cols-4 auto-rows-[20rem] gap-4 container mx-auto"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
         >
-          <motion.div
-            ref={gridRef}
-            className="grid auto-cols-[minmax(15rem,1fr)] grid-flow-col gap-4 px-4 md:px-8"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-          >
-            {items.map((item) => (
-              <motion.div
-                key={item.id}
-                variants={itemVariants}
-                className={cn(
-                  "group relative flex h-full min-h-[20rem] w-full min-w-[20rem] cursor-pointer items-end overflow-hidden rounded-xl border bg-card p-4 shadow-sm transition-shadow duration-300 ease-in-out hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-                  item.span,
-                )}
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                onClick={() => setSelectedItem(item)}
-                onKeyDown={(e) => e.key === "Enter" && setSelectedItem(item)}
-                tabIndex={0}
-                aria-label={`View ${item.title}`}
-              >
-                <img
-                  src={item.url}
-                  alt={item.title}
-                  data-ai-hint={item.imageHint}
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                <div className="relative z-10 translate-y-4 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-                  <h3 className="text-lg font-bold text-white">{item.title}</h3>
-                  <p className="mt-1 text-sm text-white/80">{item.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+          {items.map((item) => (
+            <motion.div
+              key={item.id}
+              variants={itemVariants}
+              className={cn(
+                "group relative flex h-full w-full cursor-pointer items-end overflow-hidden rounded-xl border bg-card p-4 shadow-sm transition-shadow duration-300 ease-in-out hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                item.span,
+              )}
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              onClick={() => setSelectedItem(item)}
+              onKeyDown={(e) => e.key === "Enter" && setSelectedItem(item)}
+              tabIndex={0}
+              aria-label={`View ${item.title}`}
+            >
+              <img
+                src={item.url}
+                alt={item.title}
+                data-ai-hint={item.imageHint}
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+              <div className="relative z-10 translate-y-4 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                <h3 className="text-lg font-bold text-white">{item.title}</h3>
+                <p className="mt-1 text-sm text-white/80">{item.desc}</p>
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
 
@@ -263,5 +236,3 @@ const InteractiveImageBentoGallery: React.FC<
 }
 
 export default InteractiveImageBentoGallery
-
-    
