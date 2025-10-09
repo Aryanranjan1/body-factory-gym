@@ -49,7 +49,7 @@ export function HeroSection() {
         style={{ y: contentY, opacity }}
         className="relative z-20 text-left text-white container px-4"
       >
-        <AnimatedSection once={false} className="max-w-2xl">
+        <AnimatedSection once={false} className="max-w-3xl md:w-1/2">
           <h1 
             className="font-headline text-5xl font-extrabold tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl"
           >
@@ -63,7 +63,7 @@ export function HeroSection() {
           <div
             className="mt-8 flex justify-start"
           >
-            <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold">
+            <Button asChild size="lg" variant="outline" className="bg-transparent border-primary text-primary hover:bg-primary hover:text-primary-foreground font-bold">
               <Link href="#membership">
                 Start Your Journey
               </Link>
@@ -74,3 +74,4 @@ export function HeroSection() {
     </section>
   );
 }
+
