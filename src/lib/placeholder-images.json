@@ -140,27 +140,27 @@
     },
     {
       "id": "about-1",
-      "description": "Before shot of a member, looking unconfident",
-      "imageUrl": "https://picsum.photos/seed/before-transform1/600/800",
-      "imageHint": "before photo"
+      "description": "Woman lifting weights in a gym",
+      "imageUrl": "https://picsum.photos/seed/woman-lifting/600/800",
+      "imageHint": "woman lifting"
     },
     {
       "id": "about-2",
-      "description": "After shot of a member, looking strong and confident",
-      "imageUrl": "https://picsum.photos/seed/after-transform1/600/800",
-      "imageHint": "after photo"
+      "description": "Man doing pull-ups in a gym",
+      "imageUrl": "https://picsum.photos/seed/man-pullups/600/800",
+      "imageHint": "man training"
     },
     {
       "id": "about-3",
-      "description": "Man looking determined before a workout",
-      "imageUrl": "https://picsum.photos/seed/before-transform2/600/800",
-      "imageHint": "man before"
+      "description": "Woman doing squats with a barbell",
+      "imageUrl": "https://picsum.photos/seed/woman-squat/600/800",
+      "imageHint": "woman workout"
     },
     {
       "id": "about-4",
-      "description": "Man celebrating a personal best lift",
-      "imageUrl": "https://picsum.photos/seed/after-transform2/600/800",
-      "imageHint": "man after"
+      "description": "Man working out with battle ropes",
+      "imageUrl": "https://picsum.photos/seed/man-battleropes/600/800",
+      "imageHint": "man fitness"
     }
   ]
 }
