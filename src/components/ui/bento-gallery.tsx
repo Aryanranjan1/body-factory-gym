@@ -1,7 +1,7 @@
 
 "use client"
 
-import React, { useRef, useState, useEffect } from "react"
+import React, { useState } from "react"
 import {
   motion,
   AnimatePresence,
@@ -136,29 +136,9 @@ const InteractiveImageBentoGallery: React.FC<
   InteractiveImageBentoGalleryProps
 > = ({ items, title, description }) => {
   const [selectedItem, setSelectedItem] = useState<BentoItem | null>(null)
-  const [dragConstraint, setDragConstraint] = useState(0)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const gridRef = useRef<HTMLDivElement>(null)
-  const targetRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const calculateConstraints = () => {
-      if (gridRef.current && containerRef.current) {
-        const containerWidth = containerRef.current.offsetWidth
-        const gridWidth = gridRef.current.scrollWidth
-        const newConstraint = Math.min(0, containerWidth - gridWidth - 32) 
-        setDragConstraint(newConstraint)
-      }
-    }
-
-    calculateConstraints()
-    window.addEventListener("resize", calculateConstraints)
-    return () => window.removeEventListener("resize", calculateConstraints)
-  }, [items])
 
   return (
     <section
-      ref={targetRef}
       className="relative w-full overflow-hidden bg-card py-16 sm:py-24"
     >
       <div className="container mx-auto px-4">
@@ -179,30 +159,20 @@ const InteractiveImageBentoGallery: React.FC<
         </div>
       </div>
 
-      <div
-        ref={containerRef}
-        className="relative mt-12 w-full cursor-grab active:cursor-grabbing"
-      >
+      <div className="container mx-auto px-4 mt-12">
         <motion.div
-          className="w-max"
-          drag="x"
-          dragConstraints={{ left: dragConstraint, right: 0 }}
-          dragElastic={0.1}
-        >
-          <motion.div
-            ref={gridRef}
-            className="grid auto-cols-[minmax(15rem,1fr)] grid-flow-col gap-4 px-4 md:px-8"
+            className="grid grid-cols-1 md:grid-cols-4 auto-rows-[20rem] gap-4"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
-          >
+        >
             {items.map((item) => (
               <motion.div
                 key={item.id}
                 variants={itemVariants}
                 className={cn(
-                  "group relative flex h-full min-h-[15rem] w-full min-w-[15rem] cursor-pointer items-end overflow-hidden rounded-xl border bg-card p-4 shadow-sm transition-shadow duration-300 ease-in-out hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                  "group relative flex h-full w-full cursor-pointer items-end overflow-hidden rounded-xl border bg-card p-4 shadow-sm transition-shadow duration-300 ease-in-out hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                   item.span,
                 )}
                 whileHover={{ scale: 1.02 }}
@@ -225,7 +195,6 @@ const InteractiveImageBentoGallery: React.FC<
                 </div>
               </motion.div>
             ))}
-          </motion.div>
         </motion.div>
       </div>
 
