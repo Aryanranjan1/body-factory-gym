@@ -158,7 +158,8 @@ export const bentoItems = [
       desc: "Expert guidance tailored to you.",
       url: "https://plus.unsplash.com/premium_photo-1663050901483-ee8703cc8372?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       imageHint: "personal trainer",
-      features: [
+      targetAudience: "Beginners needing guidance, experienced lifters breaking plateaus, or anyone with specific performance goals.",
+      equipment: [
         "1-on-1 Coaching with Champion Trainers",
         "Customized Workout & Nutrition Plans",
         "Body Composition Analysis & Tracking",
@@ -175,7 +176,7 @@ export const bentoItems = [
       url: "https://images.unsplash.com/photo-1660735698223-23a4edefa264?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       imageHint: "infrared sauna",
       targetAudience: "Everyone looking to reduce muscle soreness, improve circulation, and de-stress after a hard workout.",
-      features: [
+      equipment: [
         "Deep Tissue Relaxation",
         "Improved Circulation & Detoxification",
         "Reduced Muscle Soreness & Joint Pain",
@@ -191,7 +192,7 @@ export const bentoItems = [
       url: "https://plus.unsplash.com/premium_photo-1663102811360-aeaab9dbcf68?q=80&w=1165&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       imageHint: "gym community",
       targetAudience: "Members who thrive on competition, accountability, and community support to stay motivated.",
-      features: [
+      equipment: [
         "Monthly Fitness & Strength Challenges",
         "Leaderboards with Prizes",
         "Team-based Competitions",
@@ -370,6 +371,7 @@ export const communitySectionContent = {
     
 
     
+
 
 
 

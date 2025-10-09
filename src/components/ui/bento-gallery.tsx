@@ -78,6 +78,43 @@ const DetailModal = ({
       <div className="w-full md:w-1/2 p-8 overflow-y-auto">
         <h2 className="text-3xl font-bold text-primary mb-2">{item.title}</h2>
         <p className="text-lg text-muted-foreground mb-6">{item.desc}</p>
+
+        {item.targetAudience && (
+          <div className="mb-6">
+            <h3 className="font-semibold mb-3 flex items-center gap-2">
+              <Target className="w-5 h-5 text-primary" /> Who It’s For
+            </h3>
+            <p className="text-muted-foreground text-sm">{item.targetAudience}</p>
+          </div>
+        )}
+
+        {item.equipment?.length ? (
+          <div className="mb-6">
+            <h3 className="font-semibold mb-3 flex items-center gap-2">
+              <Dumbbell className="w-5 h-5 text-primary" /> Equipment
+            </h3>
+            <ul className="space-y-2">
+              {item.equipment.map((equip, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <Check className="h-4 w-4 text-green-500 mt-1 flex-shrink-0" />
+                  <span className="text-muted-foreground text-sm">{equip}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+
+        {item.coachTip && (
+          <div className="mb-8 p-4 bg-secondary/50 rounded-xl border border-border">
+            <h3 className="font-semibold mb-2 flex items-center gap-2">
+              <Sparkles className="w-5 h-5 text-primary" /> Coach’s Tip
+            </h3>
+            <p className="text-muted-foreground italic text-sm">
+              “{item.coachTip}”
+            </p>
+          </div>
+        )}
+
         {item.cta && (
           <Button size="lg" className="w-full">
             {item.cta}
@@ -88,6 +125,7 @@ const DetailModal = ({
     <button
       onClick={onClose}
       className="absolute right-4 top-4 text-white/80 hover:text-white transition-colors"
+      aria-label="Close detail view"
     >
       <X size={26} />
     </button>
