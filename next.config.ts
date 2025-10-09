@@ -35,7 +35,8 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
       {
-        protocol: 'https',
+        protocol: 'https'
+        ,
         hostname: 'logo.clearbit.com',
         port: '',
         pathname: '/**',
