@@ -296,7 +296,7 @@ export const testimonials = [
       name: "Alex",
       designation: "Bodybuilder",
       quote: "Body Factory has the best community. Everyone is so supportive. The equipment is solid and you can tell the owner knows his stuff. It feels like a real training ground.",
-      beforeSrc: 'https://plus.unsplash.com/premium_photo-1664884164766-77749fda6ce2?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      beforeSrc: 'https://plus.unsplash.com/premium_photo-1716312742751-d1ca46aa9a0e?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       afterSrc: 'https://images.unsplash.com/photo-1671128136186-25c76955e11e?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     },
     {
