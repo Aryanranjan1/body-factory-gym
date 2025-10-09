@@ -1,34 +1,10 @@
 
 "use client";
 
-import { placeholderImages } from "@/lib/data";
+import { placeholderImages, testimonials } from "@/lib/data";
 import { AnimatedTestimonials } from "../ui/animated-testimonials";
 import { AnimatedSection } from "../common/animated-section";
 import { motion } from "framer-motion";
-
-const testimonials = [
-  {
-    name: "Zul",
-    designation: "Student",
-    quote: "The 24/7 access is a lifesaver for my weird study schedule. Plus, it's super clean and the price is unbeatable for a student budget. Highly recommend!",
-    beforeSrc: placeholderImages.find(p => p.id === 'trainer-1')?.imageUrl ?? '',
-    afterSrc: placeholderImages.find(p => p.id === 'founder')?.imageUrl ?? '',
-  },
-  {
-    name: "Aisha",
-    designation: "Bodybuilder",
-    quote: "Body Factory has the best community. Everyone is so supportive. The equipment is solid and you can tell the owner knows his stuff. It feels like a real training ground.",
-    beforeSrc: placeholderImages.find(p => p.id === 'trainer-2')?.imageUrl ?? '',
-    afterSrc: placeholderImages.find(p => p.id === 'about-1')?.imageUrl ?? '',
-  },
-  {
-    name: "Michael",
-    designation: "Shift Worker",
-    quote: "Finally, a gym that fits my lifestyle. It's affordable, has everything I need for a great workout, and the atmosphere is always positive and motivating.",
-    beforeSrc: placeholderImages.find(p => p.id === 'trainer-3')?.imageUrl ?? '',
-    afterSrc: placeholderImages.find(p => p.id === 'about-3')?.imageUrl ?? '',
-  },
-];
 
 export function TestimonialsSection() {
   return (

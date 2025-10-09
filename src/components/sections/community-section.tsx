@@ -14,30 +14,11 @@ import {
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Instagram, Facebook, Youtube } from "lucide-react";
-import { placeholderImages } from "@/lib/data";
+import { placeholderImages, communitySectionContent } from "@/lib/data";
 import Link from 'next/link';
 import { AnimatedSection } from '../common/animated-section';
 
-const carouselSlides = [
-  {
-    id: "event-1",
-    title: "Annual Powerlifting Meet",
-    image: placeholderImages.find(p => p.id === 'trainer-1'),
-    imageHint: "gym competition"
-  },
-  {
-    id: "event-2",
-    title: "Outdoor Yoga Session",
-    image: placeholderImages.find(p => p.id === 'trainer-2'),
-    imageHint: "group fitness event"
-  },
-  {
-    id: "event-3",
-    title: "Member Appreciation Night",
-    image: placeholderImages.find(p => p.id === 'founder'),
-    imageHint: "gym owner award"
-  }
-];
+const { carouselSlides, blogPosts } = communitySectionContent;
 
 const trainerImage = placeholderImages.find(p => p.id === 'trainer-1');
 
@@ -47,26 +28,6 @@ const socialLinks = [
   { icon: <Youtube className="h-5 w-5" />, href: "#" },
 ];
 
-const blogPosts = [
-    {
-        id: "recipe-smoothie",
-        title: "High-Protein Smoothie for Muscle Recovery",
-        description: "A simple post-workout recipe using oats, banana, and whey.",
-        image: placeholderImages.find(p => p.id === 'recipe-smoothie')
-    },
-    {
-        id: "core-workout",
-        title: "5-Minute Core Blaster You Can Do Anywhere",
-        description: "Quick routine to strengthen your abs without equipment.",
-        image: placeholderImages.find(p => p.id === 'core-workout')
-    },
-     {
-      id: "trainer-3",
-      title: "How to Improve Your Bench Press",
-      description: "Expert tips from our champion trainers.",
-      image: placeholderImages.find(p => p.id === 'trainer-3')
-    },
-]
 
 export function CommunitySection() {
   const [api, setApi] = useState<CarouselApi>();

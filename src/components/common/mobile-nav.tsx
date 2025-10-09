@@ -13,7 +13,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { LockedFeatureModal } from "./locked-feature-modal";
-import { pageLinks, shopItems } from "./header";
+import { pageLinks, shopItems } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 const AnimatedBurgerIcon = ({ open }: { open: boolean }) => {

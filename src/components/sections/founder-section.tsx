@@ -3,17 +3,12 @@
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { placeholderImages } from "@/lib/data";
+import { placeholderImages, founderSectionContent, pressLogos } from "@/lib/data";
 import { AnimatedSection } from "../common/animated-section";
 import { motion } from 'framer-motion';
 
 const founderImage = placeholderImages.find((p) => p.id === "founder");
 
-const pressLogos = [
-    { name: "FMT", url: "https://www.freemalaysiatoday.com/", hint: "FMT logo" },
-    { name: "NST", url: "https://www.nst.com.my/", hint: "NST logo" },
-    { name: "Bernama", url: "https://www.bernama.com/", hint: "Bernama logo" }
-]
 
 const sentence = {
   hidden: { opacity: 1 },
@@ -35,8 +30,8 @@ const letter = {
 }
 
 export function FounderSection() {
-  const line1 = "LED BY A CHAMPION.";
-  const line2 = "BUILT FOR CHAMPIONS.";
+  const { subheading, heading, paragraph, featuredIn, buttonText } = founderSectionContent;
+  const { line1, line2 } = heading;
 
   return (
     <section className="bg-black text-white py-20 md:py-28 overflow-hidden">
@@ -63,7 +58,7 @@ export function FounderSection() {
             </motion.div>
             <div className="space-y-6">
                 <p className="font-semibold text-primary tracking-widest uppercase">
-                  MEET THE FOUNDER
+                  {subheading}
                 </p>
                 <motion.h1 
                   className="font-headline text-5xl md:text-6xl font-extrabold tracking-tight uppercase"
@@ -88,10 +83,10 @@ export function FounderSection() {
                   </span>
                 </motion.h1>
                 <p className="text-lg text-muted-foreground">
-                    Our founder, Mr. Kumareswarren, transformed himself from a 110kg enthusiast into the Mr. Malaysia 2023 Champion. He built Body Factory on the principles of hard work, dedication, and community, and he is passionate about helping everyone unlock their true potential.
+                    {paragraph}
                 </p>
                 <div>
-                    <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">As Featured In</h3>
+                    <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">{featuredIn}</h3>
                     <div className="flex items-center gap-8">
                         {pressLogos.map(logo => (
                             <a key={logo.name} href={logo.url} target="_blank" rel="noopener noreferrer" className="grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all">
@@ -106,7 +101,7 @@ export function FounderSection() {
                     viewport={{ once: true, amount: 0.8 }}
                     transition={{ type: 'spring', stiffness: 150, damping: 10, delay: 1 }}
                  >
-                    <Button size="lg">Train with Kumareswarren</Button>
+                    <Button size="lg">{buttonText}</Button>
                  </motion.div>
             </div>
         </AnimatedSection>

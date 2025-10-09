@@ -1,4 +1,4 @@
-import type { ImagePlaceholder } from './placeholder-images';
+import type { ImagePlaceholder } from './data';
 
 export type Trainer = {
   name: string;

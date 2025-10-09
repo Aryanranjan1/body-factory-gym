@@ -5,27 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { motion } from 'framer-motion';
 import { AnimatedSection } from "../common/animated-section";
-
-const plans = [
-  {
-    title: "Walk-In",
-    description: "The perfect balance of structure and flexibility to kickstart your fitness journey.",
-    features: ["Full Gym Access", "One-Time Entry", "No Commitment"],
-    cta: "Get Started Now",
-  },
-  {
-    title: "Monthly",
-    description: "Designed for those ready to build consistency and make steady, sustainable progress.",
-    features: ["24/7 Gym Access", "Unlimited Entries", "Community Access", "Infrared Sauna (Premium)"],
-    cta: "Get Started Now",
-  },
-  {
-    title: "Personal Training",
-    description: "Ideal for maintaining and building on your fitness foundation with a consistent, balanced routine.",
-    features: ["1-on-1 Coaching", "Personalized Programming", "Nutritional Guidance", "Direct Champion Mentorship"],
-    cta: "Get Started Now",
-  },
-];
+import { membershipPlans as plans } from "@/lib/data";
 
 const containerVariants = {
   hidden: {},

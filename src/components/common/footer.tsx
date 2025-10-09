@@ -1,21 +1,8 @@
 import { Dumbbell, Facebook, Instagram, Twitter, Mail, MapPin, Phone, Clock, FileText, Lock, Store as StoreIcon, Youtube } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
+import { quickLinks, memberServices, contactInfo } from "@/lib/data";
 
-const quickLinks = [
-  { title: "Home", href: "/" },
-  { title: "About Us", href: "/#about-us" },
-  { title: "Memberships", href: "/#membership" },
-  { title: "Facilities", href: "/#facilities" },
-  { title: "Contact", href: "/#contact-us" },
-];
-
-const memberServices = [
-  "24/7 Gym Access",
-  "Personal Training",
-  "Infrared Sauna",
-  "Community Events",
-];
 
 export function Footer() {
   return (
@@ -103,7 +90,7 @@ export function Footer() {
                 <MapPin className="h-4 w-4 flex-shrink-0 text-primary mt-1" />
                 <div>
                   <span>
-                    Body Factory Gym & Fitness Centre, PJ21 Commercial Centre, Petaling Jaya, Selangor
+                    {contactInfo.address}
                   </span>
                   <Link href="#" className="text-primary text-xs block mt-1 hover:underline">Get Directions &rarr;</Link>
                 </div>
@@ -111,21 +98,21 @@ export function Footer() {
               <div className="flex items-center gap-3">
                 <Phone className="h-4 w-4 flex-shrink-0 text-primary" />
                 <span>
-                  +60 12-345 6789
+                  {contactInfo.phone}
                 </span>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="h-4 w-4 flex-shrink-0 text-primary" />
                 <span>
-                  info@bodyfactory.com
+                  {contactInfo.email}
                 </span>
               </div>
               <div className="flex items-start gap-3">
                 <Clock className="h-4 w-4 flex-shrink-0 text-primary mt-1" />
                 <div>
                   <p><strong>Hours:</strong></p>
-                  <p>Tuesday - Sunday: 24/7</p>
-                  <p>Monday: 6 AM - 12 AM</p>
+                  <p>Tuesday - Sunday: {contactInfo.hours.tue_sun}</p>
+                  <p>Monday: {contactInfo.hours.mon}</p>
                 </div>
               </div>
             </div>

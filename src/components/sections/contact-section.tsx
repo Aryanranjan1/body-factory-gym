@@ -3,17 +3,12 @@
 
 import { ContactForm } from "./contact-form";
 import { ChevronRight } from "lucide-react";
-import { placeholderImages } from "@/lib/data";
+import { placeholderImages, contactBenefits } from "@/lib/data";
 import { ParallaxImage } from "../common/animated-section";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from 'react';
 import { AnimatedSection } from "../common/animated-section";
 
-const benefits = [
-    "One-Day Free Trial Pass",
-    "Personalized Starter Plan",
-    "Exclusive Community Access",
-]
 
 export function ContactSection() {
     const contactBg = placeholderImages.find(p => p.id === 'contact-background');
@@ -52,7 +47,7 @@ export function ContactSection() {
                 <ul 
                     className="space-y-4 text-xl"
                 >
-                    {benefits.map((benefit, index) => (
+                    {contactBenefits.map((benefit, index) => (
                         <li 
                             key={index} 
                             className="flex items-center gap-3"

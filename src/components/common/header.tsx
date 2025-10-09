@@ -16,24 +16,8 @@ import {
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import { MobileNav } from "./mobile-nav";
+import { shopItems, pageLinks } from "@/lib/data";
 
-export const shopItems = {
-  "Home Gym": ["Treadmill", "Kettlebell", "Elliptical Trainer", "Dumbbell", "Resistance band"],
-  "Cardio Machines": ["Jump Rope", "Arc Trainer", "Hydrow Rower", "Versaclimber", "Rowing Machine"],
-  "Free Weights": ["Weight Plate", "Curl Bars", "Hexagon Dumbbell", "Barbell", "Olympic Barbells"],
-  "Power Equipment": ["Calibrated Plates", "Squat Bar", "Squat Rack", "Deadlift", "Curl Bench"],
-}
-
-export const pageLinks = [
-  {
-    title: "Blog",
-    description: "Read our latest articles.",
-  },
-  {
-    title: "FAQs",
-    description: "Frequently asked questions.",
-  }
-]
 
 export function Header() {
   const navLinkClasses = "bg-transparent hover:bg-transparent text-foreground/80 hover:text-primary focus:text-primary focus:bg-transparent data-[active]:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-primary transition-colors";

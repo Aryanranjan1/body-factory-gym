@@ -4,7 +4,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { placeholderImages } from "@/lib/data";
+import { placeholderImages, aboutSectionContent } from "@/lib/data";
 import { Button } from "../ui/button";
 import React from 'react';
 
@@ -91,8 +91,8 @@ export function AboutSection() {
   const currentLeftImage = getImageById(leftImageIds[currentLeftIndex]);
   const currentRightImage = getImageById(rightImageIds[currentRightIndex]);
 
-  const line1 = "WORK HARD.";
-  const line2 = "LIVE FIT.";
+  const { subheading, heading, paragraph, buttonText } = aboutSectionContent;
+  const { line1, line2 } = heading;
 
   return (
     <section 
@@ -164,7 +164,7 @@ export function AboutSection() {
               className="font-semibold text-primary tracking-widest uppercase"
               variants={popInVariants}
             >
-              What We Believe
+              {subheading}
             </motion.p>
             <motion.h2 
               className="font-headline text-5xl md:text-6xl font-extrabold tracking-tight"
@@ -189,11 +189,11 @@ export function AboutSection() {
               className="text-lg text-muted-foreground"
               variants={popInVariants}
             >
-              Body Factory is more than a gym, it's a lifestyle. We believe in the transformative power of hard work. Through dedication and effort, you'll build mental and physical strength to conquer life's challenges, inside and outside of the gym.
+              {paragraph}
             </motion.p>
             <motion.div variants={popInVariants}>
               <Button variant="outline" size="lg" asChild className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-                <a href="#testimonials">Discover Why Members Love Us</a>
+                <a href="#testimonials">{buttonText}</a>
               </Button>
             </motion.div>
           </motion.div>
