@@ -189,7 +189,7 @@ const InteractiveImageBentoGallery: React.FC<
         className="relative mt-12 w-full"
       >
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-4 auto-rows-[20rem] gap-4 container mx-auto"
+          className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-4 gap-4 container mx-auto h-[42rem]"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
