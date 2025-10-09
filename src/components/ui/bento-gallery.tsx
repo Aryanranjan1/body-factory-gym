@@ -127,42 +127,59 @@ const InteractiveImageBentoGallery: React.FC<
 
       {/* Responsive uneven grid */}
       <motion.div
-        className="container mx-auto mt-12 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 auto-rows-[14rem] gap-5"
+        className="container mx-auto mt-12 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 auto-rows-[10rem] sm:auto-rows-[12rem] gap-5"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
       >
-        {items.map((item) => (
-          <motion.div
-            key={item.id}
-            variants={itemVariants}
-            className={cn(
-              "group relative overflow-hidden rounded-2xl border bg-card shadow-md transition-all duration-500 hover:shadow-xl cursor-pointer",
-              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50",
-              item.span,
-            )}
-            whileHover={{ scale: 1.02 }}
-            onClick={() => setSelectedItem(item)}
-          >
-            <img
-              src={item.url}
-              alt={item.title}
-              data-ai-hint={item.imageHint}
-              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-2xl" />
-            <div className="relative z-10 p-4 sm:p-6 flex flex-col justify-end h-full">
-              <h3 className="text-lg font-semibold text-white">{item.title}</h3>
-              <p className="text-sm text-white/80">{item.desc}</p>
-            </div>
-          </motion.div>
-        ))}
+        {items.map((item, i) => {
+          // Pattern-based dynamic spans for visual rhythm
+          const spanClass =
+            i % 7 === 0
+              ? "col-span-2 row-span-2"
+              : i % 5 === 0
+              ? "col-span-2 row-span-1"
+              : i % 3 === 0
+              ? "col-span-1 row-span-2"
+              : "col-span-1 row-span-1"
+
+          return (
+            <motion.div
+              key={item.id}
+              variants={itemVariants}
+              className={cn(
+                "group relative overflow-hidden rounded-2xl border bg-card shadow-md transition-all duration-500 hover:shadow-xl cursor-pointer",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50",
+                spanClass
+              )}
+              whileHover={{ scale: 1.02 }}
+              onClick={() => setSelectedItem(item)}
+            >
+              <img
+                src={item.url}
+                alt={item.title}
+                data-ai-hint={item.imageHint}
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent rounded-2xl" />
+              <div className="relative z-10 p-4 sm:p-6 flex flex-col justify-end h-full">
+                <h3 className="text-lg font-semibold text-white">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-white/80">{item.desc}</p>
+              </div>
+            </motion.div>
+          )
+        })}
       </motion.div>
 
       <AnimatePresence>
         {selectedItem && (
-          <DetailModal item={selectedItem} onClose={() => setSelectedItem(null)} />
+          <DetailModal
+            item={selectedItem}
+            onClose={() => setSelectedItem(null)}
+          />
         )}
       </AnimatePresence>
     </section>

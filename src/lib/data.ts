@@ -106,7 +106,6 @@ export const bentoItems = [
       title: "Strength Training",
       desc: "Extensive free weights and machines.",
       url: "https://images.unsplash.com/photo-1506197061617-7f5c0b093236?q=80&w=1118&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      span: "sm:col-span-3 lg:col-span-4 lg:row-span-2",
       imageHint: "strength training",
       targetAudience: "Anyone looking to build muscle mass, increase raw strength, or improve body composition.",
       equipment: [
@@ -124,7 +123,6 @@ export const bentoItems = [
       title: "Cardio Zone",
       desc: "Boost your endurance.",
       url: "https://images.unsplash.com/photo-1723117418780-1b74b25af9bc?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      span: "sm:col-span-3 lg:col-span-2",
       imageHint: "cardio machines",
       targetAudience: "Individuals aiming to improve cardiovascular health, increase stamina, or manage weight.",
        equipment: [
@@ -142,7 +140,6 @@ export const bentoItems = [
       title: "Functional Training",
       desc: "Move with purpose.",
       url: "https://plus.unsplash.com/premium_photo-1713251456388-484a1cc64209?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      span: "sm:col-span-3 lg:col-span-2",
       imageHint: "functional training",
       targetAudience: "Athletes and individuals who want to improve real-world strength, coordination, and mobility.",
        equipment: [
@@ -160,7 +157,6 @@ export const bentoItems = [
       title: "Personal Training",
       desc: "Expert guidance tailored to you.",
       url: "https://plus.unsplash.com/premium_photo-1663050901483-ee8703cc8372?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      span: "sm:col-span-3 lg:col-span-2 lg:row-span-2",
       imageHint: "personal trainer",
       features: [
         "1-on-1 Coaching with Champion Trainers",
@@ -177,7 +173,6 @@ export const bentoItems = [
       title: "Infrared Sauna",
       desc: "Relax and accelerate recovery.",
       url: "https://images.unsplash.com/photo-1660735698223-23a4edefa264?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      span: "sm:col-span-3 lg:col-span-2",
       imageHint: "infrared sauna",
       targetAudience: "Everyone looking to reduce muscle soreness, improve circulation, and de-stress after a hard workout.",
       features: [
@@ -194,7 +189,6 @@ export const bentoItems = [
       title: "Community Challenges",
       desc: "Compete and grow together.",
       url: "https://plus.unsplash.com/premium_photo-1663102811360-aeaab9dbcf68?q=80&w=1165&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      span: "sm:col-span-3 lg:col-span-4",
       imageHint: "gym community",
       targetAudience: "Members who thrive on competition, accountability, and community support to stay motivated.",
       features: [
@@ -376,6 +370,7 @@ export const communitySectionContent = {
     
 
     
+
 
 
 
